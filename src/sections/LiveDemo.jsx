@@ -27,7 +27,7 @@ export default function LiveDemo() {
       style={{
         background: color.bg,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>

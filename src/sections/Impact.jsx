@@ -18,13 +18,14 @@ export default function Impact() {
   const [stagesRef,   stagesVis]   = useReveal({ threshold: 0.05 });
   const [reasonsRef,  reasonsVis]  = useReveal({ threshold: 0.05 });
   const [demandRef,   demandVis]   = useReveal({ threshold: 0.1 });
+  const [socialRef,   socialVis]   = useReveal({ threshold: 0.1 });
 
   return (
     <section
       id="impact"
       style={{ background: color.bgCard, fontFamily: font.familyKo }}
     >
-      <div style={{ padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px) 0' }}>
+      <div style={{ padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px) 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
           <div ref={headerRef} style={rev(headerVis)}>
@@ -39,7 +40,7 @@ export default function Impact() {
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
               gap: '20px',
-              marginBottom: 'clamp(40px,5vw,64px)',
+              marginBottom: 'clamp(24px,3vw,40px)',
             }}
           >
             {impact.stages.map((stage, i) => (
@@ -55,7 +56,7 @@ export default function Impact() {
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
               gap: '20px',
-              marginBottom: 'clamp(40px,5vw,64px)',
+              marginBottom: 'clamp(24px,3vw,40px)',
             }}
           >
             {impact.scaleReasons.map((reason) => (
@@ -66,7 +67,7 @@ export default function Impact() {
         </div>
       </div>
 
-      {/* Market demand green banner */}
+      {/* marketDemand — 그린 강조 박스 (외부 검증) */}
       <div
         ref={demandRef}
         style={{
@@ -78,31 +79,58 @@ export default function Impact() {
           maxWidth: '1200px',
           margin: '0 auto',
           padding: 'clamp(24px,3vw,40px) clamp(20px,5vw,80px)',
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: '16px',
         }}>
           <span style={{
+            display: 'inline-block',
             fontFamily: font.familyNum,
-            fontSize: '20px',
-            color: 'rgba(255,255,255,0.5)',
-            lineHeight: 1,
-            flexShrink: 0,
-            marginTop: '2px',
+            fontSize: '11px',
+            fontWeight: 700,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.7)',
+            marginBottom: '12px',
           }}>
-            ★
+            외부 제안
           </span>
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
             fontSize: 'clamp(14px,1.4vw,17px)',
             fontWeight: 600,
-            lineHeight: 1.7,
+            lineHeight: 1.8,
             color: '#FFFFFF',
             wordBreak: 'keep-all',
           }}>
             {impact.marketDemand}
           </p>
+        </div>
+      </div>
+
+      {/* socialValue — 마무리 문장 */}
+      <div
+        ref={socialRef}
+        style={{
+          ...rev(socialVis),
+          padding: 'clamp(28px,4vw,48px) clamp(20px,5vw,80px) clamp(40px,5vw,72px)',
+        }}
+      >
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{
+            borderLeft: `3px solid ${color.primary}`,
+            paddingLeft: 'clamp(16px,2vw,24px)',
+          }}>
+            <p style={{
+              margin: 0,
+              fontFamily: font.familyKo,
+              fontSize: 'clamp(14px,1.3vw,17px)',
+              fontWeight: 600,
+              lineHeight: 1.85,
+              color: color.ink,
+              wordBreak: 'keep-all',
+            }}>
+              {impact.socialValue}
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -133,7 +161,7 @@ function StageCard({ stage, index }) {
         textTransform: 'uppercase',
         color: isFirst
           ? color.primary
-          : highlight ? 'rgba(255,255,255,0.65)' : color.inkMute,
+          : highlight ? 'rgba(255,255,255,0.85)' : color.inkMute,
         display: 'inline-block',
       }}>
         {stage.stage}
@@ -151,7 +179,7 @@ function StageCard({ stage, index }) {
       <span style={{
         fontFamily: font.familyKo,
         fontSize: '12px',
-        color: highlight ? 'rgba(255,255,255,0.7)' : color.inkMute,
+        color: highlight ? '#FFFFFF' : color.inkMute,
         display: 'inline-block',
       }}>
         {stage.tag}
@@ -161,7 +189,7 @@ function StageCard({ stage, index }) {
         fontFamily: font.familyKo,
         fontSize: '13px',
         lineHeight: 1.7,
-        color: highlight ? 'rgba(255,255,255,0.85)' : color.inkSub,
+        color: highlight ? '#FFFFFF' : color.inkSub,
         wordBreak: 'keep-all',
       }}>
         {stage.desc}

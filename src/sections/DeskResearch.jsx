@@ -5,6 +5,7 @@ import SectionHeader from '../components/SectionHeader.jsx';
 import DonutChart from '../components/DonutChart.jsx';
 import n9 from '../data/n9.json';
 
+
 const { deskResearch } = n9;
 
 export default function DeskResearch() {
@@ -19,7 +20,7 @@ export default function DeskResearch() {
       style={{
         background: color.bg,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -49,7 +50,7 @@ export default function DeskResearch() {
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
             gap: '24px',
-            marginBottom: 'clamp(48px,6vw,80px)',
+            marginBottom: 'clamp(32px,4vw,48px)',
           }}
         >
           {deskResearch.charts.map((chart, i) => (
@@ -62,8 +63,8 @@ export default function DeskResearch() {
                 padding: '32px 24px',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
+                alignItems: chart.type === 'compare_bar' ? 'stretch' : 'center',
+                textAlign: chart.type === 'compare_bar' ? 'left' : 'center',
               }}
             >
               {chart.type === 'donut' ? (
@@ -73,6 +74,8 @@ export default function DeskResearch() {
                   caption={chart.caption}
                   source={chart.source}
                 />
+              ) : chart.type === 'compare_bar' ? (
+                <CompareBar chart={chart} />
               ) : (
                 <ArrowStat chart={chart} />
               )}
@@ -100,7 +103,6 @@ export default function DeskResearch() {
                 borderRadius: '12px',
                 boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
                 padding: '28px 24px',
-                borderTop: `3px solid ${color.primary}`,
               }}
             >
               <p style={{
@@ -130,6 +132,77 @@ export default function DeskResearch() {
 
       </div>
     </section>
+  );
+}
+
+function CompareBar({ chart }) {
+  const [ref, visible] = useReveal({ threshold: 0.1 });
+  const maxVal = Math.max(...chart.bars.map(b => b.value));
+  return (
+    <div ref={ref} style={{ width: '100%' }}>
+      <p style={{
+        margin: '0 0 24px',
+        fontFamily: font.familyKo,
+        fontSize: '14px',
+        fontWeight: 600,
+        color: color.inkSub,
+      }}>
+        {chart.caption}
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        {chart.bars.map((bar, i) => (
+          <div key={i}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'baseline',
+              marginBottom: '8px',
+            }}>
+              <span style={{
+                fontFamily: font.familyKo,
+                fontSize: '13px',
+                color: color.inkSub,
+              }}>
+                {bar.label}
+              </span>
+              <span style={{
+                fontFamily: font.familyNum,
+                fontSize: '18px',
+                fontWeight: 800,
+                color: i === 0 ? color.inkSub : color.primary,
+                letterSpacing: '-0.02em',
+              }}>
+                {bar.value}%
+              </span>
+            </div>
+            <div style={{
+              height: '10px',
+              borderRadius: '999px',
+              background: color.bgSoft,
+              overflow: 'hidden',
+            }}>
+              <div style={{
+                height: '100%',
+                borderRadius: '999px',
+                background: i === 0 ? color.inkMute : color.primary,
+                width: visible ? `${(bar.value / maxVal) * 100}%` : '0%',
+                transition: `width 0.8s ease-out ${i * 0.15}s`,
+              }} />
+            </div>
+          </div>
+        ))}
+      </div>
+      {chart.source && (
+        <p style={{
+          margin: '20px 0 0',
+          fontFamily: font.familyKo,
+          fontSize: '12px',
+          color: color.inkMute,
+        }}>
+          {chart.source}
+        </p>
+      )}
+    </div>
   );
 }
 

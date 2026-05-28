@@ -23,7 +23,7 @@ export default function AiIntegration() {
       style={{
         background: color.bgCard,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -93,8 +93,8 @@ function PersonaColumn({ data, side }) {
 function QACard({ label, text, align, isAnswer }) {
   return (
     <div style={{
-      background: isAnswer ? color.primaryLight : color.bg,
-      border: `1px solid ${isAnswer ? color.primarySoft : color.line}`,
+      background: isAnswer ? color.bgSoft : color.bg,
+      border: `1px solid ${color.line}`,
       borderRadius: '10px',
       padding: '14px 16px',
       display: 'flex',
@@ -145,7 +145,7 @@ function AiCenter({ data }) {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '6px',
-        boxShadow: `0 0 0 8px ${color.primaryLight}, 0 0 0 16px rgba(2,199,90,0.1)`,
+        boxShadow: '0 0 0 8px rgba(2,199,90,0.12), 0 0 0 16px rgba(2,199,90,0.06)',
         flexShrink: 0,
       }}>
         <span style={{

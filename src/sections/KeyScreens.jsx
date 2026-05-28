@@ -17,7 +17,7 @@ const rev = (vis, delay = 0) => ({
 
 // Inline mini screens for screens without a dedicated component
 function ScreenPlaceholder({ screenNo, label, isOwner }) {
-  const bg = isOwner ? color.primaryLight : '#F4F4F2';
+  const bg = color.bgSoft;
   const accent = isOwner ? color.primary : color.inkMute;
   return (
     <div style={{
@@ -91,7 +91,7 @@ export default function KeyScreens() {
       style={{
         background: color.bgCard,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -187,7 +187,7 @@ function ScreenCard({ screen }) {
       {/* Phone frame */}
       <div style={{
         borderRadius: '36px',
-        outline: isOwner ? `3px solid ${color.inkSub}` : `3px solid ${color.primarySoft}`,
+        outline: `3px solid ${color.line}`,
         outlineOffset: '3px',
       }}>
         <PhoneFrame scale={0.5} screenHeight={620}>

@@ -17,32 +17,32 @@ const ICONS = [
   // 명함
   <svg key="card" width="48" height="48" viewBox="0 0 48 48" fill="none">
     <rect x="4" y="12" width="40" height="24" rx="4" stroke={color.primary} strokeWidth="2"/>
-    <rect x="10" y="18" width="10" height="8" rx="2" fill={color.primaryLight}/>
-    <line x1="24" y1="20" x2="38" y2="20" stroke={color.primarySoft} strokeWidth="2" strokeLinecap="round"/>
-    <line x1="24" y1="25" x2="34" y2="25" stroke={color.primarySoft} strokeWidth="2" strokeLinecap="round"/>
-    <circle cx="38" cy="32" r="5" fill={color.primaryLight} stroke={color.primary} strokeWidth="1.5"/>
+    <rect x="10" y="18" width="10" height="8" rx="2" fill={color.bgSoft}/>
+    <line x1="24" y1="20" x2="38" y2="20" stroke={color.line} strokeWidth="2" strokeLinecap="round"/>
+    <line x1="24" y1="25" x2="34" y2="25" stroke={color.line} strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="38" cy="32" r="5" fill={color.bgSoft} stroke={color.primary} strokeWidth="1.5"/>
     <path d="M36 32l1.5 1.5L40 30" stroke={color.primary} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>,
   // 가격표
   <svg key="price" width="48" height="48" viewBox="0 0 48 48" fill="none">
     <rect x="6" y="6" width="36" height="36" rx="4" stroke={color.primary} strokeWidth="2"/>
-    <line x1="12" y1="16" x2="36" y2="16" stroke={color.primarySoft} strokeWidth="2" strokeLinecap="round"/>
+    <line x1="12" y1="16" x2="36" y2="16" stroke={color.line} strokeWidth="2" strokeLinecap="round"/>
     <line x1="12" y1="22" x2="28" y2="22" stroke={color.bgSoft} strokeWidth="2" strokeLinecap="round"/>
     <line x1="12" y1="27" x2="30" y2="27" stroke={color.bgSoft} strokeWidth="2" strokeLinecap="round"/>
     <line x1="12" y1="32" x2="26" y2="32" stroke={color.bgSoft} strokeWidth="2" strokeLinecap="round"/>
-    <rect x="30" y="20" width="8" height="14" rx="2" fill={color.primaryLight}/>
+    <rect x="30" y="20" width="8" height="14" rx="2" fill={color.bgSoft}/>
   </svg>,
   // QR 카드
   <svg key="qr" width="48" height="48" viewBox="0 0 48 48" fill="none">
     <rect x="6" y="6" width="16" height="16" rx="2" stroke={color.primary} strokeWidth="2"/>
-    <rect x="10" y="10" width="8" height="8" rx="1" fill={color.primaryLight}/>
+    <rect x="10" y="10" width="8" height="8" rx="1" fill={color.bgSoft}/>
     <rect x="26" y="6" width="16" height="16" rx="2" stroke={color.primary} strokeWidth="2"/>
-    <rect x="30" y="10" width="8" height="8" rx="1" fill={color.primaryLight}/>
+    <rect x="30" y="10" width="8" height="8" rx="1" fill={color.bgSoft}/>
     <rect x="6" y="26" width="16" height="16" rx="2" stroke={color.primary} strokeWidth="2"/>
-    <rect x="10" y="30" width="8" height="8" rx="1" fill={color.primaryLight}/>
-    <rect x="26" y="26" width="6" height="6" rx="1" fill={color.primarySoft}/>
-    <rect x="34" y="26" width="6" height="6" rx="1" fill={color.primarySoft}/>
-    <rect x="26" y="34" width="6" height="6" rx="1" fill={color.primarySoft}/>
+    <rect x="10" y="30" width="8" height="8" rx="1" fill={color.bgSoft}/>
+    <rect x="26" y="26" width="6" height="6" rx="1" fill={color.line}/>
+    <rect x="34" y="26" width="6" height="6" rx="1" fill={color.line}/>
+    <rect x="26" y="34" width="6" height="6" rx="1" fill={color.line}/>
     <rect x="34" y="34" width="6" height="6" rx="1" fill={color.primary}/>
   </svg>,
 ];
@@ -58,7 +58,7 @@ export default function OfflineTouchpoints() {
       style={{
         background: color.bg,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -98,7 +98,7 @@ function TouchpointCard({ item, icon, index }) {
     }}>
       {/* 목업 placeholder */}
       <div style={{
-        background: color.primaryLight,
+        background: color.bgSoft,
         height: '180px',
         display: 'flex',
         flexDirection: 'column',

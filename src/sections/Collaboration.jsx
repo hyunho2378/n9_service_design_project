@@ -24,7 +24,7 @@ export default function Collaboration() {
       style={{
         background: color.bg,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -41,7 +41,7 @@ export default function Collaboration() {
             display: 'grid',
             gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(5, 1fr)',
             gap: '0',
-            marginBottom: 'clamp(48px,6vw,80px)',
+            marginBottom: 'clamp(32px,4vw,48px)',
             position: 'relative',
           }}
         >
@@ -102,7 +102,7 @@ function TimelineNode({ item, index }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: highlight ? `0 0 0 6px ${color.primaryLight}` : 'none',
+        boxShadow: 'none',
         flexShrink: 0,
       }}>
         {highlight ? (
@@ -161,9 +161,9 @@ function TimelineNode({ item, index }) {
 function ConversationQuote({ data, label, isAfter }) {
   return (
     <div style={{
-      background: isAfter ? color.primaryLight : color.bgCard,
+      background: isAfter ? color.bgSoft : color.bgCard,
       borderRadius: '12px',
-      border: `1px solid ${isAfter ? color.primarySoft : color.line}`,
+      border: `1px solid ${color.line}`,
       padding: '24px 28px',
     }}>
       <span style={{
@@ -195,7 +195,7 @@ function ConversationQuote({ data, label, isAfter }) {
         fontSize: '12px',
         color: color.inkMute,
       }}>
-        — {data.date}
+        {data.date}
       </span>
     </div>
   );

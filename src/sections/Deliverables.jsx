@@ -26,7 +26,7 @@ export default function Deliverables() {
       style={{
         background: color.bgCard,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -88,7 +88,7 @@ function DeliverableCard({ item }) {
         fontSize: '13px',
         fontWeight: 700,
         letterSpacing: '0.06em',
-        color: highlight ? 'rgba(255,255,255,0.6)' : color.inkMute,
+        color: highlight ? 'rgba(255,255,255,0.85)' : color.inkMute,
       }}>
         {item.no}
       </span>
@@ -108,7 +108,7 @@ function DeliverableCard({ item }) {
         fontFamily: font.familyKo,
         fontSize: '13px',
         lineHeight: 1.65,
-        color: highlight ? 'rgba(255,255,255,0.8)' : color.inkSub,
+        color: highlight ? '#FFFFFF' : color.inkSub,
         wordBreak: 'keep-all',
       }}>
         {item.desc}

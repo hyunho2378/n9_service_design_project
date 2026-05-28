@@ -1,8 +1,6 @@
 import { color, font } from '../tokens/web.js';
 
-// DESIGN_WEBN9.md: 좌측 그린 따옴표 + 본문 + 하단 출처(inkMute)
-// id/profile/theme: 인터뷰 verbatim 카드 전용 (없으면 렌더 안 함)
-export default function QuoteCard({ text, source, id, profile, theme }) {
+export default function QuoteCard({ text, source, profile, theme }) {
   return (
     <div style={{
       backgroundColor: color.bgCard,
@@ -13,26 +11,15 @@ export default function QuoteCard({ text, source, id, profile, theme }) {
       flexDirection: 'column',
       gap: '12px',
     }}>
-      {/* 인터뷰 ID 뱃지 (verbatim 카드용) */}
-      {id && (
+      {/* 프로필 + 테마 태그 */}
+      {(profile || theme) && (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{
-            fontFamily: font.familyNum,
-            fontSize: '12px',
-            fontWeight: 700,
-            color: color.bgCard,
-            backgroundColor: color.primary,
-            borderRadius: '6px',
-            padding: '2px 8px',
-            letterSpacing: '0.05em',
-          }}>
-            {id}
-          </span>
           {profile && (
             <span style={{
               fontFamily: font.familyKo,
               fontSize: '12px',
-              color: color.inkMute,
+              fontWeight: 600,
+              color: color.inkSub,
             }}>
               {profile}
             </span>
@@ -42,7 +29,7 @@ export default function QuoteCard({ text, source, id, profile, theme }) {
               fontFamily: font.familyKo,
               fontSize: '11px',
               color: color.primary,
-              backgroundColor: color.primaryLight,
+              backgroundColor: color.bgSoft,
               borderRadius: '4px',
               padding: '2px 6px',
             }}>

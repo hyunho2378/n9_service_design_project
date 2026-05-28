@@ -23,7 +23,7 @@ export default function Dashboard() {
       id="dashboard"
       style={{ background: color.bg, fontFamily: font.familyKo }}
     >
-      <div style={{ padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px) 0' }}>
+      <div style={{ padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px) 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
           <div ref={headerRef} style={rev(headerVis)}>
@@ -38,7 +38,7 @@ export default function Dashboard() {
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
               gap: '24px',
-              marginBottom: 'clamp(40px,5vw,64px)',
+              marginBottom: 'clamp(24px,3vw,40px)',
             }}
           >
             {dashboard.items.map((item, i) => (
@@ -105,7 +105,7 @@ function DashboardBlock({ item, index }) {
       <div style={{
         padding: '14px 24px',
         borderBottom: `1px solid ${color.line}`,
-        background: isSecond ? color.primaryLight : color.bgCard,
+        background: color.bgCard,
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
@@ -132,7 +132,7 @@ function DashboardBlock({ item, index }) {
 
       {/* Mock visual area */}
       <div style={{
-        background: isSecond ? color.primaryLight : color.bgSoft,
+        background: color.bgSoft,
         height: '140px',
         display: 'flex',
         alignItems: 'center',

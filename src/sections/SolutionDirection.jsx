@@ -15,7 +15,7 @@ export default function SolutionDirection() {
       style={{
         background: color.bgCard,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -171,7 +171,7 @@ function GapRow({ gap, index, total }) {
             fontWeight: 700,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            color: isAi ? 'rgba(255,255,255,0.65)' : color.inkMute,
+            color: isAi ? 'rgba(255,255,255,0.9)' : color.inkMute,
             display: 'block',
             marginBottom: '6px',
           }}>

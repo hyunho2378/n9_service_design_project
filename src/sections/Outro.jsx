@@ -20,7 +20,7 @@ export default function Outro() {
       style={{
         background: '#0A0A0A',
         fontFamily: font.familyKo,
-        padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,80px)',
+        padding: 'clamp(48px,6vw,80px) clamp(20px,5vw,80px)',
         minHeight: '70vh',
         display: 'flex',
         alignItems: 'center',
@@ -62,34 +62,6 @@ export default function Outro() {
         {/* Credits block */}
         <div ref={creditsRef} style={rev(creditsVis, 0.1)}>
 
-          {/* Award badge */}
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'rgba(2,199,90,0.12)',
-            border: `1px solid rgba(2,199,90,0.3)`,
-            borderRadius: '8px',
-            padding: '8px 16px',
-            marginBottom: '36px',
-          }}>
-            <span style={{
-              fontFamily: font.familyNum,
-              fontSize: '13px',
-              color: color.primary,
-            }}>
-              ★
-            </span>
-            <span style={{
-              fontFamily: font.familyKo,
-              fontSize: '13px',
-              fontWeight: 600,
-              color: color.primary,
-            }}>
-              {meta.award}
-            </span>
-          </div>
-
           {/* Team */}
           <div style={{
             borderTop: '1px solid rgba(255,255,255,0.1)',
@@ -108,7 +80,7 @@ export default function Outro() {
                 fontWeight: 700,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.35)',
+                color: 'rgba(255,255,255,0.6)',
               }}>
                 Team
               </p>
@@ -137,7 +109,7 @@ export default function Outro() {
                 margin: 0,
                 fontFamily: font.familyNum,
                 fontSize: '13px',
-                color: 'rgba(255,255,255,0.3)',
+                color: 'rgba(255,255,255,0.55)',
               }}>
                 {meta.period}
               </p>

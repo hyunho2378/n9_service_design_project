@@ -18,7 +18,7 @@ export default function Architecture() {
       style={{
         background: color.bg,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -107,7 +107,7 @@ function LayerCard({ layer, index }) {
         fontSize: '11px',
         fontWeight: 700,
         letterSpacing: '0.08em',
-        color: isHighlight ? 'rgba(255,255,255,0.55)' : color.inkMute,
+        color: isHighlight ? 'rgba(255,255,255,0.8)' : color.inkMute,
         display: 'block',
         marginBottom: '12px',
       }}>
@@ -131,7 +131,7 @@ function LayerCard({ layer, index }) {
         margin: '0 0 20px',
         fontFamily: font.familyKo,
         fontSize: '13px',
-        color: isHighlight ? 'rgba(255,255,255,0.7)' : color.inkMute,
+        color: isHighlight ? '#FFFFFF' : color.inkMute,
       }}>
         {layer.ko}
       </p>
@@ -150,17 +150,17 @@ function LayerCard({ layer, index }) {
             <span style={{
               fontFamily: font.familyNum,
               fontSize: '12px',
-              color: isHighlight ? 'rgba(255,255,255,0.5)' : color.primary,
+              color: isHighlight ? 'rgba(255,255,255,0.75)' : color.primary,
               flexShrink: 0,
               lineHeight: 1.6,
             }}>
-              ·
+              -
             </span>
             <span style={{
               fontFamily: font.familyKo,
               fontSize: '13px',
               lineHeight: 1.6,
-              color: isHighlight ? 'rgba(255,255,255,0.85)' : color.inkSub,
+              color: isHighlight ? '#FFFFFF' : color.inkSub,
               wordBreak: 'keep-all',
             }}>
               {item}
@@ -175,7 +175,7 @@ function LayerCard({ layer, index }) {
           fontFamily: font.familyKo,
           fontSize: '11px',
           fontWeight: 600,
-          color: isHighlight ? 'rgba(255,255,255,0.65)' : color.inkMute,
+          color: isHighlight ? 'rgba(255,255,255,0.9)' : color.inkMute,
           background: isHighlight ? 'rgba(255,255,255,0.15)' : color.bgSoft,
           borderRadius: '6px',
           padding: '4px 10px',

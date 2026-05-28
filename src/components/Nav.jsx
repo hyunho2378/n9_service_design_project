@@ -83,14 +83,14 @@ export default function Nav() {
                   style={{
                     textDecoration: 'none',
                     fontSize: 13,
-                    fontWeight: 500,
-                    color: color.inkMute,
+                    fontWeight: 600,
+                    color: color.inkSub,
                     letterSpacing: '-0.01em',
                     transition: 'color 0.18s',
                     fontFamily: font.familyNum,
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = color.ink)}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = color.inkMute)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = color.inkSub)}
                 >
                   {label}
                 </a>

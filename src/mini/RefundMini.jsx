@@ -17,7 +17,7 @@ export default function RefundMini() {
         width: '48px',
         height: '48px',
         borderRadius: '12px',
-        backgroundColor: '#E8F8EE',
+        backgroundColor: '#F2F2F0',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

@@ -1,8 +1,7 @@
 import { color, font } from '../tokens/web.js';
 import { useReveal } from '../lib/useReveal.js';
-import SectionHeader from '../components/SectionHeader.jsx';
-import n9 from '../data/n9.json';
 import { useIsMobile } from '../lib/useIsMobile.js';
+import n9 from '../data/n9.json';
 
 const { validation } = n9;
 
@@ -14,69 +13,81 @@ const rev = (vis, delay = 0) => ({
 
 export default function Validation() {
   const isMobile = useIsMobile();
-  const [headerRef,   headerVis]   = useReveal({ threshold: 0.1 });
-  const [metricsRef,  metricsVis]  = useReveal({ threshold: 0.05 });
-  const [quotesRef,   quotesVis]   = useReveal({ threshold: 0.1 });
+  const [headerRef, headerVis] = useReveal({ threshold: 0.1 });
+  const [metricsRef, metricsVis] = useReveal({ threshold: 0.05 });
+  const [quoteRef, quoteVis] = useReveal({ threshold: 0.1 });
 
   return (
     <section
       id="validation"
       style={{
-        background: color.bg,
+        background: '#0A0A0A',
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
+        {/* 헤더 */}
         <div ref={headerRef} style={rev(headerVis)}>
-          <SectionHeader label={validation.label} headline={validation.headline} />
           <p style={{
-            margin: '-16px 0 40px',
+            margin: '0 0 16px',
+            fontFamily: font.familyNum,
+            fontSize: '13px',
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: color.primary,
+          }}>
+            {validation.label}
+          </p>
+          <h2 style={{
+            margin: '0 0 14px',
+            fontFamily: font.familyKo,
+            fontSize: 'clamp(24px,3vw,40px)',
+            fontWeight: 800,
+            lineHeight: 1.25,
+            letterSpacing: '-0.02em',
+            color: '#FFFFFF',
+            wordBreak: 'keep-all',
+          }}>
+            {validation.headline}
+          </h2>
+          <p style={{
+            margin: '0 0 clamp(32px,4vw,48px)',
             fontFamily: font.familyNum,
             fontSize: '12px',
-            color: color.inkMute,
+            fontWeight: 600,
+            color: 'rgba(255,255,255,0.5)',
             letterSpacing: '0.04em',
           }}>
-            {validation.activationDates}
+            활성화 날짜 / {validation.activationDates}
           </p>
         </div>
 
-        {/* Metrics grid */}
+        {/* 5개 지표 — 세로 스택 */}
         <div
           ref={metricsRef}
           style={{
             ...rev(metricsVis),
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-            gap: '16px',
-            marginBottom: 'clamp(40px,5vw,64px)',
+            display: 'flex',
+            flexDirection: 'column',
+            marginBottom: 'clamp(32px,4vw,48px)',
           }}
         >
-          {validation.metrics.map((metric) => (
-            <MetricCard key={metric.label} metric={metric} />
+          {validation.metrics.map((metric, i) => (
+            <MetricRow
+              key={metric.label}
+              metric={metric}
+              isFirst={i === 0}
+              isMobile={isMobile}
+            />
           ))}
         </div>
 
-        {/* Quotes */}
-        <div
-          ref={quotesRef}
-          style={{
-            ...rev(quotesVis),
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-            gap: '20px',
-          }}
-        >
-          <QuoteBlock
-            text={validation.quote}
-            label="김선희 사장님"
-          />
-          <QuoteBlock
-            text={validation.newCustomerQuote}
-            label="신규 방문 손님"
-            isCustomer
-          />
+        {/* 사장님 발화 */}
+        <div ref={quoteRef} style={rev(quoteVis)}>
+          <QuoteBlock text={validation.quote} label="김선희 사장님" />
         </div>
 
       </div>
@@ -84,72 +95,79 @@ export default function Validation() {
   );
 }
 
-function MetricCard({ metric }) {
-  const { highlight } = metric;
+function MetricRow({ metric, isFirst, isMobile }) {
   return (
     <div style={{
-      background: highlight ? color.primaryLight : color.bgCard,
-      borderRadius: '12px',
-      border: `1px solid ${highlight ? color.primarySoft : color.line}`,
-      padding: '20px 20px 18px',
-      boxShadow: highlight
-        ? '0 4px 20px rgba(2,199,90,0.12)'
-        : '0 2px 12px rgba(0,0,0,0.05)',
+      display: 'flex',
+      alignItems: isMobile ? 'flex-start' : 'center',
+      flexDirection: isMobile ? 'column' : 'row',
+      gap: isMobile ? '10px' : 'clamp(16px,2.5vw,40px)',
+      padding: 'clamp(20px,2.5vw,28px) 0',
+      borderTop: isFirst ? '1px solid rgba(255,255,255,0.12)' : 'none',
+      borderBottom: '1px solid rgba(255,255,255,0.12)',
     }}>
-      <p style={{
-        margin: '0 0 14px',
+
+      {/* 라벨 */}
+      <span style={{
         fontFamily: font.familyKo,
-        fontSize: '13px',
-        fontWeight: 600,
-        color: highlight ? color.primary : color.inkSub,
+        fontSize: 'clamp(13px,1.2vw,15px)',
+        fontWeight: 700,
+        color: metric.highlight ? '#FFFFFF' : 'rgba(255,255,255,0.7)',
+        flexShrink: 0,
+        width: isMobile ? 'auto' : 'clamp(120px,14vw,200px)',
       }}>
         {metric.label}
-      </p>
+      </span>
 
       {/* Before → After */}
       <div style={{
         display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        marginBottom: '10px',
+        alignItems: 'baseline',
+        gap: '10px',
+        flex: 1,
       }}>
         <span style={{
           fontFamily: font.familyNum,
-          fontSize: '13px',
-          color: color.inkMute,
+          fontSize: 'clamp(13px,1.1vw,15px)',
+          fontWeight: 600,
+          color: 'rgba(255,255,255,0.3)',
           textDecoration: 'line-through',
-          textDecorationColor: color.line,
+          textDecorationColor: 'rgba(255,255,255,0.2)',
         }}>
           {metric.before}
         </span>
         <span style={{
           fontFamily: font.familyNum,
-          fontSize: '12px',
-          color: highlight ? color.primary : color.inkMute,
+          fontSize: '14px',
+          color: 'rgba(255,255,255,0.25)',
         }}>
           →
         </span>
         <span style={{
           fontFamily: font.familyNum,
-          fontSize: highlight ? '16px' : '14px',
-          fontWeight: 700,
-          color: highlight ? color.primary : color.ink,
+          fontSize: metric.highlight ? 'clamp(22px,2.5vw,36px)' : 'clamp(17px,2vw,26px)',
+          fontWeight: 800,
+          letterSpacing: '-0.03em',
+          color: color.primary,
         }}>
           {metric.after}
         </span>
       </div>
 
-      {/* Tag */}
+      {/* 그린 태그 — SVG의 rx=12 둥근 라벨 */}
       <span style={{
-        display: 'inline-block',
-        fontFamily: font.familyNum,
-        fontSize: '11px',
+        display: 'inline-flex',
+        alignItems: 'center',
+        fontFamily: font.familyKo,
+        fontSize: '13px',
         fontWeight: 700,
-        color: highlight ? color.primary : color.inkMute,
-        background: highlight ? 'rgba(2,199,90,0.12)' : color.bgSoft,
-        borderRadius: '4px',
-        padding: '3px 8px',
-        letterSpacing: '0.03em',
+        color: '#FFFFFF',
+        background: color.primary,
+        borderRadius: '12px',
+        padding: '6px 14px',
+        flexShrink: 0,
+        letterSpacing: '-0.01em',
+        whiteSpace: 'nowrap',
       }}>
         {metric.tag}
       </span>
@@ -157,42 +175,44 @@ function MetricCard({ metric }) {
   );
 }
 
-function QuoteBlock({ text, label, isCustomer }) {
+function QuoteBlock({ text, label }) {
   return (
     <div style={{
-      background: isCustomer ? color.bgCard : color.primaryLight,
-      borderRadius: '12px',
-      border: `1px solid ${isCustomer ? color.line : color.primarySoft}`,
-      padding: '24px 28px',
+      background: 'rgba(255,255,255,0.04)',
+      borderRadius: '16px',
+      border: '1px solid rgba(255,255,255,0.1)',
+      padding: 'clamp(28px,4vw,48px)',
     }}>
       <span style={{
         fontFamily: font.familyNum,
-        fontSize: '32px',
-        color: isCustomer ? color.line : color.primarySoft,
+        fontSize: '56px',
         lineHeight: 1,
+        color: color.primary,
+        fontWeight: 700,
         display: 'block',
-        marginBottom: '10px',
+        marginBottom: '12px',
+        userSelect: 'none',
       }}>
         "
       </span>
       <p style={{
-        margin: '0 0 16px',
+        margin: '0 0 20px',
         fontFamily: font.familyKo,
-        fontSize: 'clamp(14px,1.4vw,17px)',
-        fontWeight: 600,
-        lineHeight: 1.7,
-        color: color.ink,
+        fontSize: 'clamp(15px,1.5vw,20px)',
+        fontWeight: 700,
+        lineHeight: 1.8,
+        color: '#FFFFFF',
         wordBreak: 'keep-all',
-        fontStyle: 'italic',
       }}>
         {text}
       </p>
       <span style={{
         fontFamily: font.familyKo,
-        fontSize: '12px',
-        color: color.inkMute,
+        fontSize: '13px',
+        fontWeight: 600,
+        color: 'rgba(255,255,255,0.6)',
       }}>
-        — {label}
+        {label}
       </span>
     </div>
   );

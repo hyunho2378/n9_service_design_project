@@ -7,7 +7,7 @@ import BarChart from '../components/BarChart.jsx';
 import QuoteCard from '../components/QuoteCard.jsx';
 import ur from '../data/userResearch.json';
 
-const SEC = 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)';
+const SEC = 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)';
 const W   = '1200px';
 const rev = (vis, delay = 0) => ({
   opacity: vis ? 1 : 0,
@@ -55,9 +55,8 @@ export default function UserResearch() {
               <MetaChip icon="🔬" label="방법론" value={ur.meta.method} />
             </div>
             <div style={{
-              background: color.primaryLight,
-              borderLeft: `4px solid ${color.primary}`,
-              borderRadius: '0 8px 8px 0',
+              background: color.bgSoft,
+              borderRadius: '8px',
               padding: '20px 24px',
               maxWidth: '720px',
             }}>
@@ -134,7 +133,7 @@ export default function UserResearch() {
                   fontFamily: font.familyKo,
                   fontSize: '14px',
                   fontWeight: 600,
-                  color: i === 0 ? 'rgba(255,255,255,0.85)' : color.inkSub,
+                  color: i === 0 ? '#FFFFFF' : color.inkSub,
                   marginBottom: r.percent != null ? '6px' : 0,
                 }}>
                   {r.label}
@@ -144,7 +143,7 @@ export default function UserResearch() {
                     fontFamily: font.familyNum,
                     fontSize: '12px',
                     fontWeight: 700,
-                    color: i === 0 ? 'rgba(255,255,255,0.65)' : color.inkMute,
+                    color: i === 0 ? 'rgba(255,255,255,0.9)' : color.inkMute,
                   }}>
                     {r.percent}%
                   </span>
@@ -172,7 +171,7 @@ export default function UserResearch() {
               color: color.ink,
               margin: '0 0 24px',
             }}>
-              핵심 지표 — 응답자 {ur.survey.respondents[0].n}명 기준
+              핵심 지표 (응답자 {ur.survey.respondents[0].n}명 기준)
             </p>
             <BarChart data={ur.survey.keyMetrics.map(m => ({
               label: m.metric,
@@ -181,17 +180,17 @@ export default function UserResearch() {
             }))} />
           </div>
 
-          {/* 차트 3개 */}
+          {/* 차트 2개 (의존 정보, 첫 행동) */}
           <div
             ref={chartsRef}
             style={{
               ...rev(chartsVis),
               display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
               gap: '24px',
             }}
           >
-            {ur.survey.charts.map((chart, i) => (
+            {ur.survey.charts.slice(1).map((chart, i) => (
               <div
                 key={i}
                 style={{
@@ -266,23 +265,12 @@ export default function UserResearch() {
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <span style={{
-                      fontFamily: font.familyNum,
-                      fontSize: '12px',
-                      fontWeight: 700,
-                      color: '#FFFFFF',
-                      background: color.primary,
-                      borderRadius: '6px',
-                      padding: '2px 8px',
-                    }}>
-                      {p.id}
-                    </span>
-                    <span style={{
                       fontFamily: font.familyKo,
                       fontSize: '13px',
                       fontWeight: 600,
                       color: color.ink,
                     }}>
-                      {p.gender} · {p.age}세
+                      {p.gender}/{p.age}
                     </span>
                     <span style={{
                       fontFamily: font.familyKo,
@@ -352,7 +340,7 @@ export default function UserResearch() {
                       fontWeight: 700,
                       color: t.percent === 100 ? color.primary : color.inkSub,
                     }}>
-                      n={t.count} · {t.percent}%
+                      {t.percent}%
                     </span>
                   </div>
                   <ThemeBar percent={t.percent} full={t.percent === 100} index={i} visible={themesVis} />
@@ -384,7 +372,6 @@ export default function UserResearch() {
                 <QuoteCard
                   key={i}
                   text={q.text}
-                  id={q.id}
                   profile={q.profile}
                   theme={q.theme}
                 />
@@ -423,7 +410,7 @@ export default function UserResearch() {
 
           {/* 수렴 */}
           <div ref={convergedRef} style={{ ...rev(convergedVis), marginBottom: '48px' }}>
-            <CrossLabel label="수렴 · Converged" color={color.primary} bg={color.primaryLight} />
+            <CrossLabel label="수렴 / Converged" color={color.primary} bg={color.bgSoft} />
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
@@ -437,7 +424,7 @@ export default function UserResearch() {
 
           {/* 분기 */}
           <div ref={divergedRef} style={{ ...rev(divergedVis), marginBottom: '48px' }}>
-            <CrossLabel label="분기 · Diverged" color={color.inkSub} bg={color.bgSoft} />
+            <CrossLabel label="분기 / Diverged" color={color.inkSub} bg={color.bgSoft} />
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
@@ -481,7 +468,7 @@ export default function UserResearch() {
 
           {/* 놀라운 점 */}
           <div ref={surprisingRef} style={rev(surprisingVis)}>
-            <CrossLabel label="놀라운 점 · Surprising" color="#B45309" bg="#FEF3C7" />
+            <CrossLabel label="놀라운 점 / Surprising" color="#B45309" bg="#FEF3C7" />
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
@@ -527,7 +514,7 @@ export default function UserResearch() {
       </div>
 
       {/* ━━ 05 Research → Solution ━━ */}
-      <div style={{ background: color.primaryLight, padding: SEC }}>
+      <div style={{ background: color.bgSoft, padding: SEC }}>
         <div style={{ maxWidth: W, margin: '0 auto' }}>
           <div ref={solutionRef} style={rev(solutionVis)}>
             <p style={{
@@ -671,7 +658,7 @@ function ThemeBar({ percent, full, index, visible }) {
       <div style={{
         height: '100%',
         borderRadius: '999px',
-        background: full ? color.primary : color.primarySoft,
+        background: full ? color.primary : color.line,
         width: visible ? `${percent}%` : '0%',
         transition: `width 0.8s ease-out ${index * 0.08}s`,
       }} />
@@ -709,7 +696,6 @@ function ConvergedCard({ item }) {
       borderRadius: '12px',
       padding: '24px',
       boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
-      borderTop: `3px solid ${color.primary}`,
       display: 'flex',
       flexDirection: 'column',
       gap: '12px',

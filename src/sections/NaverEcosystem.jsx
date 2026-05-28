@@ -34,7 +34,7 @@ export default function NaverEcosystem() {
       style={{
         background: color.bgCard,
         fontFamily: font.familyKo,
-        padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px)',
+        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -139,7 +139,7 @@ export default function NaverEcosystem() {
                   fontSize: '10px',
                   color: color.inkMute,
                 }}>
-                  map.naver.com · N°9 넘버나인
+                  map.naver.com  N°9 넘버나인
                 </div>
               </div>
               {/* 플레이스 콘텐츠 */}
@@ -147,7 +147,7 @@ export default function NaverEcosystem() {
                 {/* 대표 사진 placeholder */}
                 <div style={{
                   height: '100px',
-                  background: color.primaryLight,
+                  background: color.bgSoft,
                   borderRadius: '8px',
                   marginBottom: '12px',
                   display: 'flex',
@@ -174,7 +174,7 @@ export default function NaverEcosystem() {
                   fontSize: '12px',
                   color: color.inkMute,
                 }}>
-                  헤어살롱 · 춘천시 후평동
+                  헤어살롱, 춘천시 후평동
                 </p>
                 {/* 버튼 */}
                 <div style={{ display: 'flex', gap: '6px' }}>
@@ -182,7 +182,7 @@ export default function NaverEcosystem() {
                     <div key={btn} style={{
                       flex: 1,
                       padding: '6px 0',
-                      background: color.primaryLight,
+                      background: color.bgSoft,
                       borderRadius: '6px',
                       textAlign: 'center',
                       fontFamily: font.familyKo,
@@ -208,8 +208,8 @@ export default function NaverEcosystem() {
             }}>
               <div style={{
                 padding: '14px 20px',
-                background: color.primaryLight,
-                borderBottom: `1px solid ${color.primarySoft}`,
+                background: color.bgSoft,
+                borderBottom: `1px solid ${color.line}`,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
@@ -233,7 +233,7 @@ export default function NaverEcosystem() {
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                     <span style={{
                       width: '16px', height: '16px', borderRadius: '50%',
-                      background: color.primaryLight,
+                      background: color.bgSoft,
                       border: `1.5px solid ${color.primary}`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0, marginTop: '1px',

@@ -2,8 +2,6 @@ export const color = {
   // === N9 Primary (네이버 그린) ===
   primary:      '#02C75A',
   primaryDark:  '#03B152',
-  primaryLight: '#E8F8EE',
-  primarySoft:  '#C0DD97',
 
   // === Base ===
   bg:           '#FAFAF9',
@@ -11,20 +9,14 @@ export const color = {
   bgSoft:       '#F2F2F0',
   ink:          '#0A0A0A',
   inkSub:       '#565656',
-  inkMute:      '#888780',
+  inkMute:      '#565656',
   line:         '#E5E5E3',
 
-  // === Persona 구분 (소비자 블루 유지) ===
-  consumer:     '#378ADD',
-  consumerBg:   '#E6F1FB',
-
-  // === 기존 컴포넌트 호환 aliases (점진 교체 예정) ===
+  // === 기존 컴포넌트 호환 aliases ===
   white:        '#FFFFFF',
   brand:        '#02C75A',
   brandStrong:  '#03B152',
-  brandPale:    '#E8F8EE',
   brandSky:     '#F2F2F0',
-  brandAlt:     '#C0DD97',
   inkMuted:     '#565656',
   inkFaint:     '#888780',
   warn:         '#E5484D',
@@ -46,10 +38,10 @@ export const type = {
   h1:      { size: 'clamp(32px,4.5vw,64px)', lh: 1.22, weight: 800, ls: '-0.03em' },
   h2:      { size: 'clamp(26px,3.2vw,48px)', lh: 1.25, weight: 700, ls: '-0.02em' },
   h3:      { size: 'clamp(20px,1.9vw,28px)', lh: 1.35, weight: 700, ls: '-0.01em' },
-  lead:    { size: 'clamp(16px,1.4vw,20px)', lh: 1.75, weight: 400 },
-  body:    { size: '16px',                   lh: 1.78, weight: 400 },
-  caption: { size: '13px',                   lh: 1.55, weight: 500 },
-  eyebrow: { size: '19px', weight: 800, ls: '0em', transform: 'uppercase' },
+  lead:    { size: 'clamp(16px,1.4vw,20px)', lh: 1.75, weight: 500 },
+  body:    { size: '16px',                   lh: 1.78, weight: 500 },
+  caption: { size: '13px',                   lh: 1.55, weight: 600 },
+  eyebrow: { size: '23px', weight: 800, ls: '0.04em', transform: 'uppercase' },
 };
 
 export const layout = {

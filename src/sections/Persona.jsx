@@ -6,10 +6,9 @@ import n9 from '../data/n9.json';
 
 const { persona } = n9;
 
-// color="gray" → 공급자 그린톤 / color="blue" → 소비자 블루톤
 const TONES = {
-  gray: { accent: color.primary,  accentBg: color.primaryLight, accentSoft: color.primarySoft },
-  blue: { accent: color.consumer, accentBg: color.consumerBg,   accentSoft: '#BDD8F5'         },
+  gray: { accent: color.primary,  accentBg: color.bgSoft, accentSoft: color.line },
+  blue: { accent: color.inkSub,   accentBg: color.bgSoft, accentSoft: color.line },
 };
 
 const rev = (vis, delay = 0) => ({
@@ -28,7 +27,7 @@ export default function Persona() {
     <section id="persona" style={{ background: color.bg, fontFamily: font.familyKo }}>
 
       {/* 헤더 */}
-      <div style={{ padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px) 0' }}>
+      <div style={{ padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px) 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div ref={headerRef} style={rev(headerVis)}>
             <SectionHeader label={persona.label} headline={persona.headline} />
@@ -37,7 +36,7 @@ export default function Persona() {
       </div>
 
       {/* 페르소나 카드 2개 좌우 */}
-      <div style={{ padding: '0 clamp(20px,5vw,80px) clamp(64px,8vw,80px)' }}>
+      <div style={{ padding: '0 clamp(20px,5vw,80px) clamp(40px,5vw,72px)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div
             ref={cardsRef}
@@ -60,7 +59,7 @@ export default function Persona() {
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(28px,3.5vw,44px) clamp(20px,5vw,80px)',
+          padding: 'clamp(24px,3vw,40px) clamp(20px,5vw,80px)',
           display: 'flex',
           alignItems: 'center',
           gap: '20px',
@@ -149,7 +148,6 @@ function PersonaCard({ p, tone }) {
           background: color.bgCard,
           borderRadius: '8px',
           padding: '14px 16px',
-          borderLeft: `3px solid ${tone.accent}`,
         }}>
           <p style={{
             margin: 0,

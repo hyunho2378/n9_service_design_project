@@ -3,7 +3,7 @@ import { color, font } from '../tokens/web.js';
 
 // DESIGN_WEBN9.md: 가로 막대, 그린 fill, 라벨 좌측 + 수치 우측, reveal 시 width 0→%
 // data: [{ label, value(0-100), n?, highlight? }]
-// highlight=true → primary(진하게), false/undefined → primarySoft(연그린)
+
 export default function BarChart({ title, data = [] }) {
   const [ref, visible] = useReveal();
 
@@ -42,7 +42,7 @@ export default function BarChart({ title, data = [] }) {
                 fontWeight: 600,
                 color: item.highlight ? color.primary : color.inkSub,
               }}>
-                {item.value}%{item.n != null ? ` (n=${item.n})` : ''}
+                {item.value}%
               </span>
             </div>
             <div style={{
@@ -54,7 +54,7 @@ export default function BarChart({ title, data = [] }) {
               <div style={{
                 height: '100%',
                 borderRadius: '999px',
-                backgroundColor: item.highlight ? color.primary : color.primarySoft,
+                backgroundColor: item.highlight ? color.primary : color.line,
                 width: visible ? `${item.value}%` : '0%',
                 transition: `width 0.7s ease-out ${i * 0.06}s`,
               }} />

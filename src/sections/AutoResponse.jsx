@@ -23,7 +23,7 @@ export default function AutoResponse() {
       id="auto-response"
       style={{ background: color.bg, fontFamily: font.familyKo }}
     >
-      <div style={{ padding: 'clamp(64px,8vw,120px) clamp(20px,5vw,80px) 0' }}>
+      <div style={{ padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px) 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div ref={headerRef} style={rev(headerVis)}>
             <SectionHeader label={autoResponse.label} headline={autoResponse.headline} />
@@ -210,7 +210,7 @@ function TalktalkMock() {
               color: '#999',
               paddingLeft: '4px',
             }}>
-              자동응답 · 방금
+              자동응답, 방금
             </p>
           </div>
         </div>
@@ -284,7 +284,7 @@ function StepRow({ step, index, isLast }) {
           <div style={{
             width: '2px',
             flex: 1,
-            background: color.primarySoft,
+            background: color.line,
             margin: '6px 0',
             minHeight: '32px',
           }} />

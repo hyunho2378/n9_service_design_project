@@ -22,7 +22,7 @@ export default function SectionHeader({ label, headline, center = false }) {
           margin: 0,
           fontFamily: font.familyKo,
           fontSize: 'clamp(28px, 3vw, 40px)',
-          fontWeight: 700,
+          fontWeight: 800,
           lineHeight: 1.25,
           letterSpacing: '-0.02em',
           color: color.ink,
