@@ -3,7 +3,7 @@ import { color, font } from '../tokens/web.js';
 // 모든 섹션 상단 공통. label=그린 대문자, headline=Pretendard bold.
 export default function SectionHeader({ label, headline, center = false }) {
   return (
-    <div style={{ textAlign: center ? 'center' : 'left', marginBottom: '48px' }}>
+    <div style={{ textAlign: center ? 'center' : 'left', marginBottom: '72px' }}>
       {label && (
         <p style={{
           margin: '0 0 12px',

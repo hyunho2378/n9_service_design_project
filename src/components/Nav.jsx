@@ -1,8 +1,6 @@
 import { color, font } from '../tokens/web.js';
 import { useIsMobile } from '../lib/useIsMobile.js';
-import n9 from '../data/n9.json';
-
-const { serviceUrl } = n9.meta;
+import { useState, useEffect } from 'react';
 
 const LINKS = [
   { label: 'Research',   href: '#desk-research' },
@@ -15,6 +13,24 @@ const LINKS = [
 
 export default function Nav() {
   const isMobile = useIsMobile();
+  const [activeId, setActiveId] = useState('');
+
+  useEffect(() => {
+    const ids = LINKS.map(l => l.href.slice(1));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        });
+      },
+      { rootMargin: '-56px 0px -50% 0px', threshold: 0 }
+    );
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <nav
@@ -33,7 +49,7 @@ export default function Nav() {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 clamp(20px,5vw,80px)',
+          padding: '0 clamp(24px,6vw,96px)',
           height: 56,
           display: 'flex',
           alignItems: 'center',
@@ -76,54 +92,32 @@ export default function Nav() {
               justifyContent: 'center',
             }}
           >
-            {LINKS.map(({ label, href }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  style={{
-                    textDecoration: 'none',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: color.inkSub,
-                    letterSpacing: '-0.01em',
-                    transition: 'color 0.18s',
-                    fontFamily: font.familyNum,
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = color.ink)}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = color.inkSub)}
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
+            {LINKS.map(({ label, href }) => {
+              const isActive = activeId === href.slice(1);
+              return (
+                <li key={href}>
+                  <a
+                    href={href}
+                    style={{
+                      textDecoration: 'none',
+                      fontSize: 13,
+                      fontWeight: isActive ? 700 : 600,
+                      color: isActive ? color.primary : color.inkSub,
+                      letterSpacing: '-0.01em',
+                      transition: 'color 0.18s',
+                      fontFamily: font.familyNum,
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = color.ink)}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? color.primary : color.inkSub)}
+                  >
+                    {label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         )}
 
-        {/* 서비스 링크 CTA */}
-        <a
-          href={serviceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            padding: '7px 16px',
-            borderRadius: 100,
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: '0.01em',
-            textDecoration: 'none',
-            background: color.primary,
-            color: '#FFFFFF',
-            flexShrink: 0,
-            transition: 'opacity 0.18s',
-            fontFamily: font.familyNum,
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.82')}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-        >
-          서비스 →
-        </a>
       </div>
     </nav>
   );

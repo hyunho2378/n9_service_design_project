@@ -20,13 +20,12 @@ export default function Outro() {
       style={{
         background: '#0A0A0A',
         fontFamily: font.familyKo,
-        padding: 'clamp(48px,6vw,80px) clamp(20px,5vw,80px)',
         minHeight: '70vh',
         display: 'flex',
         alignItems: 'center',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)' }}>
 
         {/* Label */}
         <div ref={headRef} style={rev(headVis)}>

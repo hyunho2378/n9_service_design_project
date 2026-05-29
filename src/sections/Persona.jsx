@@ -27,8 +27,8 @@ export default function Persona() {
     <section id="persona" style={{ background: color.bg, fontFamily: font.familyKo }}>
 
       {/* 헤더 */}
-      <div style={{ padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px) 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px) 0' }}>
           <div ref={headerRef} style={rev(headerVis)}>
             <SectionHeader label={persona.label} headline={persona.headline} />
           </div>
@@ -36,8 +36,8 @@ export default function Persona() {
       </div>
 
       {/* 페르소나 카드 2개 좌우 */}
-      <div style={{ padding: '0 clamp(20px,5vw,80px) clamp(40px,5vw,72px)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(32px,7vw,120px) clamp(56px,6vw,88px)' }}>
           <div
             ref={cardsRef}
             style={{
@@ -59,7 +59,7 @@ export default function Persona() {
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(24px,3vw,40px) clamp(20px,5vw,80px)',
+          padding: 'clamp(24px,3vw,40px) clamp(32px,7vw,120px)',
           display: 'flex',
           alignItems: 'center',
           gap: '20px',

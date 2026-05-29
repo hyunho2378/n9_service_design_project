@@ -9,6 +9,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  scroll-margin-top: 56px;
+}
+
 body {
   margin: 0;
   padding: 0;

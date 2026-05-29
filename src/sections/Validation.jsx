@@ -23,10 +23,9 @@ export default function Validation() {
       style={{
         background: '#0A0A0A',
         fontFamily: font.familyKo,
-        padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)' }}>
 
         {/* 헤더 */}
         <div ref={headerRef} style={rev(headerVis)}>

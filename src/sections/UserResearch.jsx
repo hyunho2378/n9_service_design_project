@@ -7,7 +7,7 @@ import BarChart from '../components/BarChart.jsx';
 import QuoteCard from '../components/QuoteCard.jsx';
 import ur from '../data/userResearch.json';
 
-const SEC = 'clamp(40px,5vw,72px) clamp(20px,5vw,80px)';
+const SEC = 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)';
 const W   = '1200px';
 const rev = (vis, delay = 0) => ({
   opacity: vis ? 1 : 0,
@@ -41,8 +41,8 @@ export default function UserResearch() {
     <section id="user-research" style={{ fontFamily: font.familyKo }}>
 
       {/* ━━ 01 인트로 ━━ */}
-      <div style={{ background: color.bgCard, padding: SEC }}>
-        <div style={{ maxWidth: W, margin: '0 auto' }}>
+      <div style={{ background: color.bgCard }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
           <div ref={introRef} style={rev(introVis)}>
             <SectionHeader label={ur.meta.label} headline={ur.meta.headline} />
             <div style={{
@@ -77,8 +77,8 @@ export default function UserResearch() {
       </div>
 
       {/* ━━ 02 정량 · Survey ━━ */}
-      <div style={{ background: color.bg, padding: SEC }}>
-        <div style={{ maxWidth: W, margin: '0 auto' }}>
+      <div style={{ background: color.bg }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
 
           {/* 서브 헤더 */}
           <p style={{
@@ -216,8 +216,8 @@ export default function UserResearch() {
       </div>
 
       {/* ━━ 03 정성 · Interview ━━ */}
-      <div style={{ background: color.bgCard, padding: SEC }}>
-        <div style={{ maxWidth: W, margin: '0 auto' }}>
+      <div style={{ background: color.bgCard }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -383,8 +383,8 @@ export default function UserResearch() {
       </div>
 
       {/* ━━ 04 교차분석 ━━ */}
-      <div style={{ background: color.bg, padding: SEC }}>
-        <div style={{ maxWidth: W, margin: '0 auto' }}>
+      <div style={{ background: color.bg }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -514,8 +514,8 @@ export default function UserResearch() {
       </div>
 
       {/* ━━ 05 Research → Solution ━━ */}
-      <div style={{ background: color.bgSoft, padding: SEC }}>
-        <div style={{ maxWidth: W, margin: '0 auto' }}>
+      <div style={{ background: color.bgSoft }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
           <div ref={solutionRef} style={rev(solutionVis)}>
             <p style={{
               fontFamily: font.familyNum,

@@ -25,8 +25,8 @@ export default function Impact() {
       id="impact"
       style={{ background: color.bgCard, fontFamily: font.familyKo }}
     >
-      <div style={{ padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px) 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px) 0' }}>
 
           <div ref={headerRef} style={rev(headerVis)}>
             <SectionHeader label={impact.label} headline={impact.headline} />
@@ -78,7 +78,7 @@ export default function Impact() {
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(24px,3vw,40px) clamp(20px,5vw,80px)',
+          padding: 'clamp(40px,4vw,56px) clamp(32px,7vw,120px)',
         }}>
           <span style={{
             display: 'inline-block',
@@ -109,12 +109,9 @@ export default function Impact() {
       {/* socialValue — 마무리 문장 */}
       <div
         ref={socialRef}
-        style={{
-          ...rev(socialVis),
-          padding: 'clamp(28px,4vw,48px) clamp(20px,5vw,80px) clamp(40px,5vw,72px)',
-        }}
+        style={rev(socialVis)}
       >
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(40px,5vw,64px) clamp(32px,7vw,120px) clamp(56px,6vw,88px)' }}>
           <div style={{
             borderLeft: `3px solid ${color.primary}`,
             paddingLeft: 'clamp(16px,2vw,24px)',

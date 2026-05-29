@@ -22,7 +22,7 @@ export default function Hero() {
     <section
       id="hero"
       style={{
-        minHeight: '50svh',
+        minHeight: 'calc(100svh - 56px)',
         background: color.bg,
         display: 'flex',
         flexDirection: 'column',
@@ -38,11 +38,11 @@ export default function Hero() {
           aria-hidden="true"
           style={{
             position: 'absolute',
-            right: 'clamp(-160px,-12vw,-40px)',
-            bottom: 0,
+            right: 'clamp(0px,8vw,120px)',
             top: 0,
+            bottom: 0,
             display: 'flex',
-            alignItems: 'flex-end',
+            alignItems: 'center',
             zIndex: 0,
             pointerEvents: 'none',
           }}
@@ -51,7 +51,7 @@ export default function Hero() {
             src="/hero.png"
             alt=""
             style={{
-              width: 'clamp(420px,56vw,860px)',
+              width: 'clamp(456px,62vw,888px)',
               maxWidth: 'none',
               objectFit: 'contain',
               objectPosition: 'bottom right',
@@ -68,7 +68,7 @@ export default function Hero() {
           maxWidth: '1200px',
           width: '100%',
           margin: '0 auto',
-          padding: 'clamp(64px,8vw,100px) clamp(20px,5vw,80px) clamp(40px,5vw,72px)',
+          padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)',
           position: 'relative',
           zIndex: 1,
         }}
@@ -153,7 +153,7 @@ export default function Hero() {
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(20px,2.5vw,32px) clamp(20px,5vw,80px)',
+          padding: 'clamp(20px,2.5vw,32px) clamp(32px,7vw,120px)',
           display: 'flex',
           gap: 'clamp(24px,4vw,56px)',
           flexWrap: 'wrap',

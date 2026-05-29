@@ -23,8 +23,8 @@ export default function Dashboard() {
       id="dashboard"
       style={{ background: color.bg, fontFamily: font.familyKo }}
     >
-      <div style={{ padding: 'clamp(40px,5vw,72px) clamp(20px,5vw,80px) 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px) 0' }}>
 
           <div ref={headerRef} style={rev(headerVis)}>
             <SectionHeader label={dashboard.label} headline={dashboard.headline} />
@@ -60,7 +60,7 @@ export default function Dashboard() {
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(24px,3vw,36px) clamp(20px,5vw,80px)',
+          padding: 'clamp(40px,4vw,56px) clamp(32px,7vw,120px)',
           display: 'flex',
           alignItems: 'flex-start',
           gap: '16px',
