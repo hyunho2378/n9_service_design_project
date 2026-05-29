@@ -52,7 +52,10 @@ export default function LiveDemo() {
         </div>
 
         {/* Service link CTA */}
-        <div ref={ctaRef} style={{ ...rev(ctaVis), display: 'flex', justifyContent: 'center' }}>
+        <div ref={ctaRef} style={{ ...rev(ctaVis), display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', color: color.inkMute, letterSpacing: '0.02em' }}>
+            실제 AI 서비스를 지금 바로 체험해보세요
+          </p>
           <a
             href={serviceUrl}
             target="_blank"
@@ -60,29 +63,31 @@ export default function LiveDemo() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '10px',
+              gap: '12px',
               background: color.primary,
               color: '#FFFFFF',
               fontFamily: font.familyKo,
-              fontSize: '16px',
+              fontSize: 'clamp(16px,1.6vw,20px)',
               fontWeight: 700,
-              padding: '16px 36px',
-              borderRadius: '12px',
+              padding: 'clamp(18px,2vw,22px) clamp(40px,5vw,64px)',
+              borderRadius: '14px',
               textDecoration: 'none',
-              boxShadow: `0 4px 20px rgba(2,199,90,0.3)`,
+              boxShadow: '0 6px 28px rgba(2,199,90,0.35)',
               transition: 'transform 0.15s ease, box-shadow 0.15s ease',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = `0 8px 28px rgba(2,199,90,0.4)`;
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 12px 36px rgba(2,199,90,0.45)';
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'none';
-              e.currentTarget.style.boxShadow = `0 4px 20px rgba(2,199,90,0.3)`;
+              e.currentTarget.style.boxShadow = '0 6px 28px rgba(2,199,90,0.35)';
             }}
           >
-            <span style={{ fontFamily: font.familyNum, fontSize: '18px', lineHeight: 1 }}>→</span>
-            서비스 바로가기
+            AI 진단 직접 체험하기
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 10h12M12 5l5 5-5 5" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </a>
         </div>
 
