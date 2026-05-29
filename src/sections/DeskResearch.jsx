@@ -63,6 +63,7 @@ export default function DeskResearch() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: chart.type === 'compare_bar' ? 'stretch' : 'center',
+                justifyContent: chart.type === 'arrow' ? 'center' : 'flex-start',
                 textAlign: chart.type === 'compare_bar' ? 'left' : 'center',
               }}
             >
@@ -107,7 +108,7 @@ export default function DeskResearch() {
               <p style={{
                 margin: '0 0 12px',
                 fontFamily: font.familyKo,
-                fontSize: '15px',
+                fontSize: '18px',
                 fontWeight: 700,
                 lineHeight: 1.45,
                 color: color.ink,
@@ -118,7 +119,8 @@ export default function DeskResearch() {
               <p style={{
                 margin: 0,
                 fontFamily: font.familyKo,
-                fontSize: '14px',
+                fontSize: '15px',
+                fontWeight: 500,
                 lineHeight: 1.75,
                 color: color.inkSub,
                 wordBreak: 'keep-all',
@@ -143,7 +145,7 @@ function CompareBar({ chart }) {
         margin: '0 0 24px',
         fontFamily: font.familyKo,
         fontSize: '14px',
-        fontWeight: 600,
+        fontWeight: 500,
         color: color.inkSub,
       }}>
         {chart.caption}
@@ -159,7 +161,8 @@ function CompareBar({ chart }) {
             }}>
               <span style={{
                 fontFamily: font.familyKo,
-                fontSize: '13px',
+                fontSize: '14px',
+                fontWeight: 500,
                 color: color.inkSub,
               }}>
                 {bar.label}
@@ -168,7 +171,7 @@ function CompareBar({ chart }) {
                 fontFamily: font.familyNum,
                 fontSize: '18px',
                 fontWeight: 800,
-                color: i === 0 ? color.inkSub : color.primary,
+                color: color.primary,
                 letterSpacing: '-0.02em',
               }}>
                 {bar.value}%
@@ -177,13 +180,13 @@ function CompareBar({ chart }) {
             <div style={{
               height: '10px',
               borderRadius: '999px',
-              background: color.line,
+              background: 'rgba(2,199,90,0.15)',
               overflow: 'hidden',
             }}>
               <div style={{
                 height: '100%',
                 borderRadius: '999px',
-                background: i === 0 ? '#0A0A0A' : color.primary,
+                background: color.primary,
                 width: visible ? `${(bar.value / maxVal) * 100}%` : '0%',
                 transition: `width 0.8s ease-out ${i * 0.15}s`,
               }} />
@@ -195,7 +198,8 @@ function CompareBar({ chart }) {
         <p style={{
           margin: '20px 0 0',
           fontFamily: font.familyKo,
-          fontSize: '12px',
+          fontSize: '14px',
+          fontWeight: 500,
           color: color.inkMute,
         }}>
           {chart.source}
@@ -246,7 +250,7 @@ function ArrowStat({ chart }) {
           margin: '0 0 4px',
           fontFamily: font.familyKo,
           fontSize: '14px',
-          fontWeight: 600,
+          fontWeight: 500,
           color: color.inkSub,
         }}>{chart.caption}</p>
       )}
@@ -254,7 +258,8 @@ function ArrowStat({ chart }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: '12px',
+          fontSize: '14px',
+          fontWeight: 500,
           color: color.inkMute,
         }}>{chart.source}</p>
       )}

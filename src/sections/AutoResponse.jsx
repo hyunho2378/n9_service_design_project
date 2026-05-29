@@ -91,8 +91,8 @@ export default function AutoResponse() {
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
-            fontSize: 'clamp(14px,1.4vw,17px)',
-            fontWeight: 600,
+            fontSize: 'clamp(16px,1.4vw,17px)',
+            fontWeight: 500,
             lineHeight: 1.7,
             color: '#FFFFFF',
             wordBreak: 'keep-all',
@@ -114,7 +114,6 @@ function TalktalkMock() {
       borderRadius: '16px',
       overflow: 'hidden',
       boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
-      border: `1px solid ${color.line}`,
     }}>
       {/* 톡톡 상단 바 */}
       <div style={{
@@ -219,7 +218,6 @@ function TalktalkMock() {
       {/* 입력창 */}
       <div style={{
         padding: '10px 12px',
-        borderTop: `1px solid ${color.line}`,
         display: 'flex',
         alignItems: 'center',
         gap: '8px',
@@ -301,7 +299,7 @@ function StepRow({ step, index, isLast }) {
         <p style={{
           margin: '0 0 6px',
           fontFamily: font.familyKo,
-          fontSize: 'clamp(14px,1.3vw,16px)',
+          fontSize: 'clamp(16px,1.4vw,18px)',
           fontWeight: 700,
           color: color.ink,
           lineHeight: 1.45,
@@ -312,7 +310,8 @@ function StepRow({ step, index, isLast }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: '13px',
+          fontSize: '15px',
+          fontWeight: 500,
           lineHeight: 1.65,
           color: color.inkMute,
           wordBreak: 'keep-all',

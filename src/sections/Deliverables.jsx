@@ -76,7 +76,7 @@ function DeliverableCard({ item }) {
       boxShadow: highlight
         ? '0 8px 32px rgba(2,199,90,0.2)'
         : '0 4px 24px rgba(0,0,0,0.06)',
-      border: `1px solid ${highlight ? 'transparent' : color.line}`,
+      border: 'none',
       padding: '28px 24px',
       display: 'flex',
       flexDirection: 'column',
@@ -94,7 +94,7 @@ function DeliverableCard({ item }) {
       <h3 style={{
         margin: 0,
         fontFamily: font.familyKo,
-        fontSize: 'clamp(15px,1.4vw,17px)',
+        fontSize: 'clamp(18px,1.6vw,20px)',
         fontWeight: 700,
         color: highlight ? '#FFFFFF' : color.ink,
         lineHeight: 1.4,
@@ -105,7 +105,8 @@ function DeliverableCard({ item }) {
       <p style={{
         margin: 0,
         fontFamily: font.familyKo,
-        fontSize: '13px',
+        fontSize: '15px',
+        fontWeight: 500,
         lineHeight: 1.65,
         color: highlight ? '#FFFFFF' : color.inkSub,
         wordBreak: 'keep-all',

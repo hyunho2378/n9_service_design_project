@@ -78,8 +78,8 @@ export default function Dashboard() {
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
-            fontSize: 'clamp(14px,1.4vw,17px)',
-            fontWeight: 600,
+            fontSize: 'clamp(16px,1.4vw,17px)',
+            fontWeight: 500,
             lineHeight: 1.7,
             color: '#FFFFFF',
             wordBreak: 'keep-all',
@@ -148,7 +148,8 @@ function DashboardBlock({ item, index }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: '14px',
+          fontSize: '15px',
+          fontWeight: 500,
           lineHeight: 1.75,
           color: color.inkSub,
           wordBreak: 'keep-all',
@@ -169,7 +170,6 @@ function DashboardMockDB() {
       color: color.inkMute,
       background: color.bgCard,
       borderRadius: '8px',
-      border: `1px solid ${color.line}`,
       overflow: 'hidden',
       width: '80%',
     }}>

@@ -97,7 +97,7 @@ function TimelineNode({ item, index }) {
         height: '40px',
         borderRadius: '50%',
         background: highlight ? color.primary : color.bgCard,
-        border: `2px solid ${highlight ? color.primary : color.line}`,
+        border: highlight ? `2px solid ${color.primary}` : 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -162,7 +162,6 @@ function ConversationQuote({ data, label, isAfter }) {
     <div style={{
       background: isAfter ? color.bg : color.bgCard,
       borderRadius: '12px',
-      border: `1px solid ${color.line}`,
       padding: '24px 28px',
     }}>
       <span style={{
@@ -180,18 +179,18 @@ function ConversationQuote({ data, label, isAfter }) {
       <p style={{
         margin: '0 0 16px',
         fontFamily: font.familyKo,
-        fontSize: 'clamp(14px,1.4vw,17px)',
-        fontWeight: 600,
+        fontSize: 'clamp(16px,1.4vw,17px)',
+        fontWeight: 500,
         lineHeight: 1.7,
         color: color.ink,
         wordBreak: 'keep-all',
-        fontStyle: 'italic',
       }}>
         "{data.text}"
       </p>
       <span style={{
         fontFamily: font.familyKo,
-        fontSize: '12px',
+        fontSize: '14px',
+        fontWeight: 500,
         color: color.inkMute,
       }}>
         {data.date}

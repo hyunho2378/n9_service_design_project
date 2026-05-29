@@ -38,23 +38,26 @@ export default function Nav() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        background: 'rgba(250,250,249,0.88)',
+        background: 'rgba(250,250,249,0.95)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         borderBottom: `1px solid ${color.line}`,
         fontFamily: font.familyNum,
       }}
     >
+      {/* 모바일 스크롤바 숨김 */}
+      <style>{`#nav-mobile-links::-webkit-scrollbar{display:none}`}</style>
+
       <div
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 clamp(32px,7vw,120px)',
+          padding: isMobile ? '0 16px' : '0 clamp(32px,7vw,120px)',
           height: 56,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: 20,
+          gap: isMobile ? 12 : 20,
         }}
       >
         {/* 로고 */}
@@ -79,7 +82,7 @@ export default function Nav() {
           </span>
         </a>
 
-        {/* 네비 링크 (데스크탑만) */}
+        {/* 데스크탑 네비 링크 — 기존 그대로 */}
         {!isMobile && (
           <ul
             style={{
@@ -116,6 +119,52 @@ export default function Nav() {
               );
             })}
           </ul>
+        )}
+
+        {/* 모바일 가로 스크롤 링크 */}
+        {isMobile && (
+          <div
+            id="nav-mobile-links"
+            style={{
+              flex: 1,
+              overflowX: 'auto',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+            }}
+          >
+            <ul
+              style={{
+                display: 'flex',
+                gap: '18px',
+                listStyle: 'none',
+                margin: 0,
+                padding: '0 2px',
+                width: 'max-content',
+              }}
+            >
+              {LINKS.map(({ label, href }) => {
+                const isActive = activeId === href.slice(1);
+                return (
+                  <li key={href} style={{ flexShrink: 0 }}>
+                    <a
+                      href={href}
+                      style={{
+                        textDecoration: 'none',
+                        fontSize: 13,
+                        fontWeight: isActive ? 700 : 600,
+                        color: isActive ? color.primary : color.inkSub,
+                        letterSpacing: '-0.01em',
+                        fontFamily: font.familyNum,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         )}
 
       </div>

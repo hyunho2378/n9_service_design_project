@@ -1,6 +1,6 @@
 export const color = {
   primary:  '#02C75A',
-  bg:       '#FFFFFF',
+  bg:       '#FAFAF9',
   bgCard:   '#FFFFFF',
   ink:      '#0A0A0A',
   inkSub:   '#0A0A0A',

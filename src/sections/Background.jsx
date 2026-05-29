@@ -79,7 +79,8 @@ export default function Background() {
               </p>
               <p style={{
                 fontFamily: font.familyKo,
-                fontSize: 'clamp(14px,1.1vw,15px)',
+                fontSize: 'clamp(16px,1.3vw,17px)',
+                fontWeight: 500,
                 lineHeight: 1.85,
                 color: color.inkSub,
                 margin: 0,

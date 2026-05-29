@@ -5,6 +5,14 @@ import n9 from '../data/n9.json';
 
 const { validation } = n9;
 
+const METRICS = [
+  { label: '플레이스 유입',   before: '75회',  tag: '+570%',                   after: '503회' },
+  { label: '스마트콜 호출',   before: '0회',   tag: '신규 채널 작동',            after: '20회' },
+  { label: '네이버 예약',     before: '0회',   tag: '오픈 12시간 만에 첫 예약',   after: '5회 (남4/여1)' },
+  { label: 'AI 맞춤 서비스',  before: '0회',   tag: '데이터 통계 수집',           after: '누적 50건' },
+  { label: '신규 남성 손님',  before: '0명',   tag: '사장님 현장 실측',           after: '14명' },
+];
+
 const rev = (vis, delay = 0) => ({
   opacity: vis ? 1 : 0,
   transform: vis ? 'none' : 'translateY(24px)',
@@ -29,7 +37,7 @@ export default function Validation() {
           <p style={{
             margin: '0 0 16px',
             fontFamily: font.familyNum,
-            fontSize: '13px',
+            fontSize: '14px',
             fontWeight: 700,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -40,7 +48,7 @@ export default function Validation() {
           <h2 style={{
             margin: '0 0 12px',
             fontFamily: font.familyKo,
-            fontSize: 'clamp(24px,3vw,40px)',
+            fontSize: 'clamp(30px,4vw,46px)',
             fontWeight: 800,
             lineHeight: 1.25,
             letterSpacing: '-0.02em',
@@ -61,18 +69,23 @@ export default function Validation() {
           </p>
         </div>
 
-        {/* 5개 지표 — 세로 */}
+        {/* 5개 지표 SVG */}
         <div
           ref={metricsRef}
           style={{
             ...rev(metricsVis),
-            borderTop: '1px solid #FFFFFF',
             marginBottom: 'clamp(40px,5vw,64px)',
           }}
         >
-          {validation.metrics.map((metric) => (
-            <MetricRow key={metric.label} metric={metric} isMobile={isMobile} />
-          ))}
+          {isMobile ? (
+            <MobileMetrics />
+          ) : (
+            <img
+              src="/va.svg"
+              alt="검증 성과 지표"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          )}
         </div>
 
         {/* 사장님 발화 */}
@@ -85,143 +98,67 @@ export default function Validation() {
   );
 }
 
-function MetricRow({ metric, isMobile }) {
+function MobileMetrics() {
   return (
-    <div style={{
-      padding: 'clamp(22px,2.8vw,36px) 0',
-      borderBottom: '1px solid #FFFFFF',
-    }}>
-
-      {/* 지표명 — 위에 작게 */}
-      <p style={{
-        margin: '0 0 clamp(10px,1.2vw,14px)',
-        fontFamily: font.familyKo,
-        fontSize: '12px',
-        fontWeight: 600,
-        letterSpacing: '0.04em',
-        color: '#FFFFFF',
-      }}>
-        {metric.label}
-      </p>
-
-      {isMobile ? (
-        /* ── 모바일: 수치 행 + 태그 행 ── */
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      {METRICS.map((m, i) => (
+        <div
+          key={i}
+          style={{
+            borderTop: '1px solid #FFFFFF',
+            ...(i === METRICS.length - 1 ? { borderBottom: '1px solid #FFFFFF' } : {}),
+            padding: '20px 0',
+          }}
+        >
+          <p style={{
+            margin: '0 0 10px',
+            fontFamily: font.familyNum,
+            fontSize: '11px',
+            fontWeight: 700,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: '#FFFFFF',
+          }}>
+            {m.label}
+          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{
               fontFamily: font.familyNum,
-              fontSize: '20px',
+              fontSize: '18px',
               fontWeight: 700,
               color: '#FFFFFF',
+              flexShrink: 0,
             }}>
-              {metric.before}
+              {m.before}
             </span>
-            <span style={{ color: '#FFFFFF', fontSize: '13px' }}>→</span>
+            <div style={{ flex: 1, height: '1px', background: '#FFFFFF' }} />
+            <span style={{
+              background: color.primary,
+              color: '#0A0A0A',
+              fontFamily: font.familyNum,
+              fontSize: '10px',
+              fontWeight: 700,
+              padding: '3px 8px',
+              borderRadius: '99px',
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
+            }}>
+              {m.tag}
+            </span>
+            <div style={{ flex: 1, height: '1px', background: '#FFFFFF' }} />
+            <span style={{ color: '#FFFFFF', fontSize: '12px', flexShrink: 0 }}>▶</span>
             <span style={{
               fontFamily: font.familyNum,
-              fontSize: metric.highlight ? '30px' : '24px',
+              fontSize: '22px',
               fontWeight: 800,
-              letterSpacing: '-0.03em',
               color: color.primary,
-              lineHeight: 1,
+              flexShrink: 0,
             }}>
-              {metric.after}
+              {m.after}
             </span>
           </div>
-          <span style={{
-            display: 'inline-flex',
-            alignSelf: 'flex-start',
-            fontFamily: font.familyKo,
-            fontSize: '12px',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            background: color.primary,
-            borderRadius: '6px',
-            padding: '4px 10px',
-            whiteSpace: 'nowrap',
-          }}>
-            {metric.tag}
-          </span>
         </div>
-      ) : (
-        /* ── 데스크탑: [Before] ──[태그]──▶ [After] ── */
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '14px',
-        }}>
-
-          {/* Before 수치 */}
-          <span style={{
-            fontFamily: font.familyNum,
-            fontSize: 'clamp(18px,2vw,28px)',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            flexShrink: 0,
-          }}>
-            {metric.before}
-          </span>
-
-          {/* 왼쪽 선 */}
-          <div style={{
-            flex: 1,
-            height: '1px',
-            background: '#FFFFFF',
-            minWidth: '20px',
-          }} />
-
-          {/* 태그 (화살표 중간) */}
-          <span style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            fontFamily: font.familyKo,
-            fontSize: '12px',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            background: color.primary,
-            borderRadius: '8px',
-            padding: '5px 13px',
-            flexShrink: 0,
-            whiteSpace: 'nowrap',
-          }}>
-            {metric.tag}
-          </span>
-
-          {/* 오른쪽 선 */}
-          <div style={{
-            flex: 1,
-            height: '1px',
-            background: '#FFFFFF',
-            minWidth: '20px',
-          }} />
-
-          {/* 화살촉 */}
-          <span style={{
-            fontFamily: font.familyNum,
-            fontSize: '15px',
-            color: '#FFFFFF',
-            flexShrink: 0,
-            lineHeight: 1,
-          }}>
-            ▶
-          </span>
-
-          {/* After 수치 */}
-          <span style={{
-            fontFamily: font.familyNum,
-            fontSize: metric.highlight
-              ? 'clamp(28px,3.5vw,48px)'
-              : 'clamp(22px,2.8vw,36px)',
-            fontWeight: 800,
-            letterSpacing: '-0.03em',
-            color: color.primary,
-            lineHeight: 1,
-            flexShrink: 0,
-          }}>
-            {metric.after}
-          </span>
-        </div>
-      )}
+      ))}
     </div>
   );
 }

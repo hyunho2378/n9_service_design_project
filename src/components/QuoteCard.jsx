@@ -39,22 +39,8 @@ export default function QuoteCard({ text, source, profile, theme }) {
         </div>
       )}
 
-      {/* 따옴표 + 본문 */}
-      <div style={{ position: 'relative', paddingLeft: '20px' }}>
-        {/* 좌측 그린 따옴표 */}
-        <span style={{
-          position: 'absolute',
-          left: 0,
-          top: '-4px',
-          fontFamily: font.familyNum,
-          fontSize: '32px',
-          lineHeight: 1,
-          color: color.primary,
-          fontWeight: 700,
-          userSelect: 'none',
-        }}>
-          "
-        </span>
+      {/* 본문 */}
+      <div>
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,

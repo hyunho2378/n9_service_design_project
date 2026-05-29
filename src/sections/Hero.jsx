@@ -90,7 +90,7 @@ export default function Hero() {
             <p style={{
               margin: '0 0 20px',
               fontFamily: font.familyNum,
-              fontSize: '13px',
+              fontSize: '14px',
               fontWeight: 700,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
@@ -115,8 +115,8 @@ export default function Hero() {
             <p style={{
               margin: '0 0 40px',
               fontFamily: font.familyKo,
-              fontSize: 'clamp(14px,1.2vw,15px)',
-              fontWeight: 400,
+              fontSize: 'clamp(16px,1.3vw,17px)',
+              fontWeight: 500,
               lineHeight: 1.75,
               color: color.inkMute,
               maxWidth: '420px',

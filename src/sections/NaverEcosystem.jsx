@@ -14,12 +14,12 @@ const rev = (vis, delay = 0) => ({
 
 // As-Is: 비활성 상태 항목들 (naver.tobe 적용 전)
 const AS_IS_ITEMS = [
-  '사진 없음',
+  '매장 사진 없음',
   '네이버 예약 비활성',
   '톡톡 미운영',
   '스마트콜 미등록',
   '가격표 미기재',
-  '공지 없음',
+  '신규 공지 없음',
 ];
 
 export default function NaverEcosystem() {

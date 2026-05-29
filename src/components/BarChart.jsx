@@ -54,7 +54,7 @@ export default function BarChart({ title, data = [] }) {
               <div style={{
                 height: '100%',
                 borderRadius: '999px',
-                backgroundColor: item.highlight ? color.primary : color.line,
+                backgroundColor: color.primary,
                 width: visible ? `${item.value}%` : '0%',
                 transition: `width 0.7s ease-out ${i * 0.06}s`,
               }} />

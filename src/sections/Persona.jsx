@@ -74,7 +74,7 @@ export default function Persona() {
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
-            fontSize: 'clamp(15px,1.5vw,19px)',
+            fontSize: 'clamp(16px,1.5vw,20px)',
             fontWeight: 700,
             lineHeight: 1.65,
             color: '#FFFFFF',
@@ -152,10 +152,10 @@ function PersonaCard({ p, tone }) {
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
-            fontSize: '14px',
+            fontSize: '15px',
+            fontWeight: 500,
             lineHeight: 1.75,
             color: color.inkSub,
-            fontStyle: 'italic',
             wordBreak: 'keep-all',
           }}>
             "{p.story}"
@@ -201,7 +201,8 @@ function PersonaCard({ p, tone }) {
               </span>
               <span style={{
                 fontFamily: font.familyKo,
-                fontSize: '14px',
+                fontSize: '15px',
+                fontWeight: 500,
                 lineHeight: 1.6,
                 color: color.inkSub,
                 wordBreak: 'keep-all',
@@ -234,8 +235,8 @@ function PersonaCard({ p, tone }) {
           </span>
           <span style={{
             fontFamily: font.familyKo,
-            fontSize: '14px',
-            fontWeight: 600,
+            fontSize: '15px',
+            fontWeight: 700,
             color: color.ink,
             wordBreak: 'keep-all',
           }}>

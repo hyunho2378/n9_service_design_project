@@ -17,8 +17,7 @@ export default function Impact() {
   const [headerRef,   headerVis]   = useReveal({ threshold: 0.1 });
   const [stagesRef,   stagesVis]   = useReveal({ threshold: 0.05 });
   const [reasonsRef,  reasonsVis]  = useReveal({ threshold: 0.05 });
-  const [demandRef,   demandVis]   = useReveal({ threshold: 0.1 });
-  const [socialRef,   socialVis]   = useReveal({ threshold: 0.1 });
+  const [expansionRef, expansionVis] = useReveal({ threshold: 0.08 });
 
   return (
     <section
@@ -48,81 +47,105 @@ export default function Impact() {
             ))}
           </div>
 
-          {/* Scale reasons */}
-          <div
-            ref={reasonsRef}
-            style={{
-              ...rev(reasonsVis),
+          {/* Scale label + reasons */}
+          <div ref={reasonsRef} style={{ ...rev(reasonsVis), marginBottom: 'clamp(32px,4vw,56px)' }}>
+            <p style={{
+              margin: '0 0 24px',
+              fontFamily: font.familyNum,
+              fontSize: '14px',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: color.primary,
+            }}>
+              {impact.scaleLabel}
+            </p>
+            <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
               gap: '20px',
-              marginBottom: 'clamp(24px,3vw,40px)',
-            }}
-          >
-            {impact.scaleReasons.map((reason) => (
-              <ReasonCard key={reason.no} reason={reason} />
-            ))}
+            }}>
+              {impact.scaleReasons.map((reason) => (
+                <ReasonCard key={reason.no} reason={reason} />
+              ))}
+            </div>
           </div>
 
         </div>
       </div>
 
-      {/* marketDemand — 그린 강조 박스 (외부 검증) */}
+      {/* 확산 & 사회적 가치 — 통합 블록 */}
       <div
-        ref={demandRef}
+        ref={expansionRef}
         style={{
-          ...rev(demandVis),
-          background: color.primary,
+          ...rev(expansionVis),
+          background: '#0A0A0A',
         }}
       >
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: 'clamp(40px,4vw,56px) clamp(32px,7vw,120px)',
+          padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)',
         }}>
-          <span style={{
-            display: 'inline-block',
-            fontFamily: font.familyNum,
-            fontSize: '11px',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: '#FFFFFF',
-            marginBottom: '12px',
-          }}>
-            외부 제안
-          </span>
+
+          {/* 헤더 */}
           <p style={{
-            margin: 0,
+            margin: '0 0 16px',
+            fontFamily: font.familyNum,
+            fontSize: '14px',
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: color.primary,
+          }}>
+            {impact.expansionLabel}
+          </p>
+          <h2 style={{
+            margin: '0 0 clamp(32px,4vw,48px)',
             fontFamily: font.familyKo,
-            fontSize: 'clamp(14px,1.4vw,17px)',
-            fontWeight: 600,
-            lineHeight: 1.8,
+            fontSize: 'clamp(30px,4vw,46px)',
+            fontWeight: 800,
+            lineHeight: 1.25,
+            letterSpacing: '-0.02em',
             color: '#FFFFFF',
             wordBreak: 'keep-all',
           }}>
-            {impact.marketDemand}
-          </p>
-        </div>
-      </div>
+            {impact.expansionHeadline}
+          </h2>
 
-      {/* socialValue — 마무리 문장 */}
-      <div
-        ref={socialRef}
-        style={rev(socialVis)}
-      >
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(40px,5vw,64px) clamp(32px,7vw,120px) clamp(56px,6vw,88px)' }}>
+          {/* marketDemand — 그린 카드 */}
+          <div style={{
+            background: color.primary,
+            borderRadius: '12px',
+            padding: 'clamp(28px,3vw,40px) clamp(24px,3vw,36px)',
+            marginBottom: 'clamp(28px,3vw,40px)',
+          }}>
+            <p style={{
+              margin: 0,
+              fontFamily: font.familyKo,
+              fontSize: 'clamp(16px,1.4vw,17px)',
+              fontWeight: 500,
+              lineHeight: 1.8,
+              color: '#FFFFFF',
+              wordBreak: 'keep-all',
+            }}>
+              {impact.marketDemand}
+            </p>
+          </div>
+
+          {/* socialValue — 마무리 문장 */}
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
             fontSize: 'clamp(16px,1.6vw,22px)',
             fontWeight: 700,
             lineHeight: 1.8,
-            color: color.ink,
+            color: '#FFFFFF',
             wordBreak: 'keep-all',
           }}>
             {impact.socialValue}
           </p>
+
         </div>
       </div>
     </section>
@@ -136,7 +159,7 @@ function StageCard({ stage, index }) {
     <div style={{
       background: highlight ? color.primary : color.bg,
       borderRadius: '12px',
-      border: `1px solid ${highlight ? 'transparent' : color.line}`,
+      border: 'none',
       boxShadow: highlight
         ? '0 8px 32px rgba(2,199,90,0.2)'
         : '0 4px 24px rgba(0,0,0,0.06)',
@@ -179,7 +202,8 @@ function StageCard({ stage, index }) {
       <p style={{
         margin: '4px 0 0',
         fontFamily: font.familyKo,
-        fontSize: '13px',
+        fontSize: '15px',
+        fontWeight: 500,
         lineHeight: 1.7,
         color: highlight ? '#FFFFFF' : color.inkSub,
         wordBreak: 'keep-all',
@@ -192,12 +216,7 @@ function StageCard({ stage, index }) {
 
 function ReasonCard({ reason }) {
   return (
-    <div style={{
-      background: color.bg,
-      borderRadius: '12px',
-      border: `1px solid ${color.line}`,
-      padding: '22px 22px 24px',
-    }}>
+    <div style={{ padding: '0 0 8px' }}>
       <span style={{
         fontFamily: font.familyNum,
         fontSize: '13px',
@@ -211,7 +230,7 @@ function ReasonCard({ reason }) {
       <h4 style={{
         margin: '0 0 10px',
         fontFamily: font.familyKo,
-        fontSize: '15px',
+        fontSize: '18px',
         fontWeight: 700,
         color: color.ink,
       }}>
@@ -220,7 +239,8 @@ function ReasonCard({ reason }) {
       <p style={{
         margin: 0,
         fontFamily: font.familyKo,
-        fontSize: '13px',
+        fontSize: '15px',
+        fontWeight: 500,
         lineHeight: 1.7,
         color: color.inkSub,
         wordBreak: 'keep-all',

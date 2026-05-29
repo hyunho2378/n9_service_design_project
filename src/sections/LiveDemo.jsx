@@ -144,7 +144,7 @@ function StackCard({ category, items, index }) {
             <span style={{
               fontFamily: font.familyNum,
               fontSize: '14px',
-              fontWeight: 600,
+              fontWeight: 700,
               color: color.ink,
             }}>
               {item}

@@ -93,7 +93,6 @@ function QACard({ label, text, align, isAnswer }) {
   return (
     <div style={{
       background: isAnswer ? color.bgCard : color.bg,
-      border: `1px solid ${color.line}`,
       borderRadius: '10px',
       padding: '14px 16px',
       display: 'flex',

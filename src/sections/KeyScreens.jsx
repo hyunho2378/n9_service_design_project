@@ -51,8 +51,8 @@ function ScreenPlaceholder({ screenNo, label, isOwner }) {
       </div>
       <p style={{
         margin: 0,
-        fontSize: '12px',
-        fontWeight: 600,
+        fontSize: '14px',
+        fontWeight: 500,
         color: accent,
         fontFamily: font.familyKo,
         textAlign: 'center',

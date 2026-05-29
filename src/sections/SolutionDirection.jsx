@@ -66,7 +66,7 @@ function GapRow({ gap, index, total }) {
           height: '40px',
           borderRadius: '50%',
           background: isAi ? color.primary : color.bgCard,
-          border: `2px solid ${isAi ? color.primary : color.line}`,
+          border: isAi ? `2px solid ${color.primary}` : 'none',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -144,7 +144,8 @@ function GapRow({ gap, index, total }) {
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
-            fontSize: '14px',
+            fontSize: '16px',
+            fontWeight: 500,
             lineHeight: 1.8,
             color: color.inkSub,
             wordBreak: 'keep-all',

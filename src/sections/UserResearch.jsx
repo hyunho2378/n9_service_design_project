@@ -160,7 +160,6 @@ export default function UserResearch() {
               background: color.bgCard,
               borderRadius: '12px',
               padding: '28px 32px',
-              border: `1px solid ${color.line}`,
               marginBottom: '32px',
             }}
           >
@@ -405,7 +404,7 @@ export default function UserResearch() {
               color: color.ink,
               margin: '0 0 20px',
             }}>
-              참여자 발화 (verbatim)
+              참여자 발화
             </p>
             <div style={{
               display: 'grid',
@@ -524,7 +523,6 @@ export default function UserResearch() {
                     background: color.bgCard,
                     borderRadius: '12px',
                     padding: '24px',
-                    border: `1px solid ${color.line}`,
                   }}
                 >
                   <p style={{
@@ -759,7 +757,6 @@ function ConvergedCard({ item }) {
       <div style={{
         marginTop: '4px',
         paddingTop: '12px',
-        borderTop: `1px solid ${color.line}`,
       }}>
         <span style={{
           fontFamily: font.familyNum,
@@ -776,8 +773,8 @@ function ConvergedCard({ item }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: '13px',
-          fontWeight: 600,
+          fontSize: '15px',
+          fontWeight: 700,
           color: color.primary,
           wordBreak: 'keep-all',
         }}>

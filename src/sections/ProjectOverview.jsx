@@ -33,7 +33,8 @@ export default function ProjectOverview() {
 
           <p style={{
             fontFamily: font.familyKo,
-            fontSize: 'clamp(15px,1.3vw,17px)',
+            fontSize: 'clamp(16px,1.4vw,18px)',
+            fontWeight: 500,
             lineHeight: 1.85,
             color: color.inkSub,
             wordBreak: 'keep-all',

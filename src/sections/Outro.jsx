@@ -31,7 +31,7 @@ export default function Outro() {
         <div ref={headRef} style={rev(headVis)}>
           <span style={{
             fontFamily: font.familyNum,
-            fontSize: '11px',
+            fontSize: '14px',
             fontWeight: 700,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -46,8 +46,8 @@ export default function Outro() {
           <h2 style={{
             margin: '0 0 clamp(48px,7vw,96px)',
             fontFamily: font.familyKo,
-            fontSize: 'clamp(28px,4vw,56px)',
-            fontWeight: 700,
+            fontSize: 'clamp(30px,4vw,46px)',
+            fontWeight: 800,
             lineHeight: 1.3,
             letterSpacing: '-0.02em',
             color: '#FFFFFF',
@@ -75,7 +75,7 @@ export default function Outro() {
               <p style={{
                 margin: '0 0 8px',
                 fontFamily: font.familyNum,
-                fontSize: '11px',
+                fontSize: '14px',
                 fontWeight: 700,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
@@ -99,7 +99,8 @@ export default function Outro() {
               <p style={{
                 margin: '0 0 6px',
                 fontFamily: font.familyKo,
-                fontSize: '13px',
+                fontSize: '14px',
+                fontWeight: 500,
                 color: '#FFFFFF',
               }}>
                 {meta.course}
@@ -107,7 +108,8 @@ export default function Outro() {
               <p style={{
                 margin: 0,
                 fontFamily: font.familyNum,
-                fontSize: '13px',
+                fontSize: '14px',
+                fontWeight: 500,
                 color: '#FFFFFF',
               }}>
                 {meta.period}

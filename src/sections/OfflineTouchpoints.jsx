@@ -134,7 +134,7 @@ function TouchpointCard({ item, icon, index }) {
         <h3 style={{
           margin: '0 0 10px',
           fontFamily: font.familyKo,
-          fontSize: '16px',
+          fontSize: '18px',
           fontWeight: 700,
           color: color.ink,
           letterSpacing: '-0.01em',
@@ -144,7 +144,8 @@ function TouchpointCard({ item, icon, index }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: '14px',
+          fontSize: '16px',
+          fontWeight: 500,
           lineHeight: 1.75,
           color: color.inkSub,
           wordBreak: 'keep-all',
