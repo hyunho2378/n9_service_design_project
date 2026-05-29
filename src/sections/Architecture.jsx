@@ -1,6 +1,7 @@
 import { color, font } from '../tokens/web.js';
 import { useReveal } from '../lib/useReveal.js';
 import { useIsMobile } from '../lib/useIsMobile.js';
+import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader.jsx';
 import n9 from '../data/n9.json';
 
@@ -78,6 +79,33 @@ export default function Architecture() {
           }}>
             {architecture.flow}
           </p>
+        </div>
+
+        {/* SOLUTION 이동 CTA */}
+        <div style={{ marginTop: 'clamp(32px,4vw,48px)', textAlign: 'center' }}>
+          <Link
+            to="/solution"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: color.primary,
+              color: '#FFFFFF',
+              textDecoration: 'none',
+              fontFamily: font.familyNum,
+              fontSize: '14px',
+              fontWeight: 700,
+              letterSpacing: '0.04em',
+              padding: '14px 32px',
+              borderRadius: '8px',
+              boxShadow: '0 4px 20px rgba(2,199,90,0.30)',
+            }}
+          >
+            솔루션 보기
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
         </div>
 
       </div>

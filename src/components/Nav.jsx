@@ -1,36 +1,27 @@
+import { NavLink } from 'react-router-dom';
 import { color, font } from '../tokens/web.js';
 import { useIsMobile } from '../lib/useIsMobile.js';
-import { useState, useEffect } from 'react';
 
 const LINKS = [
-  { label: 'Research',   href: '#desk-research' },
-  { label: 'Persona',    href: '#persona' },
-  { label: 'Solution',   href: '#solution-direction' },
-  { label: 'AI',         href: '#ai-integration' },
-  { label: 'Validation', href: '#validation' },
-  { label: 'Build',      href: '#live-demo' },
+  { label: 'INTRO',    to: '/' },
+  { label: 'RESEARCH', to: '/research' },
+  { label: 'STRATEGY', to: '/strategy' },
+  { label: 'SOLUTION', to: '/solution' },
+  { label: 'RESULT',   to: '/result' },
 ];
+
+const linkStyle = (isActive) => ({
+  textDecoration: 'none',
+  fontSize: 12,
+  fontWeight: isActive ? 700 : 600,
+  color: isActive ? color.primary : color.inkSub,
+  letterSpacing: '0.06em',
+  fontFamily: font.familyNum,
+  whiteSpace: 'nowrap',
+});
 
 export default function Nav() {
   const isMobile = useIsMobile();
-  const [activeId, setActiveId] = useState('');
-
-  useEffect(() => {
-    const ids = LINKS.map(l => l.href.slice(1));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) setActiveId(entry.target.id);
-        });
-      },
-      { rootMargin: '-56px 0px -50% 0px', threshold: 0 }
-    );
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <nav
@@ -45,7 +36,6 @@ export default function Nav() {
         fontFamily: font.familyNum,
       }}
     >
-      {/* 모바일 스크롤바 숨김 */}
       <style>{`#nav-mobile-links::-webkit-scrollbar{display:none}`}</style>
 
       <div
@@ -56,20 +46,13 @@ export default function Nav() {
           height: 56,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
           gap: isMobile ? 12 : 20,
         }}
       >
         {/* 로고 */}
-        <a
-          href="#hero"
-          style={{
-            textDecoration: 'none',
-            flexShrink: 0,
-            display: 'flex',
-            alignItems: 'baseline',
-            gap: '1px',
-          }}
+        <NavLink
+          to="/"
+          style={{ textDecoration: 'none', flexShrink: 0 }}
         >
           <span style={{
             fontFamily: font.familyNum,
@@ -80,9 +63,9 @@ export default function Nav() {
           }}>
             N°9
           </span>
-        </a>
+        </NavLink>
 
-        {/* 데스크탑 네비 링크 — 기존 그대로 */}
+        {/* 데스크탑 */}
         {!isMobile && (
           <ul
             style={{
@@ -95,33 +78,21 @@ export default function Nav() {
               justifyContent: 'center',
             }}
           >
-            {LINKS.map(({ label, href }) => {
-              const isActive = activeId === href.slice(1);
-              return (
-                <li key={href}>
-                  <a
-                    href={href}
-                    style={{
-                      textDecoration: 'none',
-                      fontSize: 13,
-                      fontWeight: isActive ? 700 : 600,
-                      color: isActive ? color.primary : color.inkSub,
-                      letterSpacing: '-0.01em',
-                      transition: 'color 0.18s',
-                      fontFamily: font.familyNum,
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = color.ink)}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? color.primary : color.inkSub)}
-                  >
-                    {label}
-                  </a>
-                </li>
-              );
-            })}
+            {LINKS.map(({ label, to }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  end={to === '/'}
+                  style={({ isActive }) => linkStyle(isActive)}
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         )}
 
-        {/* 모바일 가로 스크롤 링크 */}
+        {/* 모바일 가로 스크롤 */}
         {isMobile && (
           <div
             id="nav-mobile-links"
@@ -142,27 +113,17 @@ export default function Nav() {
                 width: 'max-content',
               }}
             >
-              {LINKS.map(({ label, href }) => {
-                const isActive = activeId === href.slice(1);
-                return (
-                  <li key={href} style={{ flexShrink: 0 }}>
-                    <a
-                      href={href}
-                      style={{
-                        textDecoration: 'none',
-                        fontSize: 13,
-                        fontWeight: isActive ? 700 : 600,
-                        color: isActive ? color.primary : color.inkSub,
-                        letterSpacing: '-0.01em',
-                        fontFamily: font.familyNum,
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                );
-              })}
+              {LINKS.map(({ label, to }) => (
+                <li key={to} style={{ flexShrink: 0 }}>
+                  <NavLink
+                    to={to}
+                    end={to === '/'}
+                    style={({ isActive }) => linkStyle(isActive)}
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         )}
