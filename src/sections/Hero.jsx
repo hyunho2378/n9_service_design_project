@@ -31,112 +31,107 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
-      {/* 배경 이미지: absolute, 우측 하단 고정 */}
-      {!isMobile && (
-        <div
-          ref={mockRef}
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            right: 'clamp(0px,8vw,120px)',
-            top: 0,
-            bottom: 0,
-            display: 'flex',
-            alignItems: 'center',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }}
-        >
-          <img
-            src="/hero.png"
-            alt=""
+      {/* 이미지 + 텍스트 래퍼: flex:1로 그린 바 위 영역만 차지 */}
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+
+        {/* 배경 이미지: 래퍼 안에 absolute로 가둬 그린 바 침범 방지 */}
+        {!isMobile && (
+          <div
+            ref={mockRef}
+            aria-hidden="true"
             style={{
-              width: 'clamp(456px,62vw,888px)',
-              maxWidth: 'none',
-              objectFit: 'contain',
-              objectPosition: 'bottom right',
-              display: 'block',
+              position: 'absolute',
+              right: 'clamp(0px,8vw,120px)',
+              top: 0,
+              bottom: 0,
+              display: 'flex',
+              alignItems: 'flex-start',
+              paddingTop: 'clamp(20px,4vw,56px)',
+              overflow: 'hidden',
+              zIndex: 0,
+              pointerEvents: 'none',
             }}
-          />
-        </div>
-      )}
+          >
+            <img
+              src="/hero.png"
+              alt=""
+              style={{
+                width: 'clamp(456px,62vw,888px)',
+                maxWidth: 'none',
+                maxHeight: '100%',
+                objectFit: 'contain',
+                objectPosition: 'top right',
+                display: 'block',
+              }}
+            />
+          </div>
+        )}
 
-      {/* 상단: 텍스트 */}
-      <div
-        style={{
-          flex: 1,
-          maxWidth: '1200px',
-          width: '100%',
-          margin: '0 auto',
-          padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        {/* LEFT: 텍스트 */}
+        {/* 텍스트 */}
         <div
-          ref={textRef}
           style={{
-            opacity: textVisible ? 1 : 0,
-            transform: textVisible ? 'none' : 'translateY(28px)',
-            transition: 'opacity 0.7s ease-out, transform 0.7s ease-out',
-            maxWidth: '560px',
+            maxWidth: '1200px',
+            width: '100%',
+            margin: '0 auto',
+            padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)',
+            position: 'relative',
+            zIndex: 1,
           }}
         >
-          <p style={{
-            margin: '0 0 20px',
-            fontFamily: font.familyNum,
-            fontSize: '13px',
-            fontWeight: 700,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: color.primary,
-          }}>
-            {hero.label}
-          </p>
+          <div
+            ref={textRef}
+            style={{
+              opacity: textVisible ? 1 : 0,
+              transform: textVisible ? 'none' : 'translateY(28px)',
+              transition: 'opacity 0.7s ease-out, transform 0.7s ease-out',
+              maxWidth: '560px',
+            }}
+          >
+            <p style={{
+              margin: '0 0 20px',
+              fontFamily: font.familyNum,
+              fontSize: '13px',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: color.primary,
+            }}>
+              {hero.label}
+            </p>
 
-          <h1 style={{
-            margin: '0 0 16px',
-            fontFamily: font.familyKo,
-            fontSize: 'clamp(28px,4vw,56px)',
-            fontWeight: 800,
-            lineHeight: 1.2,
-            letterSpacing: '-0.03em',
-            color: color.ink,
-            whiteSpace: 'pre-line',
-            wordBreak: 'keep-all',
-          }}>
-            {hero.titleLines.join('\n')}
-          </h1>
+            <h1 style={{
+              margin: '0 0 16px',
+              fontFamily: font.familyKo,
+              fontSize: 'clamp(28px,4vw,56px)',
+              fontWeight: 800,
+              lineHeight: 1.2,
+              letterSpacing: '-0.03em',
+              color: color.ink,
+              wordBreak: 'keep-all',
+            }}>
+              {hero.mainTitle}
+            </h1>
 
-          <p style={{
-            margin: '0 0 12px',
-            fontFamily: font.familyKo,
-            fontSize: 'clamp(14px,1.2vw,16px)',
-            fontWeight: 600,
-            color: color.inkSub,
-            wordBreak: 'keep-all',
-          }}>
-            {hero.subTitle}
-          </p>
+            <p style={{
+              margin: '0 0 40px',
+              fontFamily: font.familyKo,
+              fontSize: 'clamp(14px,1.2vw,15px)',
+              fontWeight: 400,
+              lineHeight: 1.75,
+              color: color.inkMute,
+              maxWidth: '420px',
+              wordBreak: 'keep-all',
+            }}>
+              {hero.descFull}
+            </p>
 
-          <p style={{
-            margin: '0 0 40px',
-            fontFamily: font.familyKo,
-            fontSize: 'clamp(14px,1.2vw,15px)',
-            lineHeight: 1.75,
-            color: color.inkMute,
-            maxWidth: '420px',
-            wordBreak: 'keep-all',
-          }}>
-            {hero.desc}
-          </p>
-
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <HeroCTA href={meta.serviceUrl} label={hero.ctaPrimary} primary />
-            <HeroCTA href={meta.naverUrl}   label={hero.ctaSecondary} />
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <HeroCTA href={meta.serviceUrl} label={hero.ctaPrimary} primary />
+              <HeroCTA href={meta.naverUrl}   label={hero.ctaSecondary} />
+            </div>
           </div>
         </div>
+
       </div>
 
       {/* 하단: 그린 메타 바 */}
@@ -166,7 +161,7 @@ export default function Hero() {
             fontWeight: 700,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.55)',
+            color: '#FFFFFF',
             flexShrink: 0,
             alignSelf: 'center',
           }}>
@@ -180,7 +175,7 @@ export default function Hero() {
                 fontWeight: 700,
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.5)',
+                color: '#FFFFFF',
               }}>
                 {label}
               </span>

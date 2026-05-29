@@ -55,7 +55,7 @@ export default function UserResearch() {
               <MetaChip icon="🔬" label="방법론" value={ur.meta.method} />
             </div>
             <div style={{
-              background: color.bgSoft,
+              background: color.bg,
               borderRadius: '8px',
               padding: '20px 24px',
               maxWidth: '720px',
@@ -143,7 +143,7 @@ export default function UserResearch() {
                     fontFamily: font.familyNum,
                     fontSize: '12px',
                     fontWeight: 700,
-                    color: i === 0 ? 'rgba(255,255,255,0.9)' : color.inkMute,
+                    color: i === 0 ? '#FFFFFF' : color.inkMute,
                   }}>
                     {r.percent}%
                   </span>
@@ -152,32 +152,76 @@ export default function UserResearch() {
             ))}
           </div>
 
-          {/* 핵심 지표 막대바 */}
+          {/* 핵심 지표 — 2×2 그리드 */}
           <div
             ref={metricsRef}
             style={{
               ...rev(metricsVis),
               background: color.bgCard,
               borderRadius: '12px',
-              padding: '32px',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+              padding: '28px 32px',
+              border: `1px solid ${color.line}`,
               marginBottom: '32px',
             }}
           >
             <p style={{
               fontFamily: font.familyKo,
-              fontSize: '15px',
+              fontSize: '14px',
               fontWeight: 700,
               color: color.ink,
-              margin: '0 0 24px',
+              margin: '0 0 20px',
             }}>
               핵심 지표 (응답자 {ur.survey.respondents[0].n}명 기준)
             </p>
-            <BarChart data={ur.survey.keyMetrics.map(m => ({
-              label: m.metric,
-              value: m.value,
-              highlight: m.highlight,
-            }))} />
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+              gap: '16px 40px',
+            }}>
+              {ur.survey.keyMetrics.map((m, i) => (
+                <div key={i}>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'baseline',
+                    marginBottom: '6px',
+                  }}>
+                    <span style={{
+                      fontFamily: font.familyKo,
+                      fontSize: '13px',
+                      color: color.inkSub,
+                      wordBreak: 'keep-all',
+                    }}>
+                      {m.metric}
+                    </span>
+                    <span style={{
+                      fontFamily: font.familyNum,
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      color: m.highlight ? color.primary : color.inkSub,
+                      flexShrink: 0,
+                      marginLeft: '8px',
+                    }}>
+                      {m.value}%
+                    </span>
+                  </div>
+                  <div style={{
+                    height: '7px',
+                    borderRadius: '999px',
+                    backgroundColor: color.line,
+                    overflow: 'hidden',
+                  }}>
+                    <div style={{
+                      height: '100%',
+                      borderRadius: '999px',
+                      backgroundColor: m.highlight ? color.primary : color.inkMute,
+                      width: metricsVis ? `${m.value}%` : '0%',
+                      transition: `width 0.7s ease-out ${i * 0.1}s`,
+                    }} />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* 차트 2개 (의존 정보, 첫 행동) */}
@@ -410,7 +454,7 @@ export default function UserResearch() {
 
           {/* 수렴 */}
           <div ref={convergedRef} style={{ ...rev(convergedVis), marginBottom: '48px' }}>
-            <CrossLabel label="수렴 / Converged" color={color.primary} bg={color.bgSoft} />
+            <CrossLabel label="수렴 / Converged" color={color.primary} bg={color.bg} />
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
@@ -424,7 +468,7 @@ export default function UserResearch() {
 
           {/* 분기 */}
           <div ref={divergedRef} style={{ ...rev(divergedVis), marginBottom: '48px' }}>
-            <CrossLabel label="분기 / Diverged" color={color.inkSub} bg={color.bgSoft} />
+            <CrossLabel label="분기 / Diverged" color={color.inkSub} bg={color.bg} />
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
@@ -438,7 +482,6 @@ export default function UserResearch() {
                     borderRadius: '12px',
                     padding: '24px',
                     boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
-                    borderTop: `3px solid ${color.inkSub}`,
                   }}
                 >
                   <p style={{
@@ -468,7 +511,7 @@ export default function UserResearch() {
 
           {/* 놀라운 점 */}
           <div ref={surprisingRef} style={rev(surprisingVis)}>
-            <CrossLabel label="놀라운 점 / Surprising" color="#B45309" bg="#FEF3C7" />
+            <CrossLabel label="놀라운 점 / Surprising" color={color.inkSub} bg={color.bg} />
             <div style={{
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
@@ -481,8 +524,7 @@ export default function UserResearch() {
                     background: color.bgCard,
                     borderRadius: '12px',
                     padding: '24px',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
-                    borderTop: '3px solid #F59E0B',
+                    border: `1px solid ${color.line}`,
                   }}
                 >
                   <p style={{
@@ -514,7 +556,7 @@ export default function UserResearch() {
       </div>
 
       {/* ━━ 05 Research → Solution ━━ */}
-      <div style={{ background: color.bgSoft }}>
+      <div style={{ background: color.bg }}>
         <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
           <div ref={solutionRef} style={rev(solutionVis)}>
             <p style={{
@@ -652,7 +694,7 @@ function ThemeBar({ percent, full, index, visible }) {
     <div style={{
       height: '10px',
       borderRadius: '999px',
-      background: color.bgSoft,
+      background: color.line,
       overflow: 'hidden',
     }}>
       <div style={{

@@ -63,7 +63,7 @@ export default function Outro() {
 
           {/* Team */}
           <div style={{
-            borderTop: '1px solid rgba(255,255,255,0.1)',
+            borderTop: '1px solid #FFFFFF',
             paddingTop: '36px',
             display: 'flex',
             alignItems: 'flex-start',
@@ -79,7 +79,7 @@ export default function Outro() {
                 fontWeight: 700,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.6)',
+                color: '#FFFFFF',
               }}>
                 Team
               </p>
@@ -100,7 +100,7 @@ export default function Outro() {
                 margin: '0 0 6px',
                 fontFamily: font.familyKo,
                 fontSize: '13px',
-                color: 'rgba(255,255,255,0.5)',
+                color: '#FFFFFF',
               }}>
                 {meta.course}
               </p>
@@ -108,7 +108,7 @@ export default function Outro() {
                 margin: 0,
                 fontFamily: font.familyNum,
                 fontSize: '13px',
-                color: 'rgba(255,255,255,0.55)',
+                color: '#FFFFFF',
               }}>
                 {meta.period}
               </p>

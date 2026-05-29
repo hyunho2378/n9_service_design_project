@@ -87,7 +87,7 @@ function DeliverableCard({ item }) {
         fontSize: '13px',
         fontWeight: 700,
         letterSpacing: '0.06em',
-        color: highlight ? 'rgba(255,255,255,0.85)' : color.inkMute,
+        color: highlight ? '#FFFFFF' : color.inkMute,
       }}>
         {item.no}
       </span>

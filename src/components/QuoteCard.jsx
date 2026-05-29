@@ -29,7 +29,7 @@ export default function QuoteCard({ text, source, profile, theme }) {
               fontFamily: font.familyKo,
               fontSize: '11px',
               color: color.primary,
-              backgroundColor: color.bgSoft,
+              backgroundColor: color.bg,
               borderRadius: '4px',
               padding: '2px 6px',
             }}>

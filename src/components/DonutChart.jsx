@@ -20,7 +20,7 @@ export default function DonutChart({ value, unit = '%', maxValue = 100, caption,
         <circle
           cx="60" cy="60" r={R}
           fill="none"
-          stroke={color.bgSoft}
+          stroke={color.line}
           strokeWidth="10"
         />
         {/* 진행 (그린) */}

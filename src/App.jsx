@@ -2,6 +2,7 @@ import { color, font } from './tokens/web.js';
 import Nav from './components/Nav.jsx';
 import Hero from './sections/Hero.jsx';
 import ProjectOverview from './sections/ProjectOverview.jsx';
+import Background from './sections/Background.jsx';
 import DeskResearch from './sections/DeskResearch.jsx';
 import UserResearch from './sections/UserResearch.jsx';
 import Persona from './sections/Persona.jsx';
@@ -37,6 +38,7 @@ export default function App() {
       <main>
         <Hero />
         <ProjectOverview />
+        <Background />
         <DeskResearch />
         <UserResearch />
         <Persona />

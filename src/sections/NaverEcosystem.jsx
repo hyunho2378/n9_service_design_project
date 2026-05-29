@@ -117,7 +117,7 @@ export default function NaverEcosystem() {
             }}>
               {/* 브라우저 주소바 */}
               <div style={{
-                background: color.bgSoft,
+                background: color.bg,
                 padding: '8px 12px',
                 display: 'flex',
                 alignItems: 'center',
@@ -125,7 +125,7 @@ export default function NaverEcosystem() {
                 borderBottom: `1px solid ${color.line}`,
               }}>
                 <div style={{ display: 'flex', gap: '4px' }}>
-                  {['#FF5F57','#FEBC2E','#28C840'].map((c, i) => (
+                  {['#FF5F57','#C8C8C6','#28C840'].map((c, i) => (
                     <span key={i} style={{ width: '8px', height: '8px', borderRadius: '50%', background: c }} />
                   ))}
                 </div>
@@ -146,7 +146,7 @@ export default function NaverEcosystem() {
                 {/* 대표 사진 placeholder */}
                 <div style={{
                   height: '100px',
-                  background: color.bgSoft,
+                  background: color.bg,
                   borderRadius: '8px',
                   marginBottom: '12px',
                   display: 'flex',
@@ -181,7 +181,7 @@ export default function NaverEcosystem() {
                     <div key={btn} style={{
                       flex: 1,
                       padding: '6px 0',
-                      background: color.bgSoft,
+                      background: color.bg,
                       borderRadius: '6px',
                       textAlign: 'center',
                       fontFamily: font.familyKo,
@@ -207,7 +207,7 @@ export default function NaverEcosystem() {
             }}>
               <div style={{
                 padding: '14px 20px',
-                background: color.bgSoft,
+                background: color.bg,
                 borderBottom: `1px solid ${color.line}`,
                 display: 'flex',
                 alignItems: 'center',
@@ -232,7 +232,7 @@ export default function NaverEcosystem() {
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                     <span style={{
                       width: '16px', height: '16px', borderRadius: '50%',
-                      background: color.bgSoft,
+                      background: color.bg,
                       border: `1.5px solid ${color.primary}`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0, marginTop: '1px',

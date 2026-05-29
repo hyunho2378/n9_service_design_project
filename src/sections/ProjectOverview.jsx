@@ -36,7 +36,6 @@ export default function ProjectOverview() {
             fontSize: 'clamp(15px,1.3vw,17px)',
             lineHeight: 1.85,
             color: color.inkSub,
-            maxWidth: '680px',
             wordBreak: 'keep-all',
             margin: 0,
           }}>

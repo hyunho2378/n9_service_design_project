@@ -49,7 +49,7 @@ export default function Nav() {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 clamp(24px,6vw,96px)',
+          padding: '0 clamp(32px,7vw,120px)',
           height: 56,
           display: 'flex',
           alignItems: 'center',

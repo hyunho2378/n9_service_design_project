@@ -92,7 +92,7 @@ function PersonaColumn({ data, side }) {
 function QACard({ label, text, align, isAnswer }) {
   return (
     <div style={{
-      background: isAnswer ? color.bgSoft : color.bg,
+      background: isAnswer ? color.bgCard : color.bg,
       border: `1px solid ${color.line}`,
       borderRadius: '10px',
       padding: '14px 16px',
@@ -152,7 +152,7 @@ function AiCenter({ data }) {
           fontSize: '10px',
           fontWeight: 700,
           letterSpacing: '0.08em',
-          color: 'rgba(255,255,255,0.65)',
+          color: '#FFFFFF',
         }}>
           N9 AI
         </span>

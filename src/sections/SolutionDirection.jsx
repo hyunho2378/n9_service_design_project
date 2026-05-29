@@ -65,7 +65,7 @@ function GapRow({ gap, index, total }) {
           width: '40px',
           height: '40px',
           borderRadius: '50%',
-          background: isAi ? color.primary : color.bgSoft,
+          background: isAi ? color.primary : color.bgCard,
           border: `2px solid ${isAi ? color.primary : color.line}`,
           display: 'flex',
           alignItems: 'center',
@@ -170,7 +170,7 @@ function GapRow({ gap, index, total }) {
             fontWeight: 700,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            color: isAi ? 'rgba(255,255,255,0.9)' : color.inkMute,
+            color: isAi ? '#FFFFFF' : color.inkMute,
             display: 'block',
             marginBottom: '6px',
           }}>

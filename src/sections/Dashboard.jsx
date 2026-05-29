@@ -68,7 +68,7 @@ export default function Dashboard() {
           <span style={{
             fontFamily: font.familyNum,
             fontSize: '20px',
-            color: 'rgba(255,255,255,0.5)',
+            color: '#FFFFFF',
             lineHeight: 1,
             flexShrink: 0,
             marginTop: '2px',
@@ -132,7 +132,7 @@ function DashboardBlock({ item, index }) {
 
       {/* Mock visual area */}
       <div style={{
-        background: color.bgSoft,
+        background: color.bg,
         height: '140px',
         display: 'flex',
         alignItems: 'center',
@@ -175,7 +175,7 @@ function DashboardMockDB() {
     }}>
       <div style={{
         padding: '6px 12px',
-        background: color.bgSoft,
+        background: color.bg,
         borderBottom: `1px solid ${color.line}`,
         fontWeight: 700,
         color: color.inkSub,
@@ -225,7 +225,7 @@ function DashboardMockOwner() {
           <div style={{
             flex: 1,
             height: '8px',
-            background: 'rgba(255,255,255,0.6)',
+            background: '#0A0A0A',
             borderRadius: '4px',
             overflow: 'hidden',
           }}>

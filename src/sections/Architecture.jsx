@@ -106,7 +106,7 @@ function LayerCard({ layer, index }) {
         fontSize: '11px',
         fontWeight: 700,
         letterSpacing: '0.08em',
-        color: isHighlight ? 'rgba(255,255,255,0.8)' : color.inkMute,
+        color: isHighlight ? '#FFFFFF' : color.inkMute,
         display: 'block',
         marginBottom: '12px',
       }}>
@@ -138,7 +138,7 @@ function LayerCard({ layer, index }) {
       {/* 구분선 */}
       <div style={{
         height: '1px',
-        background: isHighlight ? 'rgba(255,255,255,0.2)' : color.line,
+        background: isHighlight ? '#FFFFFF' : color.line,
         marginBottom: '20px',
       }} />
 
@@ -149,7 +149,7 @@ function LayerCard({ layer, index }) {
             <span style={{
               fontFamily: font.familyNum,
               fontSize: '12px',
-              color: isHighlight ? 'rgba(255,255,255,0.75)' : color.primary,
+              color: isHighlight ? '#FFFFFF' : color.primary,
               flexShrink: 0,
               lineHeight: 1.6,
             }}>
@@ -174,8 +174,8 @@ function LayerCard({ layer, index }) {
           fontFamily: font.familyKo,
           fontSize: '11px',
           fontWeight: 600,
-          color: isHighlight ? 'rgba(255,255,255,0.9)' : color.inkMute,
-          background: isHighlight ? 'rgba(255,255,255,0.15)' : color.bgSoft,
+          color: '#FFFFFF',
+          background: '#0A0A0A',
           borderRadius: '6px',
           padding: '4px 10px',
         }}>

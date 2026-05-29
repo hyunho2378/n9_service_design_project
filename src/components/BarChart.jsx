@@ -48,7 +48,7 @@ export default function BarChart({ title, data = [] }) {
             <div style={{
               height: '8px',
               borderRadius: '999px',
-              backgroundColor: color.bgSoft,
+              backgroundColor: color.line,
               overflow: 'hidden',
             }}>
               <div style={{

@@ -87,7 +87,7 @@ export default function Impact() {
             fontWeight: 700,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.7)',
+            color: '#FFFFFF',
             marginBottom: '12px',
           }}>
             외부 제안
@@ -112,22 +112,17 @@ export default function Impact() {
         style={rev(socialVis)}
       >
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(40px,5vw,64px) clamp(32px,7vw,120px) clamp(56px,6vw,88px)' }}>
-          <div style={{
-            borderLeft: `3px solid ${color.primary}`,
-            paddingLeft: 'clamp(16px,2vw,24px)',
+          <p style={{
+            margin: 0,
+            fontFamily: font.familyKo,
+            fontSize: 'clamp(16px,1.6vw,22px)',
+            fontWeight: 700,
+            lineHeight: 1.8,
+            color: color.ink,
+            wordBreak: 'keep-all',
           }}>
-            <p style={{
-              margin: 0,
-              fontFamily: font.familyKo,
-              fontSize: 'clamp(14px,1.3vw,17px)',
-              fontWeight: 600,
-              lineHeight: 1.85,
-              color: color.ink,
-              wordBreak: 'keep-all',
-            }}>
-              {impact.socialValue}
-            </p>
-          </div>
+            {impact.socialValue}
+          </p>
         </div>
       </div>
     </section>
@@ -158,7 +153,7 @@ function StageCard({ stage, index }) {
         textTransform: 'uppercase',
         color: isFirst
           ? color.primary
-          : highlight ? 'rgba(255,255,255,0.85)' : color.inkMute,
+          : highlight ? '#FFFFFF' : color.inkMute,
         display: 'inline-block',
       }}>
         {stage.stage}

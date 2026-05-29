@@ -83,7 +83,7 @@ export default function AutoResponse() {
           <span style={{
             fontFamily: font.familyNum,
             fontSize: '20px',
-            color: 'rgba(255,255,255,0.5)',
+            color: '#FFFFFF',
             lineHeight: 1,
             flexShrink: 0,
             marginTop: '2px',
@@ -126,7 +126,7 @@ function TalktalkMock() {
       }}>
         <div style={{
           width: '32px', height: '32px', borderRadius: '50%',
-          background: 'rgba(255,255,255,0.25)',
+          background: '#FFFFFF',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0,
         }}>
@@ -136,7 +136,7 @@ function TalktalkMock() {
           <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', fontWeight: 700, color: '#fff' }}>
             N°9 넘버나인
           </p>
-          <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '11px', color: 'rgba(255,255,255,0.75)' }}>
+          <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '11px', color: '#FFFFFF' }}>
             응답시간 0분
           </p>
         </div>
@@ -148,18 +148,18 @@ function TalktalkMock() {
         display: 'flex',
         flexDirection: 'column',
         gap: '10px',
-        background: '#F0F0F0',
+        background: color.bg,
         minHeight: '260px',
       }}>
         {/* 손님 메시지 */}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div style={{
-            background: '#FEE500',
+            background: color.line,
             borderRadius: '12px 12px 2px 12px',
             padding: '8px 12px',
             maxWidth: '70%',
           }}>
-            <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', color: '#333' }}>
+            <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', color: color.ink }}>
               안녕하세요, 예약 문의드려요
             </p>
           </div>

@@ -10,14 +10,15 @@ export default function ChargeMini() {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#FAFAF9',
+      backgroundColor: '#FFFFFF',
       gap: '12px',
     }}>
       <div style={{
         width: '48px',
         height: '48px',
         borderRadius: '12px',
-        backgroundColor: '#F2F2F0',
+        backgroundColor: '#FFFFFF',
+        border: '1px solid #0A0A0A',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -27,10 +28,10 @@ export default function ChargeMini() {
           <path d="M8 10h8M8 14h5" stroke="#02C75A" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </div>
-      <p style={{ margin: 0, fontSize: '13px', fontWeight: 600, color: '#565656', fontFamily: 'sans-serif' }}>
+      <p style={{ margin: 0, fontSize: '13px', fontWeight: 600, color: '#0A0A0A', fontFamily: 'sans-serif' }}>
         AI 설문 화면
       </p>
-      <p style={{ margin: 0, fontSize: '11px', color: '#888780', fontFamily: 'sans-serif', textAlign: 'center', padding: '0 24px' }}>
+      <p style={{ margin: 0, fontSize: '11px', color: '#0A0A0A', fontFamily: 'sans-serif', textAlign: 'center', padding: '0 24px' }}>
         목업 교체 예정
       </p>
     </div>

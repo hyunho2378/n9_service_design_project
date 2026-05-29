@@ -160,7 +160,7 @@ function TimelineNode({ item, index }) {
 function ConversationQuote({ data, label, isAfter }) {
   return (
     <div style={{
-      background: isAfter ? color.bgSoft : color.bgCard,
+      background: isAfter ? color.bg : color.bgCard,
       borderRadius: '12px',
       border: `1px solid ${color.line}`,
       padding: '24px 28px',

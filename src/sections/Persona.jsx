@@ -7,8 +7,8 @@ import n9 from '../data/n9.json';
 const { persona } = n9;
 
 const TONES = {
-  gray: { accent: color.primary,  accentBg: color.bgSoft, accentSoft: color.line },
-  blue: { accent: color.inkSub,   accentBg: color.bgSoft, accentSoft: color.line },
+  gray: { accent: color.primary,  accentBg: color.bg, accentSoft: color.line },
+  blue: { accent: color.inkSub,   accentBg: color.bg, accentSoft: color.line },
 };
 
 const rev = (vis, delay = 0) => ({
@@ -67,7 +67,7 @@ export default function Persona() {
           <span style={{
             fontFamily: font.familyNum,
             fontSize: '24px',
-            color: 'rgba(255,255,255,0.45)',
+            color: '#FFFFFF',
             lineHeight: 1,
             flexShrink: 0,
           }}>↔</span>

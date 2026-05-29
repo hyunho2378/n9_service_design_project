@@ -17,7 +17,7 @@ const rev = (vis, delay = 0) => ({
 
 // Inline mini screens for screens without a dedicated component
 function ScreenPlaceholder({ screenNo, label, isOwner }) {
-  const bg = color.bgSoft;
+  const bg = color.bg;
   const accent = isOwner ? color.primary : color.inkMute;
   return (
     <div style={{
@@ -35,7 +35,7 @@ function ScreenPlaceholder({ screenNo, label, isOwner }) {
         height: '44px',
         borderRadius: '50%',
         background: isOwner ? color.primary : color.bgCard,
-        border: `2px solid ${isOwner ? 'rgba(255,255,255,0.4)' : color.line}`,
+        border: `2px solid ${isOwner ? '#FFFFFF' : color.line}`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

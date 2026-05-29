@@ -177,13 +177,13 @@ function CompareBar({ chart }) {
             <div style={{
               height: '10px',
               borderRadius: '999px',
-              background: color.bgSoft,
+              background: color.line,
               overflow: 'hidden',
             }}>
               <div style={{
                 height: '100%',
                 borderRadius: '999px',
-                background: i === 0 ? color.inkMute : color.primary,
+                background: i === 0 ? '#0A0A0A' : color.primary,
                 width: visible ? `${(bar.value / maxVal) * 100}%` : '0%',
                 transition: `width 0.8s ease-out ${i * 0.15}s`,
               }} />
