@@ -48,7 +48,7 @@ export default function Validation() {
           <h2 style={{
             margin: '0 0 12px',
             fontFamily: font.familyKo,
-            fontSize: 'clamp(30px,4vw,46px)',
+            fontSize: 'clamp(26px,3.4vw,40px)',
             fontWeight: 800,
             lineHeight: 1.25,
             letterSpacing: '-0.02em',

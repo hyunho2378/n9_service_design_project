@@ -31,7 +31,7 @@ export default function AutoResponse() {
         </div>
       </div>
 
-      {/* 좌: 톡톡 목업 / 우: steps */}
+      {/* 좌: 톡톡 스크린샷 / 우: steps */}
       <div>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(32px,7vw,120px) 0' }}>
           <div
@@ -39,22 +39,33 @@ export default function AutoResponse() {
             style={{
               ...rev(bodyVis),
               display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : '1fr 1.4fr',
+              gridTemplateColumns: isMobile ? '1fr' : '360px 1fr',
               gap: 'clamp(32px,4vw,64px)',
               alignItems: 'center',
-              marginBottom: '0',
             }}
           >
-            {/* 좌: 톡톡 화면 placeholder */}
-            <TalktalkMock />
+            {/* 좌: 톡톡 스크린샷 */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <img
+                src="/talktalk-screenshot.png"
+                alt=""
+                style={{
+                  width: '100%',
+                  maxWidth: '360px',
+                  height: 'auto',
+                  display: 'block',
+                  borderRadius: '16px',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
+                }}
+              />
+            </div>
 
             {/* 우: 3단계 */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
               {autoResponse.steps.map((step, i) => (
                 <StepRow
                   key={step.no}
                   step={step}
-                  index={i}
                   isLast={i === autoResponse.steps.length - 1}
                 />
               ))}
@@ -106,149 +117,9 @@ export default function AutoResponse() {
   );
 }
 
-// 네이버 톡톡 채팅 화면 placeholder
-function TalktalkMock() {
+function StepRow({ step, isLast }) {
   return (
-    <div style={{
-      background: color.bgCard,
-      borderRadius: '16px',
-      overflow: 'hidden',
-      boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
-    }}>
-      {/* 톡톡 상단 바 */}
-      <div style={{
-        background: '#03C75A',
-        padding: '14px 16px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-      }}>
-        <div style={{
-          width: '32px', height: '32px', borderRadius: '50%',
-          background: '#FFFFFF',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0,
-        }}>
-          <span style={{ fontFamily: font.familyNum, fontSize: '11px', fontWeight: 700, color: '#fff' }}>N9</span>
-        </div>
-        <div>
-          <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', fontWeight: 700, color: '#fff' }}>
-            N°9 넘버나인
-          </p>
-          <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '11px', color: '#FFFFFF' }}>
-            응답시간 0분
-          </p>
-        </div>
-      </div>
-
-      {/* 채팅 영역 */}
-      <div style={{
-        padding: '16px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-        background: color.bg,
-        minHeight: '260px',
-      }}>
-        {/* 손님 메시지 */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <div style={{
-            background: color.line,
-            borderRadius: '12px 12px 2px 12px',
-            padding: '8px 12px',
-            maxWidth: '70%',
-          }}>
-            <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', color: color.ink }}>
-              안녕하세요, 예약 문의드려요
-            </p>
-          </div>
-        </div>
-
-        {/* 자동 응답 메시지 */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-          <div style={{
-            width: '28px', height: '28px', borderRadius: '50%',
-            background: '#03C75A',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            flexShrink: 0,
-          }}>
-            <span style={{ fontFamily: font.familyNum, fontSize: '9px', fontWeight: 700, color: '#fff' }}>N9</span>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxWidth: '78%' }}>
-            <div style={{
-              background: '#fff',
-              borderRadius: '2px 12px 12px 12px',
-              padding: '10px 12px',
-            }}>
-              <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '12px', color: '#333', lineHeight: 1.6 }}>
-                안녕하세요! N°9 넘버나인입니다 😊<br />
-                AI 맞춤 진단으로 내게 딱 맞는 스타일을 먼저 확인해 보세요!
-              </p>
-            </div>
-            {/* AI 링크 버튼 */}
-            <div style={{
-              background: '#fff',
-              borderRadius: '2px 12px 12px 12px',
-              padding: '10px 12px',
-              border: `1.5px solid ${color.primary}`,
-            }}>
-              <p style={{
-                margin: 0,
-                fontFamily: font.familyKo,
-                fontSize: '12px',
-                fontWeight: 700,
-                color: color.primary,
-              }}>
-                👉 AI 진단 바로가기 →
-              </p>
-            </div>
-            <p style={{
-              margin: 0,
-              fontFamily: font.familyKo,
-              fontSize: '10px',
-              color: '#999',
-              paddingLeft: '4px',
-            }}>
-              자동응답, 방금
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* 입력창 */}
-      <div style={{
-        padding: '10px 12px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        background: color.bgCard,
-      }}>
-        <div style={{
-          flex: 1,
-          background: color.bg,
-          borderRadius: '20px',
-          padding: '8px 14px',
-          fontFamily: font.familyKo,
-          fontSize: '12px',
-          color: color.inkMute,
-        }}>
-          메시지를 입력하세요
-        </div>
-        <div style={{
-          width: '32px', height: '32px', borderRadius: '50%',
-          background: color.primary,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
-          <span style={{ color: '#fff', fontSize: '14px' }}>↑</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function StepRow({ step, index, isLast }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'stretch', gap: '0' }}>
+    <div style={{ display: 'flex', alignItems: 'stretch' }}>
       {/* 번호 + 세로선 */}
       <div style={{
         display: 'flex',
@@ -267,7 +138,6 @@ function StepRow({ step, index, isLast }) {
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          zIndex: 1,
         }}>
           <span style={{
             fontFamily: font.familyNum,

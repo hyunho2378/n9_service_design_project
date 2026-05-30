@@ -46,7 +46,7 @@ export default function Outro() {
           <h2 style={{
             margin: '0 0 clamp(48px,7vw,96px)',
             fontFamily: font.familyKo,
-            fontSize: 'clamp(30px,4vw,46px)',
+            fontSize: 'clamp(26px,3.4vw,40px)',
             fontWeight: 800,
             lineHeight: 1.3,
             letterSpacing: '-0.02em',

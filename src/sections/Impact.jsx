@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { color, font } from '../tokens/web.js';
 import { useReveal } from '../lib/useReveal.js';
 import SectionHeader from '../components/SectionHeader.jsx';
@@ -104,7 +105,7 @@ export default function Impact() {
           <h2 style={{
             margin: '0 0 clamp(32px,4vw,48px)',
             fontFamily: font.familyKo,
-            fontSize: 'clamp(30px,4vw,46px)',
+            fontSize: 'clamp(26px,3.4vw,40px)',
             fontWeight: 800,
             lineHeight: 1.25,
             letterSpacing: '-0.02em',
@@ -173,7 +174,7 @@ export default function Impact() {
           <h2 style={{
             margin: '0 0 clamp(32px,4vw,48px)',
             fontFamily: font.familyKo,
-            fontSize: 'clamp(24px,3vw,36px)',
+            fontSize: 'clamp(20px,2.5vw,31px)',
             fontWeight: 800,
             letterSpacing: '-0.02em',
             color: color.ink,
@@ -190,7 +191,7 @@ export default function Impact() {
             gap: isMobile ? '16px' : '0',
             marginBottom: 'clamp(40px,5vw,56px)',
           }}>
-            <ProofCard card={impact.expansionProof.cards[0]} />
+            <ProofCard card={impact.expansionProof.cards[0]} imgSrc="/store-n9.jpg" imgLabel="store-n9.jpg 교체 예정" />
             {!isMobile && (
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +199,7 @@ export default function Impact() {
                 </svg>
               </div>
             )}
-            <ProofCard card={impact.expansionProof.cards[1]} />
+            <ProofCard card={impact.expansionProof.cards[1]} imgSrc="/store-hogam.jpg" imgLabel="store-hogam.jpg 교체 예정" />
           </div>
 
           {/* note */}
@@ -289,70 +290,112 @@ function StageCard({ stage, index }) {
   );
 }
 
-function ProofCard({ card }) {
+function StoreImage({ src, label }) {
+  const [failed, setFailed] = useState(false);
+  return (
+    <div style={{
+      width: '100%',
+      aspectRatio: '16 / 9',
+      background: '#F2F2F0',
+      position: 'relative',
+      overflow: 'hidden',
+      flexShrink: 0,
+    }}>
+      {!failed ? (
+        <img
+          src={src}
+          alt=""
+          onError={() => setFailed(true)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        />
+      ) : (
+        <span style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          fontFamily: font.familyKo,
+          fontSize: '11px',
+          color: '#AAAAAA',
+          whiteSpace: 'nowrap',
+        }}>
+          {label}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function ProofCard({ card, imgSrc, imgLabel }) {
   const { no, store, tag, desc, highlight } = card;
   return (
     <div style={{
       background: highlight ? color.primary : color.bgCard,
       border: highlight ? 'none' : `1px solid ${color.line}`,
       borderRadius: '16px',
-      padding: 'clamp(28px,3vw,40px) clamp(24px,3vw,36px)',
+      overflow: 'hidden',
       boxShadow: highlight
         ? '0 8px 32px rgba(2,199,90,0.28)'
         : '0 4px 24px rgba(0,0,0,0.06)',
       display: 'flex',
       flexDirection: 'column',
-      gap: '0',
     }}>
-      <span style={{
-        display: 'block',
-        fontFamily: font.familyNum,
-        fontSize: '11px',
-        fontWeight: 700,
-        letterSpacing: '0.1em',
-        color: highlight ? 'rgba(255,255,255,0.65)' : color.inkMute,
-        marginBottom: '14px',
+      <StoreImage src={imgSrc} label={imgLabel} />
+      <div style={{
+        padding: 'clamp(24px,2.5vw,36px) clamp(24px,3vw,36px) clamp(28px,3vw,40px)',
+        display: 'flex',
+        flexDirection: 'column',
       }}>
-        {no}
-      </span>
-      <h3 style={{
-        margin: '0 0 14px',
-        fontFamily: font.familyKo,
-        fontSize: 'clamp(20px,2vw,28px)',
-        fontWeight: 800,
-        letterSpacing: '-0.02em',
-        color: highlight ? '#FFFFFF' : color.ink,
-        lineHeight: 1.2,
-        wordBreak: 'keep-all',
-      }}>
-        {store}
-      </h3>
-      <span style={{
-        display: 'inline-block',
-        alignSelf: 'flex-start',
-        fontFamily: font.familyKo,
-        fontSize: '11px',
-        fontWeight: 700,
-        color: highlight ? '#FFFFFF' : color.inkSub,
-        background: highlight ? 'rgba(255,255,255,0.20)' : color.bg,
-        borderRadius: '6px',
-        padding: '4px 10px',
-        marginBottom: '20px',
-        letterSpacing: '0.01em',
-      }}>
-        {tag}
-      </span>
-      <p style={{
-        margin: 0,
-        fontFamily: font.familyKo,
-        fontSize: '14px',
-        fontWeight: 500,
-        lineHeight: 1.8,
-        color: highlight ? 'rgba(255,255,255,0.88)' : color.inkSub,
-        wordBreak: 'keep-all',
-      }}>
-        {desc}
-      </p>
+        <span style={{
+          display: 'block',
+          fontFamily: font.familyNum,
+          fontSize: '11px',
+          fontWeight: 700,
+          letterSpacing: '0.1em',
+          color: highlight ? 'rgba(255,255,255,0.65)' : color.inkMute,
+          marginBottom: '14px',
+        }}>
+          {no}
+        </span>
+        <h3 style={{
+          margin: '0 0 14px',
+          fontFamily: font.familyKo,
+          fontSize: 'clamp(20px,2vw,28px)',
+          fontWeight: 800,
+          letterSpacing: '-0.02em',
+          color: highlight ? '#FFFFFF' : color.ink,
+          lineHeight: 1.2,
+          wordBreak: 'keep-all',
+        }}>
+          {store}
+        </h3>
+        <span style={{
+          display: 'inline-block',
+          alignSelf: 'flex-start',
+          fontFamily: font.familyKo,
+          fontSize: '11px',
+          fontWeight: 700,
+          color: highlight ? '#FFFFFF' : color.inkSub,
+          background: highlight ? 'rgba(255,255,255,0.20)' : color.bg,
+          borderRadius: '6px',
+          padding: '4px 10px',
+          marginBottom: '20px',
+          letterSpacing: '0.01em',
+        }}>
+          {tag}
+        </span>
+        <p style={{
+          margin: 0,
+          fontFamily: font.familyKo,
+          fontSize: '14px',
+          fontWeight: 500,
+          lineHeight: 1.8,
+          color: highlight ? 'rgba(255,255,255,0.88)' : color.inkSub,
+          wordBreak: 'keep-all',
+        }}>
+          {desc}
+        </p>
+      </div>
     </div>
   );
 }

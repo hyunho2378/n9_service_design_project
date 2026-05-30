@@ -51,22 +51,17 @@ export default function VoiceOfOwner() {
           {/* 좌측: 사진 placeholder + 오디오 + 날짜 */}
           <div>
             <div style={{
-              background: color.bgCard,
               borderRadius: '12px',
               border: `1px solid ${color.line}`,
               aspectRatio: '4 / 3',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              overflow: 'hidden',
               marginBottom: '16px',
             }}>
-              <span style={{
-                fontFamily: font.familyKo,
-                fontSize: '12px',
-                color: color.inkMute,
-              }}>
-                사장님 사진 교체 예정
-              </span>
+              <img
+                src="/owner-photo.jpg"
+                alt=""
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
 
             <audio

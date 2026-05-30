@@ -230,4 +230,3 @@ function HeroCTA({ href, label, primary = false }) {
     </a>
   );
 }
-
