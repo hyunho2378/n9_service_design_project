@@ -18,6 +18,7 @@ export default function Impact() {
   const [stagesRef,   stagesVis]   = useReveal({ threshold: 0.05 });
   const [reasonsRef,  reasonsVis]  = useReveal({ threshold: 0.05 });
   const [expansionRef, expansionVis] = useReveal({ threshold: 0.08 });
+  const [proofRef,     proofVis]     = useReveal({ threshold: 0.05 });
 
   return (
     <section
@@ -148,6 +149,80 @@ export default function Impact() {
 
         </div>
       </div>
+
+      {/* 확산 실증 — Expansion in Action */}
+      <div ref={proofRef} style={{ ...rev(proofVis), background: color.bg }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)',
+        }}>
+
+          {/* 헤더 */}
+          <p style={{
+            margin: '0 0 10px',
+            fontFamily: font.familyNum,
+            fontSize: '12px',
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: color.primary,
+          }}>
+            {impact.expansionProof.label}
+          </p>
+          <h2 style={{
+            margin: '0 0 clamp(32px,4vw,48px)',
+            fontFamily: font.familyKo,
+            fontSize: 'clamp(24px,3vw,36px)',
+            fontWeight: 800,
+            letterSpacing: '-0.02em',
+            color: color.ink,
+            wordBreak: 'keep-all',
+          }}>
+            {impact.expansionProof.headline}
+          </h2>
+
+          {/* 카드 2개 + 화살표 */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 52px 1fr',
+            alignItems: 'center',
+            gap: isMobile ? '16px' : '0',
+            marginBottom: 'clamp(40px,5vw,56px)',
+          }}>
+            <ProofCard card={impact.expansionProof.cards[0]} />
+            {!isMobile && (
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 13h18M15 6l7 7-7 7" stroke={color.primary} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            )}
+            <ProofCard card={impact.expansionProof.cards[1]} />
+          </div>
+
+          {/* note */}
+          <div style={{
+            borderTop: `1px solid ${color.line}`,
+            paddingTop: 'clamp(24px,3vw,32px)',
+            textAlign: 'center',
+          }}>
+            <p style={{
+              margin: 0,
+              fontFamily: font.familyKo,
+              fontSize: 'clamp(15px,1.4vw,18px)',
+              fontWeight: 700,
+              lineHeight: 1.85,
+              color: color.inkSub,
+              wordBreak: 'keep-all',
+            }}>
+              {impact.expansionProof.note}
+            </p>
+          </div>
+
+        </div>
+      </div>
+
     </section>
   );
 }
@@ -209,6 +284,74 @@ function StageCard({ stage, index }) {
         wordBreak: 'keep-all',
       }}>
         {stage.desc}
+      </p>
+    </div>
+  );
+}
+
+function ProofCard({ card }) {
+  const { no, store, tag, desc, highlight } = card;
+  return (
+    <div style={{
+      background: highlight ? color.primary : color.bgCard,
+      border: highlight ? 'none' : `1px solid ${color.line}`,
+      borderRadius: '16px',
+      padding: 'clamp(28px,3vw,40px) clamp(24px,3vw,36px)',
+      boxShadow: highlight
+        ? '0 8px 32px rgba(2,199,90,0.28)'
+        : '0 4px 24px rgba(0,0,0,0.06)',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0',
+    }}>
+      <span style={{
+        display: 'block',
+        fontFamily: font.familyNum,
+        fontSize: '11px',
+        fontWeight: 700,
+        letterSpacing: '0.1em',
+        color: highlight ? 'rgba(255,255,255,0.65)' : color.inkMute,
+        marginBottom: '14px',
+      }}>
+        {no}
+      </span>
+      <h3 style={{
+        margin: '0 0 14px',
+        fontFamily: font.familyKo,
+        fontSize: 'clamp(20px,2vw,28px)',
+        fontWeight: 800,
+        letterSpacing: '-0.02em',
+        color: highlight ? '#FFFFFF' : color.ink,
+        lineHeight: 1.2,
+        wordBreak: 'keep-all',
+      }}>
+        {store}
+      </h3>
+      <span style={{
+        display: 'inline-block',
+        alignSelf: 'flex-start',
+        fontFamily: font.familyKo,
+        fontSize: '11px',
+        fontWeight: 700,
+        color: highlight ? '#FFFFFF' : color.inkSub,
+        background: highlight ? 'rgba(255,255,255,0.20)' : color.bg,
+        borderRadius: '6px',
+        padding: '4px 10px',
+        marginBottom: '20px',
+        letterSpacing: '0.01em',
+      }}>
+        {tag}
+      </span>
+      <p style={{
+        margin: 0,
+        fontFamily: font.familyKo,
+        fontSize: '14px',
+        fontWeight: 500,
+        lineHeight: 1.8,
+        color: highlight ? 'rgba(255,255,255,0.88)' : color.inkSub,
+        wordBreak: 'keep-all',
+      }}>
+        {desc}
       </p>
     </div>
   );
