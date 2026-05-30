@@ -62,22 +62,43 @@ export default function DeskResearch() {
                 padding: '32px 24px',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: chart.type === 'compare_bar' ? 'stretch' : 'center',
-                justifyContent: chart.type === 'arrow' ? 'center' : 'flex-start',
-                textAlign: chart.type === 'compare_bar' ? 'left' : 'center',
+                alignItems: 'stretch',
+                textAlign: 'left',
               }}
             >
-              {chart.type === 'donut' ? (
-                <DonutChart
-                  value={chart.value}
-                  unit={chart.unit}
-                  caption={chart.caption}
-                  source={chart.source}
-                />
-              ) : chart.type === 'compare_bar' ? (
-                <CompareBar chart={chart} />
-              ) : (
-                <ArrowStat chart={chart} />
+              {/* 차트 콘텐츠 — flex:1로 남은 공간 차지 */}
+              <div style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: chart.type === 'arrow' ? 'center' : 'flex-start',
+                width: '100%',
+              }}>
+                {chart.type === 'donut' ? (
+                  <DonutChart
+                    value={chart.value}
+                    unit={chart.unit}
+                    caption={chart.caption}
+                  />
+                ) : chart.type === 'compare_bar' ? (
+                  <CompareBar chart={chart} />
+                ) : (
+                  <ArrowStat chart={chart} />
+                )}
+              </div>
+
+              {/* 출처 — 항상 카드 하단, 동일 스타일 */}
+              {chart.source && (
+                <p style={{
+                  margin: '20px 0 0',
+                  fontFamily: font.familyKo,
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: color.inkMute,
+                  textAlign: 'left',
+                }}>
+                  출처: {chart.source}
+                </p>
               )}
             </div>
           ))}
@@ -170,7 +191,7 @@ function CompareBar({ chart }) {
               <span style={{
                 fontFamily: font.familyNum,
                 fontSize: '18px',
-                fontWeight: 800,
+                fontWeight: 700,
                 color: color.primary,
                 letterSpacing: '-0.02em',
               }}>
@@ -194,17 +215,6 @@ function CompareBar({ chart }) {
           </div>
         ))}
       </div>
-      {chart.source && (
-        <p style={{
-          margin: '20px 0 0',
-          fontFamily: font.familyKo,
-          fontSize: '14px',
-          fontWeight: 500,
-          color: color.inkMute,
-        }}>
-          {chart.source}
-        </p>
-      )}
     </div>
   );
 }
@@ -224,7 +234,7 @@ function ArrowStat({ chart }) {
           <span style={{
             fontFamily: font.familyNum,
             fontSize: '28px',
-            fontWeight: 700,
+            fontWeight: 600,
             color: color.primary,
             lineHeight: 1,
           }}>{chart.prefix}</span>
@@ -232,7 +242,7 @@ function ArrowStat({ chart }) {
         <span style={{
           fontFamily: font.familyNum,
           fontSize: '52px',
-          fontWeight: 800,
+          fontWeight: 700,
           color: color.ink,
           lineHeight: 1,
           letterSpacing: '-0.03em',
@@ -240,7 +250,7 @@ function ArrowStat({ chart }) {
         <span style={{
           fontFamily: font.familyNum,
           fontSize: '22px',
-          fontWeight: 700,
+          fontWeight: 600,
           color: color.inkSub,
           lineHeight: 1,
         }}>{chart.unit}</span>
@@ -253,15 +263,6 @@ function ArrowStat({ chart }) {
           fontWeight: 500,
           color: color.inkSub,
         }}>{chart.caption}</p>
-      )}
-      {chart.source && (
-        <p style={{
-          margin: 0,
-          fontFamily: font.familyKo,
-          fontSize: '14px',
-          fontWeight: 500,
-          color: color.inkMute,
-        }}>{chart.source}</p>
       )}
     </div>
   );

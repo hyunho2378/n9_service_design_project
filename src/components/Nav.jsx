@@ -75,7 +75,7 @@ export default function Nav() {
               margin: 0,
               padding: 0,
               flex: 1,
-              justifyContent: 'center',
+              justifyContent: 'flex-end',
             }}
           >
             {LINKS.map(({ label, to }) => (

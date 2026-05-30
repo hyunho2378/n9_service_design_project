@@ -41,7 +41,7 @@ export default function DonutChart({ value, unit = '%', maxValue = 100, caption,
           dominantBaseline="middle"
           fontFamily={font.familyNum}
           fontSize="20"
-          fontWeight="700"
+          fontWeight="600"
           fill={color.ink}
         >
           {value}
