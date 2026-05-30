@@ -5,7 +5,6 @@ export default function NextTabCTA({ label, to }) {
   return (
     <div style={{
       background: color.bg,
-      borderTop: `1px solid ${color.line}`,
       padding: 'clamp(40px,5vw,64px) clamp(32px,7vw,120px)',
       display: 'flex',
       flexDirection: 'column',

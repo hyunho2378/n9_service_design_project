@@ -61,16 +61,15 @@ export default function LiveDemo() {
           </div>
 
           {/* 우: 서비스 이미지 + 버튼 */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
             <img
               src="/servicemain.png"
               alt=""
               style={{
-                width: '100%',
-                height: 'auto',
+                maxHeight: 'clamp(120px,14vw,200px)',
+                width: 'auto',
+                maxWidth: '100%',
                 display: 'block',
-                borderRadius: '12px',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
               }}
             />
             <a
@@ -135,6 +134,7 @@ function StackGroup({ category, items }) {
         gap: '24px',
         flexWrap: 'wrap',
         alignItems: 'flex-start',
+        justifyContent: 'center',
       }}>
         {items.map((item) => (
           <div key={item} style={{

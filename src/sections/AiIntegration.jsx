@@ -60,23 +60,23 @@ function PersonaColumn({ data, side }) {
       gap: '14px',
     }}>
       {/* Role label */}
-      <div style={{ textAlign: isLeft ? 'right' : 'left' }}>
+      <div style={{ textAlign: 'center' }}>
         <span style={{
           fontFamily: font.familyNum,
-          fontSize: '11px',
+          fontSize: '13px',
           fontWeight: 700,
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
           color: color.primary,
           display: 'block',
-          marginBottom: '4px',
+          marginBottom: '6px',
         }}>
           {data.role}
         </span>
         <span style={{
           fontFamily: font.familyKo,
-          fontSize: '15px',
-          fontWeight: 700,
+          fontSize: '20px',
+          fontWeight: 800,
           color: color.ink,
         }}>
           {data.label}
@@ -113,7 +113,7 @@ function QACard({ label, text, align, isAnswer }) {
       <p style={{
         margin: 0,
         fontFamily: font.familyKo,
-        fontSize: '13px',
+        fontSize: '15px',
         lineHeight: 1.65,
         color: isAnswer ? color.ink : color.inkSub,
         wordBreak: 'keep-all',
@@ -148,9 +148,9 @@ function AiCenter({ data }) {
       }}>
         <span style={{
           fontFamily: font.familyNum,
-          fontSize: '10px',
-          fontWeight: 700,
-          letterSpacing: '0.08em',
+          fontSize: '15px',
+          fontWeight: 800,
+          letterSpacing: '0.06em',
           color: '#FFFFFF',
         }}>
           N9 AI
@@ -158,11 +158,11 @@ function AiCenter({ data }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: 'clamp(10px,1vw,12px)',
+          fontSize: 'clamp(11px,1.1vw,14px)',
           fontWeight: 700,
           color: '#FFFFFF',
           textAlign: 'center',
-          padding: '0 12px',
+          padding: '0 10px',
           lineHeight: 1.45,
           wordBreak: 'keep-all',
         }}>

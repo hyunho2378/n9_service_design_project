@@ -67,26 +67,17 @@ function ScreenItem({ screen, isMobile }) {
       flexDirection: 'column',
       alignItems: 'center',
     }}>
-      {/* 이미지 — 고정 비율 박스로 크기 통일 */}
-      <div style={{
-        width: '100%',
-        aspectRatio: PHONE_RATIO,
-        borderRadius: '14px',
-        overflow: 'hidden',
-        background: '#F2F2F0',
-      }}>
-        <img
-          src={`/ai-screen-${screen.no}.png`}
-          alt=""
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            objectPosition: 'top center',
-            display: 'block',
-          }}
-        />
-      </div>
+      {/* 이미지 — 자연 비율, 배경 없음 */}
+      <img
+        src={`/ai-screen-${screen.no}.png`}
+        alt=""
+        style={{
+          width: '100%',
+          height: 'auto',
+          display: 'block',
+          borderRadius: '14px',
+        }}
+      />
 
       {/* 코치마크 라벨 */}
       <div style={{

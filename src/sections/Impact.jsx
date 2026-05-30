@@ -130,6 +130,7 @@ export default function Impact() {
               lineHeight: 1.8,
               color: '#FFFFFF',
               wordBreak: 'keep-all',
+              whiteSpace: 'pre-line',
             }}>
               {impact.marketDemand}
             </p>
@@ -144,6 +145,7 @@ export default function Impact() {
             lineHeight: 1.8,
             color: '#FFFFFF',
             wordBreak: 'keep-all',
+            whiteSpace: 'pre-line',
           }}>
             {impact.socialValue}
           </p>
@@ -235,7 +237,7 @@ function StageCard({ stage, index }) {
     <div style={{
       background: highlight ? color.primary : color.bg,
       borderRadius: '12px',
-      border: 'none',
+      border: highlight ? 'none' : '1px solid #0A0A0A',
       boxShadow: highlight
         ? '0 8px 32px rgba(2,199,90,0.2)'
         : '0 4px 24px rgba(0,0,0,0.06)',

@@ -76,7 +76,7 @@ function DeliverableCard({ item }) {
       boxShadow: highlight
         ? '0 8px 32px rgba(2,199,90,0.2)'
         : '0 4px 24px rgba(0,0,0,0.06)',
-      border: 'none',
+      border: highlight ? 'none' : '1px solid #0A0A0A',
       padding: '28px 24px',
       display: 'flex',
       flexDirection: 'column',

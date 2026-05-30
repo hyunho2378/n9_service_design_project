@@ -59,33 +59,42 @@ export default function OfflineTouchpoints() {
 
 function SlotImg({ filename }) {
   const [failed, setFailed] = useState(false);
-  return failed ? (
+  return (
     <div style={{
       width: '100%',
-      aspectRatio: '4 / 3',
-      background: '#F2F2F0',
+      height: 'clamp(80px, 10vw, 130px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      overflow: 'hidden',
+      padding: '8px',
+      boxSizing: 'border-box',
     }}>
-      <span style={{
-        fontFamily: font.familyKo,
-        fontSize: '9px',
-        color: '#AAAAAA',
-        textAlign: 'center',
-        padding: '0 6px',
-        wordBreak: 'break-all',
-      }}>
-        {filename}
-      </span>
+      {failed ? (
+        <span style={{
+          fontFamily: font.familyKo,
+          fontSize: '9px',
+          color: '#AAAAAA',
+          textAlign: 'center',
+          wordBreak: 'break-all',
+        }}>
+          {filename}
+        </span>
+      ) : (
+        <img
+          src={`/${filename}`}
+          alt=""
+          onError={() => setFailed(true)}
+          style={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            width: 'auto',
+            height: 'auto',
+            display: 'block',
+          }}
+        />
+      )}
     </div>
-  ) : (
-    <img
-      src={`/${filename}`}
-      alt=""
-      onError={() => setFailed(true)}
-      style={{ width: '100%', height: 'auto', display: 'block' }}
-    />
   );
 }
 

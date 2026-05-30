@@ -13,23 +13,45 @@ const rev = (vis, delay = 0) => ({
   transition: `opacity 0.7s ease-out ${delay}s, transform 0.7s ease-out ${delay}s`,
 });
 
-function DashImg({ src, label }) {
+function DashImg({ src, label, maxHeight }) {
   const [failed, setFailed] = useState(false);
-  return failed ? (
-    <div style={{
-      width: '100%',
-      aspectRatio: '16 / 9',
-      background: '#F2F2F0',
-      borderRadius: '12px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-      <span style={{ fontFamily: font.familyKo, fontSize: '11px', color: '#AAAAAA' }}>
-        {label}
-      </span>
-    </div>
-  ) : (
+  if (failed) {
+    return (
+      <div style={{
+        width: '100%',
+        aspectRatio: '16 / 9',
+        background: '#F2F2F0',
+        borderRadius: '12px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <span style={{ fontFamily: font.familyKo, fontSize: '11px', color: '#AAAAAA' }}>
+          {label}
+        </span>
+      </div>
+    );
+  }
+  if (maxHeight) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <img
+          src={src}
+          alt=""
+          onError={() => setFailed(true)}
+          style={{
+            maxHeight,
+            width: 'auto',
+            maxWidth: '100%',
+            display: 'block',
+            borderRadius: '12px',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+          }}
+        />
+      </div>
+    );
+  }
+  return (
     <img
       src={src}
       alt=""
@@ -72,10 +94,10 @@ export default function Dashboard() {
           }}>
             {[
               { src: '/dashboard-neondb.png', caption: '01  NeonDB · 손님 응답 자동 저장' },
-              { src: '/dashboard-page.png',   caption: '02  OWNER DASHBOARD · 날짜별 손님 데이터' },
-            ].map(({ src, caption }) => (
+              { src: '/dashboard-page.png',   caption: '02  OWNER DASHBOARD · 날짜별 손님 데이터', maxHeight: 'clamp(180px,22vw,300px)' },
+            ].map(({ src, caption, maxHeight }) => (
               <div key={src} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <DashImg src={src} label={src.replace('/', '')} />
+                <DashImg src={src} label={src.replace('/', '')} maxHeight={maxHeight} />
                 <p style={{
                   margin: 0,
                   fontFamily: font.familyNum,
@@ -91,8 +113,8 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* 버튼 + 캡션 */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+          {/* 버튼 + 캡션 — 우측 정렬 */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '14px' }}>
             <a
               href="https://numer9-ai-service.vercel.app/stats"
               target="_blank"
@@ -117,7 +139,7 @@ export default function Dashboard() {
               대시보드 페이지 바로가기
             </a>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', textAlign: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'right' }}>
               <p style={{
                 margin: 0,
                 fontFamily: font.familyKo,
@@ -150,7 +172,7 @@ export default function Dashboard() {
                 color: color.primary,
                 wordBreak: 'keep-all',
               }}>
-                심사 기간 한정으로 공개되며, 임시 접속 비밀번호는 6424입니다.
+                심사 기간 한정으로 공개되며, 접속 비밀번호는 6424입니다.
               </p>
             </div>
           </div>

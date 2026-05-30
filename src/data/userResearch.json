@@ -253,7 +253,7 @@
   },
   "researchToSolution": {
     "label": "RESEARCH TO SOLUTION",
-    "headline": "리서치가 솔루션으로 이어졌습니다",
+    "headline": "리서치가 솔루션으로 이어졌습니다.",
     "mappings": [
       {
         "insight": "사진 및 이미지 의존",

@@ -81,7 +81,7 @@ export default function UserResearch() {
 
       {/* ━━ 02 정량 · Survey ━━ */}
       <div style={{ background: color.bg }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -102,8 +102,8 @@ export default function UserResearch() {
               ...rev(respondVis),
               display: 'grid',
               gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-              gap: '12px',
-              marginBottom: '16px',
+              gap: '10px',
+              marginBottom: '12px',
             }}
           >
             {ur.survey.respondents.map((r, i) => (
@@ -113,7 +113,7 @@ export default function UserResearch() {
                 style={{
                   background: i === 0 ? color.primary : color.bgCard,
                   borderRadius: '10px',
-                  padding: '18px 14px',
+                  padding: '10px 10px',
                   textAlign: 'center',
                   boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
                 }}
@@ -121,12 +121,12 @@ export default function UserResearch() {
                 <span style={{
                   display: 'block',
                   fontFamily: font.familyNum,
-                  fontSize: 'clamp(32px,4vw,48px)',
+                  fontSize: 'clamp(22px,2.8vw,32px)',
                   fontWeight: 800,
                   lineHeight: 1,
                   letterSpacing: '-0.04em',
                   color: i === 0 ? '#FFFFFF' : color.primary,
-                  marginBottom: '6px',
+                  marginBottom: '4px',
                 }}>
                   {rRefs[i][1]}
                 </span>
@@ -238,7 +238,7 @@ export default function UserResearch() {
                 gap: '12px',
               }}
             >
-              {ur.survey.charts.slice(1).map((chart, i) => (
+              {ur.survey.charts.slice(1, 2).map((chart, i) => (
                 <div
                   key={i}
                   style={{
@@ -266,7 +266,7 @@ export default function UserResearch() {
 
       {/* ━━ 03 정성 · Interview ━━ */}
       <div style={{ background: color.bgCard }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -275,7 +275,7 @@ export default function UserResearch() {
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
             color: color.primary,
-            margin: '0 0 20px',
+            margin: '0 0 12px',
           }}>
             {ur.interview.label}
           </p>
@@ -293,20 +293,20 @@ export default function UserResearch() {
             </p>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
-              gap: '10px',
-              marginBottom: '20px',
+              gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(6, 1fr)',
+              gap: '8px',
+              marginBottom: '14px',
             }}>
               {ur.interview.interviewees.map((p, idx) => (
                 <div
                   key={idx}
                   style={{
                     background: color.bg,
-                    borderRadius: '10px',
-                    padding: '12px 14px',
+                    borderRadius: '8px',
+                    padding: '8px 10px',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '5px',
+                    gap: '3px',
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
@@ -412,8 +412,12 @@ export default function UserResearch() {
               }}>
                 참여자 발화
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {ur.interview.quotes.map((q, i) => (
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : '1fr',
+                gap: '8px',
+              }}>
+                {ur.interview.quotes.slice(0, 3).map((q, i) => (
                   <QuoteCard
                     key={i}
                     text={q.text}
@@ -430,7 +434,7 @@ export default function UserResearch() {
 
       {/* ━━ 04 교차분석 ━━ */}
       <div style={{ background: color.bg }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -448,7 +452,7 @@ export default function UserResearch() {
             fontSize: 'clamp(20px,2.5vw,30px)',
             fontWeight: 700,
             color: color.ink,
-            margin: '0 0 28px',
+            margin: '0 0 16px',
             letterSpacing: '-0.02em',
           }}>
             {ur.crossAnalysis.headline}
@@ -461,7 +465,7 @@ export default function UserResearch() {
               ...rev(convergedVis),
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-              gap: '20px',
+              gap: '14px',
               alignItems: 'start',
             }}
           >
@@ -472,8 +476,8 @@ export default function UserResearch() {
                 ko="설문과 인터뷰가 같았던 것"
                 highlight
               />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {ur.crossAnalysis.converged.map((item, i) => (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {ur.crossAnalysis.converged.filter((_, i) => i === 0 || i === 3).map((item, i) => (
                   <ConvergedCard key={i} item={item} />
                 ))}
               </div>
@@ -485,8 +489,8 @@ export default function UserResearch() {
                 en="DIVERGENT SIGNALS"
                 ko="설문과 인터뷰가 달랐던 것"
               />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {ur.crossAnalysis.diverged.map((item, i) => (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {ur.crossAnalysis.diverged.slice(1).map((item, i) => (
                   <SimpleCard key={i} item={item} />
                 ))}
               </div>
@@ -498,8 +502,8 @@ export default function UserResearch() {
                 en="LATENT NEEDS"
                 ko="숨어있던 진짜 니즈"
               />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {ur.crossAnalysis.surprising.map((item, i) => (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {ur.crossAnalysis.surprising.slice(1).map((item, i) => (
                   <SimpleCard key={i} item={item} />
                 ))}
               </div>
@@ -511,7 +515,7 @@ export default function UserResearch() {
 
       {/* ━━ 05 Research → Solution ━━ */}
       <div style={{ background: color.bgCard }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
           <div ref={solutionRef} style={rev(solutionVis)}>
             <p style={{
               fontFamily: font.familyNum,
@@ -520,28 +524,28 @@ export default function UserResearch() {
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
               color: color.primary,
-              margin: '0 0 8px',
+              margin: '0 0 6px',
             }}>
               {ur.researchToSolution.label}
             </p>
             <p style={{
               fontFamily: font.familyKo,
-              fontSize: 'clamp(20px,2.5vw,30px)',
+              fontSize: 'clamp(18px,2vw,26px)',
               fontWeight: 700,
               color: color.ink,
-              margin: '0 0 20px',
+              margin: '0 0 14px',
               letterSpacing: '-0.02em',
             }}>
               {ur.researchToSolution.headline}
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {/* 헤더 행 */}
               <div style={{
                 display: isMobile ? 'none' : 'grid',
                 gridTemplateColumns: '2fr 1fr 2fr',
-                gap: '16px',
-                padding: '0 16px',
+                gap: '12px',
+                padding: '0 14px',
               }}>
                 {['인사이트', '수치', '솔루션'].map((h) => (
                   <span key={h} style={{
@@ -557,8 +561,8 @@ export default function UserResearch() {
                 ))}
               </div>
 
-              {/* 데이터 행 */}
-              {ur.researchToSolution.mappings.map((m, i) => (
+              {/* 데이터 행 — 3개만 */}
+              {ur.researchToSolution.mappings.filter((_, i) => i === 0 || i === 1 || i === 4).map((m, i) => (
                 <div
                   key={i}
                   style={{
@@ -567,7 +571,7 @@ export default function UserResearch() {
                     gap: '12px',
                     background: color.bg,
                     borderRadius: '8px',
-                    padding: '13px 16px',
+                    padding: '10px 14px',
                     alignItems: 'center',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                   }}
@@ -589,13 +593,10 @@ export default function UserResearch() {
                   }}>
                     {m.value}
                   </span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-                    <span style={{
-                      fontFamily: font.familyNum,
-                      fontSize: '12px',
-                      color: color.primary,
-                      flexShrink: 0,
-                    }}>→</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
+                      <path d="M3 8h10M9 4.5l4 3.5-4 3.5" stroke={color.primary} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                     <span style={{
                       fontFamily: font.familyKo,
                       fontSize: '13px',
