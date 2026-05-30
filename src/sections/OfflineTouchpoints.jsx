@@ -42,14 +42,13 @@ export default function OfflineTouchpoints() {
           ref={itemsRef}
           style={{
             ...rev(itemsVis),
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+            display: 'flex',
+            flexDirection: 'column',
             gap: '24px',
-            alignItems: 'start',
           }}
         >
           {offline.items.map((item, i) => (
-            <TouchpointCard key={i} item={item} imgPair={IMAGE_PAIRS[i]} />
+            <TouchpointCard key={i} item={item} imgPair={IMAGE_PAIRS[i]} isMobile={isMobile} />
           ))}
         </div>
 
@@ -90,7 +89,7 @@ function SlotImg({ filename }) {
   );
 }
 
-function TouchpointCard({ item, imgPair }) {
+function TouchpointCard({ item, imgPair, isMobile }) {
   return (
     <div style={{
       background: color.bgCard,
@@ -100,40 +99,43 @@ function TouchpointCard({ item, imgPair }) {
       display: 'flex',
       flexDirection: 'column',
     }}>
-      {/* Before */}
-      <div style={{ position: 'relative' }}>
-        <SlotImg filename={imgPair.before} />
-        <span style={{
-          position: 'absolute', top: '8px', left: '8px',
-          fontFamily: font.familyNum, fontSize: '9px', fontWeight: 700,
-          letterSpacing: '0.06em', textTransform: 'uppercase',
-          color: color.inkMute,
-          background: 'rgba(255,255,255,0.88)',
-          padding: '2px 6px', borderRadius: '4px',
-        }}>
-          Before
-        </span>
-      </div>
+      {/* Before | After 가로 나란히 */}
+      <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row' }}>
+        {/* Before (좌) */}
+        <div style={{ flex: 1, position: 'relative', minWidth: 0 }}>
+          <SlotImg filename={imgPair.before} />
+          <span style={{
+            position: 'absolute', top: '8px', left: '8px',
+            fontFamily: font.familyNum, fontSize: '9px', fontWeight: 700,
+            letterSpacing: '0.06em', textTransform: 'uppercase',
+            color: color.inkMute,
+            background: 'rgba(255,255,255,0.88)',
+            padding: '2px 6px', borderRadius: '4px',
+          }}>
+            Before
+          </span>
+        </div>
 
-      {/* After */}
-      <div style={{ position: 'relative', border: `2px solid ${color.primary}` }}>
-        <SlotImg filename={imgPair.after} />
-        <span style={{
-          position: 'absolute', top: '8px', left: '8px',
-          fontFamily: font.familyNum, fontSize: '9px', fontWeight: 700,
-          letterSpacing: '0.06em', textTransform: 'uppercase',
-          color: '#FFFFFF',
-          background: color.primary,
-          padding: '2px 6px', borderRadius: '4px',
-        }}>
-          After
-        </span>
+        {/* After (우) — 그린 스트로크 */}
+        <div style={{ flex: 1, position: 'relative', minWidth: 0, outline: `2px solid ${color.primary}` }}>
+          <SlotImg filename={imgPair.after} />
+          <span style={{
+            position: 'absolute', top: '8px', left: '8px',
+            fontFamily: font.familyNum, fontSize: '9px', fontWeight: 700,
+            letterSpacing: '0.06em', textTransform: 'uppercase',
+            color: '#FFFFFF',
+            background: color.primary,
+            padding: '2px 6px', borderRadius: '4px',
+          }}>
+            After
+          </span>
+        </div>
       </div>
 
       {/* 텍스트 */}
-      <div style={{ padding: '20px 22px 24px', flex: 1 }}>
+      <div style={{ padding: '20px 22px 24px' }}>
         <h3 style={{
-          margin: '0 0 10px',
+          margin: '0 0 8px',
           fontFamily: font.familyKo,
           fontSize: '18px',
           fontWeight: 700,
@@ -145,7 +147,7 @@ function TouchpointCard({ item, imgPair }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: '16px',
+          fontSize: '15px',
           fontWeight: 500,
           lineHeight: 1.75,
           color: color.inkSub,

@@ -6,6 +6,9 @@ import n9 from '../data/n9.json';
 
 const { liveDemo } = n9;
 
+const ITEM_WIDTH = 160; // px — 5개 × 160 + 4 × 16gap = 864px, 여유있게 수용
+const PHONE_RATIO = '9 / 19'; // 폰 스크린 비율 고정
+
 const rev = (vis, delay = 0) => ({
   opacity: vis ? 1 : 0,
   transform: vis ? 'none' : 'translateY(24px)',
@@ -25,34 +28,106 @@ export default function KeyScreens() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)' }}>
 
         <div ref={headerRef} style={rev(headerVis)}>
-          <SectionHeader label={liveDemo.label} headline={liveDemo.headline} />
+          <SectionHeader label="LAYER 03 / PROTOTYPE" headline={liveDemo.headline} />
         </div>
 
+        {/* 스크롤 래퍼: 모바일만 overflow-x */}
         <div
           ref={bodyRef}
           style={{
             ...rev(bodyVis),
-            display: 'grid',
-            gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
-            gap: '12px',
+            overflowX: isMobile ? 'auto' : 'visible',
+            paddingBottom: isMobile ? '8px' : 0,
           }}
         >
-          {liveDemo.screens.map((screen) => (
-            <img
-              key={screen.no}
-              src={`/ai-screen-${screen.no}.png`}
-              alt=""
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                borderRadius: '16px',
-              }}
-            />
-          ))}
+          <div style={{
+            display: 'flex',
+            gap: '16px',
+            width: isMobile ? 'max-content' : '100%',
+            justifyContent: isMobile ? 'flex-start' : 'space-between',
+          }}>
+            {liveDemo.screens.map((screen) => (
+              <ScreenItem key={screen.no} screen={screen} isMobile={isMobile} />
+            ))}
+          </div>
         </div>
 
       </div>
     </section>
+  );
+}
+
+function ScreenItem({ screen, isMobile }) {
+  return (
+    <div style={{
+      width: isMobile ? `${ITEM_WIDTH}px` : 0,
+      flex: isMobile ? 'none' : 1,
+      flexShrink: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}>
+      {/* 이미지 — 고정 비율 박스로 크기 통일 */}
+      <div style={{
+        width: '100%',
+        aspectRatio: PHONE_RATIO,
+        borderRadius: '14px',
+        overflow: 'hidden',
+        background: '#F2F2F0',
+      }}>
+        <img
+          src={`/ai-screen-${screen.no}.png`}
+          alt=""
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            objectPosition: 'top center',
+            display: 'block',
+          }}
+        />
+      </div>
+
+      {/* 코치마크 라벨 */}
+      <div style={{
+        marginTop: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '5px',
+        width: '100%',
+      }}>
+        <div style={{
+          width: '20px',
+          height: '20px',
+          borderRadius: '50%',
+          background: color.primary,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+        }}>
+          <span style={{
+            fontFamily: font.familyNum,
+            fontSize: '10px',
+            fontWeight: 700,
+            color: '#FFFFFF',
+          }}>
+            {screen.no}
+          </span>
+        </div>
+        <span style={{
+          fontFamily: font.familyKo,
+          fontSize: '11px',
+          fontWeight: 600,
+          color: color.ink,
+          textAlign: 'center',
+          lineHeight: 1.4,
+          wordBreak: 'keep-all',
+        }}>
+          {screen.label}
+        </span>
+      </div>
+    </div>
   );
 }
