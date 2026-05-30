@@ -54,8 +54,6 @@ export default function AutoResponse() {
                   maxWidth: '360px',
                   height: 'auto',
                   display: 'block',
-                  borderRadius: '16px',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
                 }}
               />
             </div>

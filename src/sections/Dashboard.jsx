@@ -63,15 +63,32 @@ export default function Dashboard() {
 
         <div ref={bodyRef} style={rev(bodyVis)}>
 
-          {/* 이미지 2개 */}
+          {/* 이미지 2개 + 라벨 */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
             gap: '20px',
             marginBottom: 'clamp(32px,4vw,48px)',
           }}>
-            <DashImg src="/dashboard-neondb.png" label="dashboard-neondb.png" />
-            <DashImg src="/dashboard-page.png"   label="dashboard-page.png" />
+            {[
+              { src: '/dashboard-neondb.png', caption: '01  NeonDB · 손님 응답 자동 저장' },
+              { src: '/dashboard-page.png',   caption: '02  OWNER DASHBOARD · 날짜별 손님 데이터' },
+            ].map(({ src, caption }) => (
+              <div key={src} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <DashImg src={src} label={src.replace('/', '')} />
+                <p style={{
+                  margin: 0,
+                  fontFamily: font.familyNum,
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  letterSpacing: '0.04em',
+                  color: color.primary,
+                  textAlign: 'center',
+                }}>
+                  {caption}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* 버튼 + 캡션 */}
@@ -123,6 +140,17 @@ export default function Dashboard() {
                 wordBreak: 'keep-all',
               }}>
                 백엔드 데이터 서버가 켜지는 데 시간이 소요될 수 있습니다.
+              </p>
+              <p style={{
+                margin: 0,
+                fontFamily: font.familyKo,
+                fontSize: '13px',
+                fontWeight: 700,
+                lineHeight: 1.75,
+                color: color.primary,
+                wordBreak: 'keep-all',
+              }}>
+                심사 기간 한정으로 공개되며, 임시 접속 비밀번호는 6424입니다.
               </p>
             </div>
           </div>
