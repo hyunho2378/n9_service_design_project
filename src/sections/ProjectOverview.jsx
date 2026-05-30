@@ -3,7 +3,7 @@ import { useReveal } from '../lib/useReveal.js';
 import SectionHeader from '../components/SectionHeader.jsx';
 import n9 from '../data/n9.json';
 
-const { meta, overview } = n9;
+const { overview } = n9;
 
 export default function ProjectOverview() {
   const [headerRef, headerVisible] = useReveal({ threshold: 0.1 });
@@ -29,7 +29,7 @@ export default function ProjectOverview() {
             transition: 'opacity 0.7s ease-out, transform 0.7s ease-out',
           }}
         >
-          <SectionHeader label="PROJECT OVERVIEW" headline={meta.subtitle} />
+          <SectionHeader label="PROJECT OVERVIEW" headline={overview.headline} />
 
           <p style={{
             fontFamily: font.familyKo,

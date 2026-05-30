@@ -165,35 +165,17 @@ function MobileMetrics() {
 
 function QuoteBlock({ text }) {
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'flex-start',
-      gap: 'clamp(12px,2vw,24px)',
+    <p style={{
+      margin: 0,
+      fontFamily: font.familyKo,
+      fontSize: 'clamp(16px,2vw,28px)',
+      fontWeight: 700,
+      lineHeight: 1.8,
+      color: '#FFFFFF',
+      wordBreak: 'keep-all',
+      textAlign: 'center',
     }}>
-      <span style={{
-        fontFamily: font.familyNum,
-        fontSize: 'clamp(64px,8vw,92px)',
-        lineHeight: 0.8,
-        color: color.primary,
-        fontWeight: 700,
-        flexShrink: 0,
-        userSelect: 'none',
-        marginTop: '4px',
-      }}>
-        "
-      </span>
-      <p style={{
-        margin: 0,
-        fontFamily: font.familyKo,
-        fontSize: 'clamp(16px,2vw,28px)',
-        fontWeight: 700,
-        lineHeight: 1.8,
-        color: '#FFFFFF',
-        wordBreak: 'keep-all',
-        paddingTop: 'clamp(16px,2vw,28px)',
-      }}>
-        {text}
-      </p>
-    </div>
+      {text}
+    </p>
   );
 }

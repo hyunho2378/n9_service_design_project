@@ -97,7 +97,7 @@ function TimelineNode({ item, index }) {
         height: '40px',
         borderRadius: '50%',
         background: highlight ? color.primary : color.bgCard,
-        border: highlight ? `2px solid ${color.primary}` : 'none',
+        border: highlight ? `2px solid ${color.primary}` : `2px solid ${color.ink}`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -163,6 +163,7 @@ function ConversationQuote({ data, label, isAfter }) {
       background: isAfter ? color.bg : color.bgCard,
       borderRadius: '12px',
       padding: '24px 28px',
+      border: `1.5px solid ${color.primary}`,
     }}>
       <span style={{
         fontFamily: font.familyNum,
