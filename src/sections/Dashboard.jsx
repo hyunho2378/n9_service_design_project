@@ -70,7 +70,7 @@ function DashImg({ src, label, maxHeight }) {
 export default function Dashboard() {
   const isMobile = useIsMobile();
   const [headerRef, headerVis] = useReveal({ threshold: 0.1 });
-  const [bodyRef,   bodyVis]   = useReveal({ threshold: 0.05 });
+  const [bodyRef, bodyVis] = useReveal({ threshold: 0.05 });
 
   return (
     <section
@@ -94,7 +94,7 @@ export default function Dashboard() {
           }}>
             {[
               { src: '/dashboard-neondb.png', caption: '01  NeonDB · 손님 응답 자동 저장' },
-              { src: '/dashboard-page.png',   caption: '02  OWNER DASHBOARD · 날짜별 손님 데이터', maxHeight: 'clamp(180px,22vw,300px)' },
+              { src: '/dashboard-page.png', caption: '02  OWNER DASHBOARD · 날짜별 손님 데이터', maxHeight: 'clamp(180px,22vw,300px)' },
             ].map(({ src, caption, maxHeight }) => (
               <div key={src} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <DashImg src={src} label={src.replace('/', '')} maxHeight={maxHeight} />
@@ -149,7 +149,7 @@ export default function Dashboard() {
                 color: color.ink,
                 wordBreak: 'keep-all',
               }}>
-                대시보드 페이지는 사장님과 팀만 아는 비밀번호를 통해 접속할 수 있습니다.<br />현재 페이지는 비밀번호 이후의 화면이며, 실제로 날짜별 손님 데이터를 확인할 수 있습니다.
+                대시보드 페이지는 사장님과 팀만 아는 비밀번호를 통해 접속할 수 있습니다.<br />접속 시 실제 날짜별 손님 데이터를 확인할 수 있습니다.
               </p>
               <p style={{
                 margin: 0,
@@ -171,7 +171,7 @@ export default function Dashboard() {
                 color: color.primary,
                 wordBreak: 'keep-all',
               }}>
-                심사 기간 한정으로 공개되며, 접속 비밀번호는 6424입니다.
+                심사 기간 한정으로 공개되며, 임시 접속 비밀번호는 6424입니다.
               </p>
             </div>
           </div>
