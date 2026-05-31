@@ -97,26 +97,6 @@ export default function Outro() {
               </p>
             </div>
 
-            <div style={{ textAlign: isMobile ? 'left' : 'right' }}>
-              <p style={{
-                margin: '0 0 6px',
-                fontFamily: font.familyKo,
-                fontSize: '14px',
-                fontWeight: 500,
-                color: '#FFFFFF',
-              }}>
-                {meta.course}
-              </p>
-              <p style={{
-                margin: 0,
-                fontFamily: font.familyNum,
-                fontSize: '14px',
-                fontWeight: 500,
-                color: '#FFFFFF',
-              }}>
-                {meta.period}
-              </p>
-            </div>
           </div>
         </div>
 
