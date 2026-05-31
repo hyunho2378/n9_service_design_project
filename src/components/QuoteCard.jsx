@@ -28,8 +28,10 @@ export default function QuoteCard({ text, source, profile, theme }) {
             <span style={{
               fontFamily: font.familyKo,
               fontSize: '11px',
+              fontWeight: 700,
               color: color.primary,
-              backgroundColor: color.bg,
+              backgroundColor: color.bgCard,
+              border: `1px solid ${color.primary}`,
               borderRadius: '4px',
               padding: '2px 6px',
             }}>

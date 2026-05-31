@@ -40,12 +40,12 @@ export default function AiIntegration() {
             /* Desktop: Q행/A행 높이 맞춤 — 3열 × 3행 명시적 그리드 */
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr clamp(140px,14vw,180px) 1fr',
-              columnGap: 'clamp(20px,3vw,48px)',
+              gridTemplateColumns: '1fr clamp(130px,13vw,165px) 1fr',
+              columnGap: 'clamp(10px,1.2vw,20px)',
               rowGap: '14px',
             }}>
               {/* Row 1: 컬럼 헤더 */}
-              <PersonaHeader data={aiIntegration.customer} />
+              <PersonaHeader data={aiIntegration.customer} extraStyle={{ gridColumn: 1, gridRow: 1 }} />
               {/* 중앙 원: rows 1-3 span */}
               <div style={{
                 gridColumn: 2,
@@ -56,15 +56,15 @@ export default function AiIntegration() {
               }}>
                 <AiCenter data={aiIntegration.center} />
               </div>
-              <PersonaHeader data={aiIntegration.owner} />
+              <PersonaHeader data={aiIntegration.owner} extraStyle={{ gridColumn: 3, gridRow: 1 }} />
 
-              {/* Row 2: Q 카드 */}
-              <QACard label="Q" text={aiIntegration.customer.q} align="right" />
-              <QACard label="Q" text={aiIntegration.owner.q} align="left" />
+              {/* Row 2: Q 카드 — 명시적 배치로 좌우 같은 행 보장 */}
+              <QACard label="Q" text={aiIntegration.customer.q} align="right" extraStyle={{ gridColumn: 1, gridRow: 2 }} />
+              <QACard label="Q" text={aiIntegration.owner.q} align="left" extraStyle={{ gridColumn: 3, gridRow: 2 }} />
 
               {/* Row 3: A 카드 */}
-              <QACard label="A" text={aiIntegration.customer.a} align="right" isAnswer />
-              <QACard label="A" text={aiIntegration.owner.a} align="left" isAnswer />
+              <QACard label="A" text={aiIntegration.customer.a} align="right" isAnswer extraStyle={{ gridColumn: 1, gridRow: 3 }} />
+              <QACard label="A" text={aiIntegration.owner.a} align="left" isAnswer extraStyle={{ gridColumn: 3, gridRow: 3 }} />
             </div>
           )}
         </div>
@@ -75,9 +75,9 @@ export default function AiIntegration() {
 }
 
 /* 컬럼 헤더 (데스크톱 row 1 전용) */
-function PersonaHeader({ data }) {
+function PersonaHeader({ data, extraStyle }) {
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'center', ...extraStyle }}>
       <span style={{
         fontFamily: font.familyNum,
         fontSize: '13px',
@@ -113,7 +113,7 @@ function PersonaColumn({ data }) {
   );
 }
 
-function QACard({ label, text, align, isAnswer }) {
+function QACard({ label, text, align, isAnswer, extraStyle }) {
   return (
     <div style={{
       background: isAnswer ? color.bgCard : color.bg,
@@ -123,6 +123,7 @@ function QACard({ label, text, align, isAnswer }) {
       flexDirection: align === 'right' ? 'row-reverse' : 'row',
       gap: '12px',
       alignItems: 'flex-start',
+      ...extraStyle,
     }}>
       <span style={{
         fontFamily: font.familyNum,

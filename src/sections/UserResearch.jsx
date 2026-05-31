@@ -658,7 +658,7 @@ function ThemeBar({ percent, full, index, visible }) {
       <div style={{
         height: '100%',
         borderRadius: '999px',
-        background: full ? color.primary : color.inkMute,
+        background: color.primary,
         width: visible ? `${percent}%` : '0%',
         transition: `width 0.8s ease-out ${index * 0.08}s`,
       }} />

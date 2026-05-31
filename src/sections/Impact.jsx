@@ -342,7 +342,7 @@ function StoreImage({ src, label }) {
 }
 
 function ProofCard({ card, imgSrc, imgLabel }) {
-  const { no, store, tag, desc, highlight } = card;
+  const { no, store, tag, desc, highlight, naverUrl } = card;
   const parts = store.split(' / ');
   const storeName = parts.length > 1 ? parts[0] : null;
   const storeLocation = parts.length > 1 ? parts[1] : store;
@@ -429,8 +429,58 @@ function ProofCard({ card, imgSrc, imgLabel }) {
         }}>
           {desc}
         </p>
+        {naverUrl && (
+          <div style={{ marginTop: 'auto', paddingTop: '20px', display: 'flex', justifyContent: 'flex-end' }}>
+            <PlaceButton href={naverUrl} highlight={highlight} />
+          </div>
+        )}
       </div>
     </div>
+  );
+}
+
+function PlaceButton({ href, highlight }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '6px',
+        fontFamily: font.familyKo,
+        fontSize: '13px',
+        fontWeight: 700,
+        textDecoration: 'none',
+        padding: '9px 16px',
+        borderRadius: '8px',
+        border: highlight
+          ? '1px solid rgba(255,255,255,0.7)'
+          : `1px solid ${color.primary}`,
+        color: highlight
+          ? '#FFFFFF'
+          : (hovered ? '#FFFFFF' : color.primary),
+        background: highlight
+          ? (hovered ? 'rgba(255,255,255,0.18)' : 'transparent')
+          : (hovered ? color.primary : 'transparent'),
+        transform: hovered ? 'translateY(-1px)' : 'translateY(0)',
+        boxShadow: hovered
+          ? (highlight
+            ? '0 4px 12px rgba(255,255,255,0.15)'
+            : '0 4px 12px rgba(2,199,90,0.3)')
+          : 'none',
+        transition: 'background 0.15s ease-out, color 0.15s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out',
+      }}
+    >
+      네이버 플레이스
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+        <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </a>
   );
 }
 
