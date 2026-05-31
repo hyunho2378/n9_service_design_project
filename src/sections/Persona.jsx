@@ -21,7 +21,6 @@ export default function Persona() {
   const isMobile = useIsMobile();
   const [headerRef,  headerVis]  = useReveal({ threshold: 0.1 });
   const [cardsRef,   cardsVis]   = useReveal({ threshold: 0.05 });
-  const [insightRef, insightVis] = useReveal({ threshold: 0.1 });
 
   return (
     <section id="persona" style={{ background: color.bg, fontFamily: font.familyKo }}>
@@ -54,37 +53,6 @@ export default function Persona() {
         </div>
       </div>
 
-      {/* keyInsight 그린 배너 */}
-      <div ref={insightRef} style={{ ...rev(insightVis), background: color.primary }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: 'clamp(24px,3vw,40px) clamp(32px,7vw,120px)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '20px',
-        }}>
-          <span style={{
-            fontFamily: font.familyNum,
-            fontSize: '24px',
-            color: '#FFFFFF',
-            lineHeight: 1,
-            flexShrink: 0,
-          }}>↔</span>
-          <p style={{
-            margin: 0,
-            fontFamily: font.familyKo,
-            fontSize: 'clamp(16px,1.5vw,20px)',
-            fontWeight: 700,
-            lineHeight: 1.65,
-            color: '#FFFFFF',
-            wordBreak: 'keep-all',
-          }}>
-            {persona.keyInsight}
-          </p>
-        </div>
-      </div>
-
     </section>
   );
 }
@@ -94,11 +62,11 @@ function PersonaCard({ p, tone }) {
     <div style={{
       background: color.bgCard,
       borderRadius: '12px',
-      boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+      border: '1px solid #0A0A0A',
       overflow: 'hidden',
     }}>
       {/* 카드 헤더 */}
-      <div style={{ background: tone.accentBg, padding: '28px 28px 20px' }}>
+      <div style={{ background: color.bgCard, padding: '28px 28px 20px' }}>
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',

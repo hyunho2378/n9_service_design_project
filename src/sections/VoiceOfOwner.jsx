@@ -83,7 +83,7 @@ export default function VoiceOfOwner() {
               color: color.inkMute,
               letterSpacing: '0.02em',
             }}>
-              {voice.audioNote}
+              {voice.dateNote}
             </p>
           </div>
 

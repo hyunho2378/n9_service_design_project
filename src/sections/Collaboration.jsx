@@ -38,25 +38,27 @@ export default function Collaboration() {
           style={{
             ...rev(timelineVis),
             display: 'grid',
-            gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(5, 1fr)',
-            gap: '0',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(5, 1fr)',
+            gap: isMobile ? '20px' : '0',
             marginBottom: 'clamp(32px,4vw,48px)',
             position: 'relative',
           }}
         >
-          {/* Connector line */}
-          <div style={{
-            position: 'absolute',
-            top: '20px',
-            left: '10%',
-            right: '10%',
-            height: '2px',
-            background: color.line,
-            zIndex: 0,
-          }} />
+          {/* Connector line — 데스크탑 전용 */}
+          {!isMobile && (
+            <div style={{
+              position: 'absolute',
+              top: '20px',
+              left: '10%',
+              right: '10%',
+              height: '2px',
+              background: color.line,
+              zIndex: 0,
+            }} />
+          )}
 
           {collaboration.timeline.map((item, i) => (
-            <TimelineNode key={item.week} item={item} index={i} />
+            <TimelineNode key={item.week} item={item} index={i} isMobile={isMobile} />
           ))}
         </div>
 
@@ -79,17 +81,17 @@ export default function Collaboration() {
   );
 }
 
-function TimelineNode({ item, index }) {
+function TimelineNode({ item, index, isMobile }) {
   const { highlight } = item;
   return (
     <div style={{
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '16px',
+      flexDirection: isMobile ? 'row' : 'column',
+      alignItems: isMobile ? 'flex-start' : 'center',
+      gap: isMobile ? '16px' : '16px',
       position: 'relative',
       zIndex: 1,
-      padding: '0 8px',
+      padding: isMobile ? '0' : '0 8px',
     }}>
       {/* Circle */}
       <div style={{
@@ -119,7 +121,7 @@ function TimelineNode({ item, index }) {
       </div>
 
       {/* Content */}
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: isMobile ? 'left' : 'center' }}>
         <span style={{
           fontFamily: font.familyNum,
           fontSize: '10px',

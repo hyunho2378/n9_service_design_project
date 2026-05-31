@@ -66,7 +66,7 @@ export default function LiveDemo() {
               src="/servicemain.png"
               alt=""
               style={{
-                maxHeight: 'clamp(120px,14vw,200px)',
+                maxHeight: 'clamp(240px,28vw,400px)',
                 width: 'auto',
                 maxWidth: '100%',
                 display: 'block',

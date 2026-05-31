@@ -138,6 +138,17 @@ export default function Impact() {
 
           {/* socialValue — 마무리 문장 */}
           <p style={{
+            margin: '0 0 10px',
+            fontFamily: font.familyNum,
+            fontSize: '11px',
+            fontWeight: 700,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: color.primary,
+          }}>
+            사회적 가치
+          </p>
+          <p style={{
             margin: 0,
             fontFamily: font.familyKo,
             fontSize: 'clamp(16px,1.6vw,22px)',
@@ -147,7 +158,9 @@ export default function Impact() {
             wordBreak: 'keep-all',
             whiteSpace: 'pre-line',
           }}>
-            {impact.socialValue}
+            {'넘버나인의 솔루션은 미용실 한 곳에 그치지 않고,\n'}
+            <span style={{ color: color.primary }}>{'후평동 상권 전체의 업종 무관 시니어 자영업자에게 확장 가능한 사회적 가치'}</span>
+            {'를 보여줍니다.'}
           </p>
 
         </div>
@@ -189,13 +202,13 @@ export default function Impact() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : '1fr 52px 1fr',
-            alignItems: 'center',
+            alignItems: 'stretch',
             gap: isMobile ? '16px' : '0',
             marginBottom: 'clamp(40px,5vw,56px)',
           }}>
             <ProofCard card={impact.expansionProof.cards[0]} imgSrc="/store-n9.jpg" imgLabel="store-n9.jpg 교체 예정" />
             {!isMobile && (
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', alignSelf: 'center' }}>
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4 13h18M15 6l7 7-7 7" stroke={color.primary} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -330,6 +343,10 @@ function StoreImage({ src, label }) {
 
 function ProofCard({ card, imgSrc, imgLabel }) {
   const { no, store, tag, desc, highlight } = card;
+  const parts = store.split(' / ');
+  const storeName = parts.length > 1 ? parts[0] : null;
+  const storeLocation = parts.length > 1 ? parts[1] : store;
+
   return (
     <div style={{
       background: highlight ? color.primary : color.bgCard,
@@ -341,12 +358,14 @@ function ProofCard({ card, imgSrc, imgLabel }) {
         : '0 4px 24px rgba(0,0,0,0.06)',
       display: 'flex',
       flexDirection: 'column',
+      height: '100%',
     }}>
       <StoreImage src={imgSrc} label={imgLabel} />
       <div style={{
-        padding: 'clamp(24px,2.5vw,36px) clamp(24px,3vw,36px) clamp(28px,3vw,40px)',
+        padding: 'clamp(28px,3vw,44px) clamp(28px,3vw,40px) clamp(32px,3.5vw,48px)',
         display: 'flex',
         flexDirection: 'column',
+        flex: 1,
       }}>
         <span style={{
           display: 'block',
@@ -355,21 +374,34 @@ function ProofCard({ card, imgSrc, imgLabel }) {
           fontWeight: 700,
           letterSpacing: '0.1em',
           color: highlight ? 'rgba(255,255,255,0.65)' : color.inkMute,
-          marginBottom: '14px',
+          marginBottom: '10px',
         }}>
           {no}
         </span>
+        {storeName && (
+          <span style={{
+            display: 'block',
+            fontFamily: font.familyKo,
+            fontSize: '13px',
+            fontWeight: 600,
+            color: highlight ? 'rgba(255,255,255,0.65)' : color.inkMute,
+            marginBottom: '8px',
+            letterSpacing: '-0.01em',
+          }}>
+            {storeName}
+          </span>
+        )}
         <h3 style={{
-          margin: '0 0 14px',
+          margin: '0 0 16px',
           fontFamily: font.familyKo,
-          fontSize: 'clamp(20px,2vw,28px)',
+          fontSize: 'clamp(22px,2.2vw,32px)',
           fontWeight: 800,
           letterSpacing: '-0.02em',
           color: highlight ? '#FFFFFF' : color.ink,
           lineHeight: 1.2,
           wordBreak: 'keep-all',
         }}>
-          {store}
+          {storeLocation}
         </h3>
         <span style={{
           display: 'inline-block',
@@ -389,7 +421,7 @@ function ProofCard({ card, imgSrc, imgLabel }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: '14px',
+          fontSize: '15px',
           fontWeight: 500,
           lineHeight: 1.8,
           color: highlight ? 'rgba(255,255,255,0.88)' : color.inkSub,

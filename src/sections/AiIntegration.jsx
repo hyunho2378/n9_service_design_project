@@ -20,10 +20,7 @@ export default function AiIntegration() {
   return (
     <section
       id="ai-integration"
-      style={{
-        background: color.bgCard,
-        fontFamily: font.familyKo,
-      }}
+      style={{ background: color.bgCard, fontFamily: font.familyKo }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)' }}>
 
@@ -31,19 +28,45 @@ export default function AiIntegration() {
           <SectionHeader label={aiIntegration.label} headline={aiIntegration.headline} />
         </div>
 
-        <div
-          ref={bodyRef}
-          style={{
-            ...rev(bodyVis),
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '1fr clamp(140px,14vw,180px) 1fr',
-            gap: 'clamp(20px,3vw,48px)',
-            alignItems: 'center',
-          }}
-        >
-          <PersonaColumn data={aiIntegration.customer} side="left" />
-          <AiCenter data={aiIntegration.center} />
-          <PersonaColumn data={aiIntegration.owner} side="right" />
+        <div ref={bodyRef} style={rev(bodyVis)}>
+          {isMobile ? (
+            /* Mobile: 세로 스택 */
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <PersonaColumn data={aiIntegration.customer} />
+              <AiCenter data={aiIntegration.center} />
+              <PersonaColumn data={aiIntegration.owner} />
+            </div>
+          ) : (
+            /* Desktop: Q행/A행 높이 맞춤 — 3열 × 3행 명시적 그리드 */
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr clamp(140px,14vw,180px) 1fr',
+              columnGap: 'clamp(20px,3vw,48px)',
+              rowGap: '14px',
+            }}>
+              {/* Row 1: 컬럼 헤더 */}
+              <PersonaHeader data={aiIntegration.customer} />
+              {/* 중앙 원: rows 1-3 span */}
+              <div style={{
+                gridColumn: 2,
+                gridRow: '1 / 4',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <AiCenter data={aiIntegration.center} />
+              </div>
+              <PersonaHeader data={aiIntegration.owner} />
+
+              {/* Row 2: Q 카드 */}
+              <QACard label="Q" text={aiIntegration.customer.q} align="right" />
+              <QACard label="Q" text={aiIntegration.owner.q} align="left" />
+
+              {/* Row 3: A 카드 */}
+              <QACard label="A" text={aiIntegration.customer.a} align="right" isAnswer />
+              <QACard label="A" text={aiIntegration.owner.a} align="left" isAnswer />
+            </div>
+          )}
         </div>
 
       </div>
@@ -51,40 +74,41 @@ export default function AiIntegration() {
   );
 }
 
-function PersonaColumn({ data, side }) {
-  const isLeft = side === 'left';
+/* 컬럼 헤더 (데스크톱 row 1 전용) */
+function PersonaHeader({ data }) {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '14px',
-    }}>
-      {/* Role label */}
-      <div style={{ textAlign: 'center' }}>
-        <span style={{
-          fontFamily: font.familyNum,
-          fontSize: '13px',
-          fontWeight: 700,
-          letterSpacing: '0.08em',
-          textTransform: 'uppercase',
-          color: color.primary,
-          display: 'block',
-          marginBottom: '6px',
-        }}>
-          {data.role}
-        </span>
-        <span style={{
-          fontFamily: font.familyKo,
-          fontSize: '20px',
-          fontWeight: 800,
-          color: color.ink,
-        }}>
-          {data.label}
-        </span>
-      </div>
+    <div style={{ textAlign: 'center' }}>
+      <span style={{
+        fontFamily: font.familyNum,
+        fontSize: '13px',
+        fontWeight: 700,
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        color: color.primary,
+        display: 'block',
+        marginBottom: '6px',
+      }}>
+        {data.role}
+      </span>
+      <span style={{
+        fontFamily: font.familyKo,
+        fontSize: 'clamp(20px,2vw,26px)',
+        fontWeight: 800,
+        color: color.ink,
+      }}>
+        {data.label}
+      </span>
+    </div>
+  );
+}
 
-      <QACard label="Q" text={data.q} align={isLeft ? 'right' : 'left'} />
-      <QACard label="A" text={data.a} align={isLeft ? 'right' : 'left'} isAnswer />
+/* 모바일용: 헤더 + Q + A 세로 묶음 */
+function PersonaColumn({ data }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+      <PersonaHeader data={data} />
+      <QACard label="Q" text={data.q} align="left" />
+      <QACard label="A" text={data.a} align="left" isAnswer />
     </div>
   );
 }
@@ -142,13 +166,13 @@ function AiCenter({ data }) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '6px',
+        gap: '4px',
         boxShadow: '0 0 0 8px rgba(2,199,90,0.12), 0 0 0 16px rgba(2,199,90,0.06)',
         flexShrink: 0,
       }}>
         <span style={{
           fontFamily: font.familyNum,
-          fontSize: '15px',
+          fontSize: '18px',
           fontWeight: 800,
           letterSpacing: '0.06em',
           color: '#FFFFFF',
@@ -158,12 +182,12 @@ function AiCenter({ data }) {
         <p style={{
           margin: 0,
           fontFamily: font.familyKo,
-          fontSize: 'clamp(11px,1.1vw,14px)',
+          fontSize: 'clamp(12px,1.2vw,15px)',
           fontWeight: 700,
           color: '#FFFFFF',
           textAlign: 'center',
-          padding: '0 10px',
-          lineHeight: 1.45,
+          padding: '0 8px',
+          lineHeight: 1.4,
           wordBreak: 'keep-all',
         }}>
           {data.title}

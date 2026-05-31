@@ -13,24 +13,16 @@ const rev = (vis, delay = 0) => ({
   transition: `opacity 0.7s ease-out ${delay}s, transform 0.7s ease-out ${delay}s`,
 });
 
-const IMAGE_PAIRS = [
-  { before: 'touchpoint-card-before.jpg',      after: 'touchpoint-card-after.jpg' },
-  { before: 'touchpoint-pricelist-before.jpg', after: 'touchpoint-pricelist-after.jpg' },
-  { before: 'touchpoint-qr-before.jpg',        after: 'touchpoint-qr-after.jpg' },
-];
-
 export default function OfflineTouchpoints() {
   const isMobile = useIsMobile();
   const [headerRef, headerVis] = useReveal({ threshold: 0.1 });
-  const [itemsRef,  itemsVis]  = useReveal({ threshold: 0.05 });
+  const [bodyRef,   bodyVis]   = useReveal({ threshold: 0.05 });
+  const [lightbox,  setLightbox] = useState(false);
 
   return (
     <section
       id="offline-touchpoints"
-      style={{
-        background: color.bg,
-        fontFamily: font.familyKo,
-      }}
+      style={{ background: color.bg, fontFamily: font.familyKo }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)' }}>
 
@@ -38,133 +30,50 @@ export default function OfflineTouchpoints() {
           <SectionHeader label={offline.label} headline={offline.headline} />
         </div>
 
+        <div ref={bodyRef} style={rev(bodyVis)}>
+          <img
+            src="/offlinebf.png"
+            alt="오프라인 자산 비포애프터"
+            onClick={isMobile ? () => setLightbox(true) : undefined}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              cursor: isMobile ? 'zoom-in' : 'default',
+            }}
+          />
+        </div>
+
+      </div>
+
+      {/* 모바일 라이트박스 */}
+      {lightbox && (
         <div
-          ref={itemsRef}
+          onClick={() => setLightbox(false)}
           style={{
-            ...rev(itemsVis),
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.92)',
+            zIndex: 9999,
             display: 'flex',
-            flexDirection: 'column',
-            gap: '24px',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '16px',
           }}
         >
-          {offline.items.map((item, i) => (
-            <TouchpointCard key={i} item={item} imgPair={IMAGE_PAIRS[i]} isMobile={isMobile} />
-          ))}
+          <img
+            src="/offlinebf.png"
+            alt=""
+            style={{
+              maxWidth: '100%',
+              maxHeight: '100%',
+              display: 'block',
+              objectFit: 'contain',
+            }}
+          />
         </div>
-
-      </div>
-    </section>
-  );
-}
-
-function SlotImg({ filename }) {
-  const [failed, setFailed] = useState(false);
-  return (
-    <div style={{
-      width: '100%',
-      height: 'clamp(80px, 10vw, 130px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      overflow: 'hidden',
-      padding: '8px',
-      boxSizing: 'border-box',
-    }}>
-      {failed ? (
-        <span style={{
-          fontFamily: font.familyKo,
-          fontSize: '9px',
-          color: '#AAAAAA',
-          textAlign: 'center',
-          wordBreak: 'break-all',
-        }}>
-          {filename}
-        </span>
-      ) : (
-        <img
-          src={`/${filename}`}
-          alt=""
-          onError={() => setFailed(true)}
-          style={{
-            maxWidth: '100%',
-            maxHeight: '100%',
-            width: 'auto',
-            height: 'auto',
-            display: 'block',
-          }}
-        />
       )}
-    </div>
-  );
-}
 
-function TouchpointCard({ item, imgPair, isMobile }) {
-  return (
-    <div style={{
-      background: color.bgCard,
-      borderRadius: '12px',
-      boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-      overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
-    }}>
-      {/* Before | After 가로 나란히 */}
-      <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row' }}>
-        {/* Before (좌) */}
-        <div style={{ flex: 1, position: 'relative', minWidth: 0 }}>
-          <SlotImg filename={imgPair.before} />
-          <span style={{
-            position: 'absolute', top: '8px', left: '8px',
-            fontFamily: font.familyNum, fontSize: '9px', fontWeight: 700,
-            letterSpacing: '0.06em', textTransform: 'uppercase',
-            color: color.inkMute,
-            background: 'rgba(255,255,255,0.88)',
-            padding: '2px 6px', borderRadius: '4px',
-          }}>
-            Before
-          </span>
-        </div>
-
-        {/* After (우) — 그린 스트로크 */}
-        <div style={{ flex: 1, position: 'relative', minWidth: 0, outline: `2px solid ${color.primary}` }}>
-          <SlotImg filename={imgPair.after} />
-          <span style={{
-            position: 'absolute', top: '8px', left: '8px',
-            fontFamily: font.familyNum, fontSize: '9px', fontWeight: 700,
-            letterSpacing: '0.06em', textTransform: 'uppercase',
-            color: '#FFFFFF',
-            background: color.primary,
-            padding: '2px 6px', borderRadius: '4px',
-          }}>
-            After
-          </span>
-        </div>
-      </div>
-
-      {/* 텍스트 */}
-      <div style={{ padding: '20px 22px 24px' }}>
-        <h3 style={{
-          margin: '0 0 8px',
-          fontFamily: font.familyKo,
-          fontSize: '18px',
-          fontWeight: 700,
-          color: color.ink,
-          letterSpacing: '-0.01em',
-        }}>
-          {item.title}
-        </h3>
-        <p style={{
-          margin: 0,
-          fontFamily: font.familyKo,
-          fontSize: '15px',
-          fontWeight: 500,
-          lineHeight: 1.75,
-          color: color.inkSub,
-          wordBreak: 'keep-all',
-        }}>
-          {item.desc}
-        </p>
-      </div>
-    </div>
+    </section>
   );
 }

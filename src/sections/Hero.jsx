@@ -185,6 +185,7 @@ export default function Hero() {
                 fontWeight: 600,
                 color: '#FFFFFF',
                 letterSpacing: '-0.01em',
+                wordBreak: 'break-word',
               }}>
                 {value}
               </span>

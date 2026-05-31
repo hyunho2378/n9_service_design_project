@@ -1,5 +1,6 @@
 import { color, font } from '../tokens/web.js';
 import { useReveal } from '../lib/useReveal.js';
+import { useIsMobile } from '../lib/useIsMobile.js';
 import n9 from '../data/n9.json';
 
 const { outro, meta } = n9;
@@ -11,6 +12,7 @@ const rev = (vis, delay = 0) => ({
 });
 
 export default function Outro() {
+  const isMobile = useIsMobile();
   const [headRef,    headVis]    = useReveal({ threshold: 0.05 });
   const [creditsRef, creditsVis] = useReveal({ threshold: 0.05 });
 
@@ -95,7 +97,7 @@ export default function Outro() {
               </p>
             </div>
 
-            <div style={{ textAlign: 'right' }}>
+            <div style={{ textAlign: isMobile ? 'left' : 'right' }}>
               <p style={{
                 margin: '0 0 6px',
                 fontFamily: font.familyKo,

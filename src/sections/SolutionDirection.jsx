@@ -1,11 +1,13 @@
 import { color, font } from '../tokens/web.js';
 import { useReveal } from '../lib/useReveal.js';
+import { useIsMobile } from '../lib/useIsMobile.js';
 import SectionHeader from '../components/SectionHeader.jsx';
 import n9 from '../data/n9.json';
 
 const { solutionDirection } = n9;
 
 export default function SolutionDirection() {
+  const isMobile = useIsMobile();
   const [headerRef, headerVis] = useReveal({ threshold: 0.1 });
   const [gapsRef,   gapsVis]   = useReveal({ threshold: 0.05 });
 
@@ -37,7 +39,7 @@ export default function SolutionDirection() {
           }}
         >
           {solutionDirection.gaps.map((gap, i) => (
-            <GapRow key={gap.no} gap={gap} index={i} total={solutionDirection.gaps.length} />
+            <GapRow key={gap.no} gap={gap} index={i} total={solutionDirection.gaps.length} isMobile={isMobile} />
           ))}
         </div>
 
@@ -46,7 +48,7 @@ export default function SolutionDirection() {
   );
 }
 
-function GapRow({ gap, index, total }) {
+function GapRow({ gap, index, total, isMobile }) {
   const isAi = !!gap.isAi;
   const isLast = index === total - 1;
 
@@ -98,9 +100,10 @@ function GapRow({ gap, index, total }) {
         paddingBottom: isLast ? 0 : 'clamp(32px,4vw,48px)',
         paddingLeft: '20px',
         paddingTop: '4px',
-        display: 'grid',
-        gridTemplateColumns: '1fr auto',
-        gap: '24px',
+        display: isMobile ? 'flex' : 'grid',
+        flexDirection: isMobile ? 'column' : undefined,
+        gridTemplateColumns: isMobile ? undefined : '1fr auto',
+        gap: isMobile ? '12px' : '24px',
         alignItems: 'start',
       }}>
         {/* 좌: 격차 설명 */}
@@ -160,8 +163,8 @@ function GapRow({ gap, index, total }) {
           background: isAi ? color.primary : color.bg,
           borderRadius: '10px',
           padding: '14px 18px',
-          minWidth: '180px',
-          maxWidth: '220px',
+          minWidth: isMobile ? undefined : '180px',
+          maxWidth: isMobile ? undefined : '220px',
           alignSelf: 'flex-start',
           flexShrink: 0,
         }}>

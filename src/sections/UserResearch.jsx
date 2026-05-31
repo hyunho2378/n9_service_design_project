@@ -81,7 +81,7 @@ export default function UserResearch() {
 
       {/* ━━ 02 정량 · Survey ━━ */}
       <div style={{ background: color.bg }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -266,7 +266,7 @@ export default function UserResearch() {
 
       {/* ━━ 03 정성 · Interview ━━ */}
       <div style={{ background: color.bgCard }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -434,7 +434,7 @@ export default function UserResearch() {
 
       {/* ━━ 04 교차분석 ━━ */}
       <div style={{ background: color.bg }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -515,7 +515,7 @@ export default function UserResearch() {
 
       {/* ━━ 05 Research → Solution ━━ */}
       <div style={{ background: color.bgCard }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
           <div ref={solutionRef} style={rev(solutionVis)}>
             <p style={{
               fontFamily: font.familyNum,

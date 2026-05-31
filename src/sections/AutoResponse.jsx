@@ -16,7 +16,6 @@ export default function AutoResponse() {
   const isMobile = useIsMobile();
   const [headerRef,  headerVis]  = useReveal({ threshold: 0.1 });
   const [bodyRef,    bodyVis]    = useReveal({ threshold: 0.05 });
-  const [resultRef,  resultVis]  = useReveal({ threshold: 0.1 });
 
   return (
     <section
@@ -33,7 +32,7 @@ export default function AutoResponse() {
 
       {/* 좌: 톡톡 스크린샷 / 우: steps */}
       <div>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(32px,7vw,120px) 0' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(32px,7vw,120px) clamp(56px,6vw,88px)' }}>
           <div
             ref={bodyRef}
             style={{
@@ -58,7 +57,7 @@ export default function AutoResponse() {
               />
             </div>
 
-            {/* 우: 3단계 */}
+            {/* 우: 3단계 + result 박스 */}
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {autoResponse.steps.map((step, i) => (
                 <StepRow
@@ -67,47 +66,37 @@ export default function AutoResponse() {
                   isLast={i === autoResponse.steps.length - 1}
                 />
               ))}
+              <div style={{
+                background: color.primary,
+                borderRadius: '10px',
+                padding: '14px 18px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '10px',
+                marginTop: '8px',
+              }}>
+                <span style={{
+                  fontFamily: font.familyNum,
+                  fontSize: '16px',
+                  color: '#FFFFFF',
+                  lineHeight: 1,
+                  flexShrink: 0,
+                  marginTop: '2px',
+                }}>→</span>
+                <p style={{
+                  margin: 0,
+                  fontFamily: font.familyKo,
+                  fontSize: 'clamp(14px,1.2vw,16px)',
+                  fontWeight: 500,
+                  lineHeight: 1.65,
+                  color: '#FFFFFF',
+                  wordBreak: 'keep-all',
+                }}>
+                  {autoResponse.result}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* result 그린 배너 */}
-      <div
-        ref={resultRef}
-        style={{
-          ...rev(resultVis),
-          background: color.primary,
-          marginTop: 'clamp(40px,5vw,64px)',
-        }}
-      >
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: 'clamp(40px,4vw,56px) clamp(32px,7vw,120px)',
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: '16px',
-        }}>
-          <span style={{
-            fontFamily: font.familyNum,
-            fontSize: '20px',
-            color: '#FFFFFF',
-            lineHeight: 1,
-            flexShrink: 0,
-            marginTop: '2px',
-          }}>→</span>
-          <p style={{
-            margin: 0,
-            fontFamily: font.familyKo,
-            fontSize: 'clamp(16px,1.4vw,17px)',
-            fontWeight: 500,
-            lineHeight: 1.7,
-            color: '#FFFFFF',
-            wordBreak: 'keep-all',
-          }}>
-            {autoResponse.result}
-          </p>
         </div>
       </div>
 

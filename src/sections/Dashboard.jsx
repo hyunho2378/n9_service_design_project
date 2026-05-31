@@ -113,8 +113,8 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* 버튼 + 캡션 — 우측 정렬 */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '14px' }}>
+          {/* 버튼 + 캡션 — 중앙 정렬 */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
             <a
               href="https://numer9-ai-service.vercel.app/stats"
               target="_blank"
@@ -139,7 +139,7 @@ export default function Dashboard() {
               대시보드 페이지 바로가기
             </a>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'right' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '520px', textAlign: 'left' }}>
               <p style={{
                 margin: 0,
                 fontFamily: font.familyKo,
@@ -149,8 +149,7 @@ export default function Dashboard() {
                 color: color.ink,
                 wordBreak: 'keep-all',
               }}>
-                대시보드 페이지는 사장님과 팀만 아는 비밀번호를 통해 접속할 수 있습니다.
-                현재 페이지는 비밀번호 이후의 화면이며, 실제로 날짜별 손님 데이터를 확인할 수 있습니다.
+                대시보드 페이지는 사장님과 팀만 아는 비밀번호를 통해 접속할 수 있습니다.<br />현재 페이지는 비밀번호 이후의 화면이며, 실제로 날짜별 손님 데이터를 확인할 수 있습니다.
               </p>
               <p style={{
                 margin: 0,
