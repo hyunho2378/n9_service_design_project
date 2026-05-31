@@ -7,7 +7,7 @@ import BarChart from '../components/BarChart.jsx';
 import QuoteCard from '../components/QuoteCard.jsx';
 import ur from '../data/userResearch.json';
 
-const SEC = 'clamp(32px,4vw,56px) clamp(32px,7vw,120px)';
+const SEC = 'clamp(20px,3vw,36px) clamp(32px,7vw,120px)';
 const W   = '1200px';
 const rev = (vis, delay = 0) => ({
   opacity: vis ? 1 : 0,
@@ -47,12 +47,12 @@ export default function UserResearch() {
       <div style={{ background: color.bgCard }}>
         <div style={{ maxWidth: W, margin: '0 auto', padding: SEC }}>
           <div ref={introRef} style={rev(introVis)}>
-            <SectionHeader label={ur.meta.label} headline={ur.meta.headline} />
+            <SectionHeader label={ur.meta.label} headline={ur.meta.headline} mb="24px" />
             <div style={{
               display: 'flex',
               gap: 'clamp(24px,4vw,48px)',
               flexWrap: 'wrap',
-              marginBottom: '16px',
+              marginBottom: '10px',
             }}>
               <MetaChip label="기간" value={ur.meta.period} />
               <MetaChip label="방법론" value={ur.meta.method} />
@@ -81,7 +81,7 @@ export default function UserResearch() {
 
       {/* ━━ 02 정량 · Survey ━━ */}
       <div style={{ background: color.bg }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2vw,28px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -90,7 +90,7 @@ export default function UserResearch() {
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
             color: color.primary,
-            margin: '0 0 20px',
+            margin: '0 0 12px',
           }}>
             {ur.survey.label}
           </p>
@@ -266,7 +266,7 @@ export default function UserResearch() {
 
       {/* ━━ 03 정성 · Interview ━━ */}
       <div style={{ background: color.bgCard }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2vw,28px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -293,38 +293,40 @@ export default function UserResearch() {
             </p>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(6, 1fr)',
-              gap: '8px',
+              gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+              gap: '12px',
               marginBottom: '14px',
             }}>
               {ur.interview.interviewees.map((p, idx) => (
                 <div
                   key={idx}
                   style={{
-                    background: color.bg,
-                    borderRadius: '8px',
-                    padding: '8px 10px',
+                    background: color.bgCard,
+                    borderRadius: '10px',
+                    border: `1px solid ${color.line}`,
+                    padding: '14px 16px',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '3px',
+                    gap: '8px',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span style={{
                       fontFamily: font.familyKo,
-                      fontSize: '13px',
-                      fontWeight: 600,
+                      fontSize: '16px',
+                      fontWeight: 700,
                       color: color.ink,
                     }}>
                       {p.gender}/{p.age}
                     </span>
                     <span style={{
                       fontFamily: font.familyKo,
-                      fontSize: '10px',
+                      fontSize: '11px',
+                      fontWeight: 600,
                       color: color.bgCard,
                       background: p.type === '내향' ? color.inkSub : color.inkMute,
                       borderRadius: '4px',
-                      padding: '1px 5px',
+                      padding: '2px 7px',
                     }}>
                       {p.type}
                     </span>
@@ -332,9 +334,10 @@ export default function UserResearch() {
                   <p style={{
                     margin: 0,
                     fontFamily: font.familyKo,
-                    fontSize: '12px',
-                    lineHeight: 1.6,
+                    fontSize: '14px',
+                    lineHeight: 1.65,
                     color: color.inkSub,
+                    wordBreak: 'keep-all',
                   }}>
                     {p.note}
                   </p>
@@ -434,7 +437,7 @@ export default function UserResearch() {
 
       {/* ━━ 04 교차분석 ━━ */}
       <div style={{ background: color.bg }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2vw,28px) clamp(32px,7vw,120px)' }}>
 
           <p style={{
             fontFamily: font.familyNum,
@@ -465,7 +468,7 @@ export default function UserResearch() {
               ...rev(convergedVis),
               display: 'grid',
               gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-              gap: '14px',
+              gap: '20px',
               alignItems: 'start',
             }}
           >
@@ -476,7 +479,7 @@ export default function UserResearch() {
                 ko="설문과 인터뷰가 같았던 것"
                 highlight
               />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {ur.crossAnalysis.converged.filter((_, i) => i === 0 || i === 3).map((item, i) => (
                   <ConvergedCard key={i} item={item} />
                 ))}
@@ -489,7 +492,7 @@ export default function UserResearch() {
                 en="DIVERGENT SIGNALS"
                 ko="설문과 인터뷰가 달랐던 것"
               />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {ur.crossAnalysis.diverged.slice(1).map((item, i) => (
                   <SimpleCard key={i} item={item} />
                 ))}
@@ -502,7 +505,7 @@ export default function UserResearch() {
                 en="LATENT NEEDS"
                 ko="숨어있던 진짜 니즈"
               />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {ur.crossAnalysis.surprising.slice(1).map((item, i) => (
                   <SimpleCard key={i} item={item} />
                 ))}
@@ -515,7 +518,7 @@ export default function UserResearch() {
 
       {/* ━━ 05 Research → Solution ━━ */}
       <div style={{ background: color.bgCard }}>
-        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(32px,2.5vw,36px) clamp(32px,7vw,120px)' }}>
+        <div style={{ maxWidth: W, margin: '0 auto', padding: 'clamp(20px,2vw,28px) clamp(32px,7vw,120px)' }}>
           <div ref={solutionRef} style={rev(solutionVis)}>
             <p style={{
               fontFamily: font.familyNum,
@@ -665,7 +668,7 @@ function ThemeBar({ percent, full, index, visible }) {
 
 function CrossGroupHeader({ en, ko, highlight }) {
   return (
-    <div style={{ marginBottom: '12px' }}>
+    <div style={{ marginBottom: '16px' }}>
       <span style={{
         display: 'block',
         fontFamily: font.familyNum,
@@ -674,16 +677,16 @@ function CrossGroupHeader({ en, ko, highlight }) {
         letterSpacing: '0.08em',
         textTransform: 'uppercase',
         color: highlight ? color.primary : color.inkMute,
-        marginBottom: '3px',
+        marginBottom: '5px',
       }}>
         {en}
       </span>
       <span style={{
         display: 'block',
         fontFamily: font.familyKo,
-        fontSize: '13px',
-        fontWeight: 600,
-        color: color.inkSub,
+        fontSize: '17px',
+        fontWeight: 700,
+        color: color.ink,
       }}>
         {ko}
       </span>
@@ -696,8 +699,8 @@ function ConvergedCard({ item }) {
     <div style={{
       background: color.bgCard,
       borderRadius: '10px',
-      padding: '14px 16px',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+      padding: '16px 18px',
+      border: `1px solid ${color.line}`,
       display: 'flex',
       flexDirection: 'column',
       gap: '7px',
@@ -749,8 +752,8 @@ function SimpleCard({ item }) {
     <div style={{
       background: color.bgCard,
       borderRadius: '10px',
-      padding: '14px 16px',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+      padding: '16px 18px',
+      border: `1px solid ${color.line}`,
     }}>
       <p style={{
         margin: '0 0 5px',

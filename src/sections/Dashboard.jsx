@@ -101,9 +101,9 @@ export default function Dashboard() {
                 <p style={{
                   margin: 0,
                   fontFamily: font.familyNum,
-                  fontSize: '12px',
+                  fontSize: '17px',
                   fontWeight: 700,
-                  letterSpacing: '0.04em',
+                  letterSpacing: '0.03em',
                   color: color.primary,
                   textAlign: 'center',
                 }}>
@@ -113,8 +113,8 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* 버튼 + 캡션 — 중앙 정렬 */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+          {/* 버튼 + 모달 안내 박스 — 중앙 정렬 */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
             <a
               href="https://numer9-ai-service.vercel.app/stats"
               target="_blank"
@@ -139,38 +139,26 @@ export default function Dashboard() {
               대시보드 페이지 바로가기
             </a>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxWidth: '520px', textAlign: 'left' }}>
-              <p style={{
-                margin: 0,
-                fontFamily: font.familyKo,
-                fontSize: '13px',
-                fontWeight: 500,
-                lineHeight: 1.75,
-                color: color.ink,
-                wordBreak: 'keep-all',
-              }}>
-                대시보드 페이지는 사장님과 팀만 아는 비밀번호를 통해 접속할 수 있습니다.<br />접속 시 실제 날짜별 손님 데이터를 확인할 수 있습니다.
+            <div style={{
+              border: '1px solid #0A0A0A',
+              borderRadius: '12px',
+              padding: '24px 28px',
+              maxWidth: '520px',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '6px',
+            }}>
+              <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', fontWeight: 500, lineHeight: 1.75, color: color.ink, wordBreak: 'keep-all' }}>
+                대시보드 페이지는 사장님과 팀만 아는 비밀번호를 통해 접속할 수 있습니다.
               </p>
-              <p style={{
-                margin: 0,
-                fontFamily: font.familyKo,
-                fontSize: '13px',
-                fontWeight: 500,
-                lineHeight: 1.75,
-                color: color.ink,
-                wordBreak: 'keep-all',
-              }}>
+              <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', fontWeight: 500, lineHeight: 1.75, color: color.ink, wordBreak: 'keep-all' }}>
+                접속 시 실제 날짜별 손님 데이터를 확인할 수 있습니다.
+              </p>
+              <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', fontWeight: 500, lineHeight: 1.75, color: color.ink, wordBreak: 'keep-all' }}>
                 백엔드 데이터 서버가 켜지는 데 시간이 소요될 수 있습니다.
               </p>
-              <p style={{
-                margin: 0,
-                fontFamily: font.familyKo,
-                fontSize: '13px',
-                fontWeight: 700,
-                lineHeight: 1.75,
-                color: color.primary,
-                wordBreak: 'keep-all',
-              }}>
+              <p style={{ margin: 0, fontFamily: font.familyKo, fontSize: '13px', fontWeight: 700, lineHeight: 1.75, color: color.primary, wordBreak: 'keep-all' }}>
                 심사 기간 한정으로 공개되며, 임시 접속 비밀번호는 6424입니다.
               </p>
             </div>

@@ -125,22 +125,22 @@ export default function Impact() {
             <p style={{
               margin: 0,
               fontFamily: font.familyKo,
-              fontSize: 'clamp(16px,1.4vw,17px)',
+              fontSize: 'clamp(16px,1.6vw,22px)',
               fontWeight: 500,
               lineHeight: 1.8,
               color: '#FFFFFF',
               wordBreak: 'keep-all',
-              whiteSpace: 'pre-line',
+              whiteSpace: isMobile ? 'pre-line' : undefined,
             }}>
-              {impact.marketDemand}
+              {isMobile ? impact.marketDemand : renderMarketDemand(impact.marketDemand)}
             </p>
           </div>
 
           {/* socialValue — 마무리 문장 */}
           <p style={{
-            margin: '0 0 10px',
+            margin: '0 0 12px',
             fontFamily: font.familyNum,
-            fontSize: '11px',
+            fontSize: '14px',
             fontWeight: 700,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -151,7 +151,7 @@ export default function Impact() {
           <p style={{
             margin: 0,
             fontFamily: font.familyKo,
-            fontSize: 'clamp(16px,1.6vw,22px)',
+            fontSize: 'clamp(18px,2vw,28px)',
             fontWeight: 700,
             lineHeight: 1.8,
             color: '#FFFFFF',
@@ -431,6 +431,21 @@ function ProofCard({ card, imgSrc, imgLabel }) {
         </p>
       </div>
     </div>
+  );
+}
+
+function renderMarketDemand(text) {
+  const [p1, p2] = text.split('\n\n');
+  const brk1 = '미용실 한 곳을 넘어 ';
+  const brk2 = '교육자로 직접 참여해 달라는 요청을 받아, ';
+  const [a1, b1] = p1.split(brk1);
+  const [a2, b2] = p2.split(brk2);
+  return (
+    <>
+      {a1}{brk1}<br />{b1}
+      <br /><br />
+      {a2}{brk2}<br />{b2}
+    </>
   );
 }
 

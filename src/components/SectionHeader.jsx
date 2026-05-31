@@ -1,9 +1,9 @@
 import { color, font } from '../tokens/web.js';
 
 // 모든 섹션 상단 공통. label=그린 대문자, headline=Pretendard bold.
-export default function SectionHeader({ label, headline, center = false }) {
+export default function SectionHeader({ label, headline, center = false, dark = false, mb = '72px' }) {
   return (
-    <div style={{ textAlign: center ? 'center' : 'left', marginBottom: '72px' }}>
+    <div style={{ textAlign: center ? 'center' : 'left', marginBottom: mb }}>
       {label && (
         <p style={{
           margin: '0 0 12px',
@@ -25,7 +25,7 @@ export default function SectionHeader({ label, headline, center = false }) {
           fontWeight: 800,
           lineHeight: 1.25,
           letterSpacing: '-0.02em',
-          color: color.ink,
+          color: dark ? '#FFFFFF' : color.ink,
           wordBreak: 'keep-all',
         }}>
           {headline}

@@ -145,7 +145,7 @@ function LayerCard({ layer, index }) {
       <h3 style={{
         margin: '0 0 4px',
         fontFamily: font.familyNum,
-        fontSize: 'clamp(14px,1.3vw,16px)',
+        fontSize: 'clamp(16px,1.5vw,18px)',
         fontWeight: 700,
         color: isHighlight ? '#FFFFFF' : color.ink,
         letterSpacing: '-0.01em',
@@ -157,7 +157,7 @@ function LayerCard({ layer, index }) {
       <p style={{
         margin: '0 0 20px',
         fontFamily: font.familyKo,
-        fontSize: '13px',
+        fontSize: '15px',
         color: isHighlight ? '#FFFFFF' : color.inkMute,
       }}>
         {layer.ko}
@@ -176,7 +176,7 @@ function LayerCard({ layer, index }) {
           <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
             <span style={{
               fontFamily: font.familyNum,
-              fontSize: '12px',
+              fontSize: '14px',
               color: isHighlight ? '#FFFFFF' : color.primary,
               flexShrink: 0,
               lineHeight: 1.6,
@@ -185,7 +185,7 @@ function LayerCard({ layer, index }) {
             </span>
             <span style={{
               fontFamily: font.familyKo,
-              fontSize: '13px',
+              fontSize: '15px',
               lineHeight: 1.6,
               color: isHighlight ? '#FFFFFF' : color.inkSub,
               wordBreak: 'keep-all',
@@ -200,7 +200,7 @@ function LayerCard({ layer, index }) {
       <div style={{ marginTop: '20px' }}>
         <span style={{
           fontFamily: font.familyKo,
-          fontSize: '11px',
+          fontSize: '13px',
           fontWeight: 600,
           color: '#FFFFFF',
           background: '#0A0A0A',

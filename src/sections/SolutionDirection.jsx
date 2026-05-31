@@ -165,8 +165,11 @@ function GapRow({ gap, index, total, isMobile }) {
           padding: '14px 18px',
           minWidth: isMobile ? undefined : '180px',
           maxWidth: isMobile ? undefined : '220px',
-          alignSelf: 'flex-start',
+          alignSelf: isMobile ? 'flex-start' : 'stretch',
           flexShrink: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
         }}>
           <span style={{
             fontFamily: font.familyNum,

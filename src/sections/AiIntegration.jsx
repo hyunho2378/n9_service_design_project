@@ -118,27 +118,27 @@ function QACard({ label, text, align, isAnswer }) {
     <div style={{
       background: isAnswer ? color.bgCard : color.bg,
       borderRadius: '10px',
-      padding: '14px 16px',
+      padding: '16px 22px',
       display: 'flex',
       flexDirection: align === 'right' ? 'row-reverse' : 'row',
-      gap: '10px',
+      gap: '12px',
       alignItems: 'flex-start',
     }}>
       <span style={{
         fontFamily: font.familyNum,
-        fontSize: '11px',
+        fontSize: '12px',
         fontWeight: 700,
         color: isAnswer ? color.primary : color.inkMute,
         flexShrink: 0,
-        marginTop: '1px',
+        marginTop: '2px',
       }}>
         {label}
       </span>
       <p style={{
         margin: 0,
         fontFamily: font.familyKo,
-        fontSize: '15px',
-        lineHeight: 1.65,
+        fontSize: '16px',
+        lineHeight: 1.7,
         color: isAnswer ? color.ink : color.inkSub,
         wordBreak: 'keep-all',
         textAlign: align,

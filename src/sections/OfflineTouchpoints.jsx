@@ -22,12 +22,12 @@ export default function OfflineTouchpoints() {
   return (
     <section
       id="offline-touchpoints"
-      style={{ background: color.bg, fontFamily: font.familyKo }}
+      style={{ background: '#0A0A0A', fontFamily: font.familyKo }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(56px,6vw,88px) clamp(32px,7vw,120px)' }}>
 
         <div ref={headerRef} style={rev(headerVis)}>
-          <SectionHeader label={offline.label} headline={offline.headline} />
+          <SectionHeader label={offline.label} headline={offline.headline} dark />
         </div>
 
         <div ref={bodyRef} style={rev(bodyVis)}>
