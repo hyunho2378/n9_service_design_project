@@ -1,5 +1,6 @@
 import Deliverables from '../sections/Deliverables.jsx';
 import Validation from '../sections/Validation.jsx';
+import Retention from '../sections/Retention.jsx';
 import Impact from '../sections/Impact.jsx';
 import Collaboration from '../sections/Collaboration.jsx';
 import VoiceOfOwner from '../sections/VoiceOfOwner.jsx';
@@ -10,6 +11,7 @@ export default function ResultPage() {
     <>
       <Deliverables />
       <Validation />
+      <Retention />
       <Impact />
       <Collaboration />
       <VoiceOfOwner />
