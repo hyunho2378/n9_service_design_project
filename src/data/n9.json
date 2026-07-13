@@ -388,44 +388,44 @@
   },
   "validation": {
     "label": "VALIDATION",
-    "headline": "플레이스 유입이 5배 늘고, 신규 손님들이 매장에 옵니다.",
+    "headline": "플레이스 유입이 6.8배 늘고, 신규 손님들이 매장에 옵니다.",
     "activationDates": "스마트콜: 26.04.15 / AI 맞춤 서비스: 26.05.06 / 네이버 예약: 26.05.09",
     "metrics": [
       {
         "label": "플레이스 유입",
-        "before": "75회",
-        "after": "503회",
-        "tag": "+570%",
+        "before": "75회 (3월)",
+        "after": "511회 (5월)",
+        "tag": "6.8배 · 누적 849회",
         "highlight": true
       },
       {
         "label": "스마트콜 호출",
         "before": "0회",
-        "after": "19회",
+        "after": "37회",
         "tag": "신규 채널 작동"
       },
       {
         "label": "네이버 예약",
         "before": "0회",
-        "after": "5회 (남4/여1)",
+        "after": "6건",
         "tag": "오픈 12시간 만에 첫 예약"
       },
       {
         "label": "네이버 리뷰",
         "before": "0건 (22년 이전)",
-        "after": "3회 (방문2/예약1)",
+        "after": "3건",
         "tag": "신규 리뷰 작성"
       },
       {
         "label": "AI 맞춤 서비스 사용",
         "before": "0회",
-        "after": "누적 50건",
+        "after": "누적 101건",
         "tag": "데이터 통계 수집"
       },
       {
         "label": "신규 남성 손님 방문",
         "before": "0명",
-        "after": "신규 남성 12명",
+        "after": "신규 남성 14명",
         "tag": "사장님 현장 실측",
         "highlight": true
       }

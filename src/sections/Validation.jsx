@@ -6,10 +6,11 @@ import n9 from '../data/n9.json';
 const { validation } = n9;
 
 const METRICS = [
-  { label: '플레이스 유입',   before: '75회',  tag: '+570%',                   after: '503회' },
-  { label: '스마트콜 호출',   before: '0회',   tag: '신규 채널 작동',            after: '20회' },
-  { label: '네이버 예약',     before: '0회',   tag: '오픈 12시간 만에 첫 예약',   after: '5회 (남4/여1)' },
-  { label: 'AI 맞춤 서비스',  before: '0회',   tag: '데이터 통계 수집',           after: '누적 50건' },
+  { label: '플레이스 유입',   before: '75회 (3월)', tag: '6.8배',                    after: '511회 (5월)' },
+  { label: '스마트콜 호출',   before: '0회',   tag: '신규 채널 작동',            after: '37회' },
+  { label: '네이버 예약',     before: '0회',   tag: '오픈 12시간 만에 첫 예약',   after: '6건' },
+  { label: '네이버 리뷰',     before: '0건 (22년 이전)', tag: '신규 리뷰 작성',    after: '3건' },
+  { label: 'AI 맞춤 서비스',  before: '0회',   tag: '데이터 통계 수집',           after: '누적 101건' },
   { label: '신규 남성 손님',  before: '0명',   tag: '사장님 현장 실측',           after: '14명' },
 ];
 
