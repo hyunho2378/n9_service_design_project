@@ -6,7 +6,7 @@ import n9 from '../data/n9.json';
 const { validation } = n9;
 
 const METRICS = [
-  { label: '플레이스 유입',   before: '75회 (3월)', tag: '6.8배',                    after: '511회 (5월)' },
+  { label: '플레이스 유입',   before: '3월 75회', tag: '5월 511회',                after: '849회' },
   { label: '스마트콜 호출',   before: '0회',   tag: '신규 채널 작동',            after: '37회' },
   { label: '네이버 예약',     before: '0회',   tag: '오픈 12시간 만에 첫 예약',   after: '6건' },
   { label: '네이버 리뷰',     before: '0건 (22년 이전)', tag: '신규 리뷰 작성',    after: '3건' },
